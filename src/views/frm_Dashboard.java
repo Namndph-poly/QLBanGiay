@@ -157,11 +157,11 @@ public class frm_Dashboard extends javax.swing.JFrame {
         lbl_tenNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_tenNhanVien.setForeground(new java.awt.Color(102, 255, 204));
         lbl_tenNhanVien.setText("TÊN NHÂN VIÊN");
-        jPanel4.add(lbl_tenNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 140, 40));
+        jPanel4.add(lbl_tenNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 40));
 
         jLabel2.setForeground(new java.awt.Color(204, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user64px.png"))); // NOI18N
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 70, 80));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Saviourmachine-Chat-Shopping-girl.128.png"))); // NOI18N
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 130, 120));
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 160));
 

@@ -163,10 +163,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         tb_sanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Mã SP", "Tên SP", "Mằu Sắc", "Giảm Giá", "Hình Thức Giảm", "Chất Liệu", "Kích Cỡ", "Giá Bán", "Số Lượng"
@@ -256,10 +253,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         tb_gioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá", "Thành Tiền"
@@ -275,17 +269,17 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         panelGradiente3.setColorPrimario(new java.awt.Color(204, 255, 255));
         panelGradiente3.setColorSecundario(new java.awt.Color(255, 204, 255));
 
+        tb_hoaDon.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tb_hoaDon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tb_hoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Mã HD", "Ngày Tạo", "Nhân Viên", "Trạng Thái"
             }
         ));
+        tb_hoaDon.setCursor(new java.awt.Cursor(java.awt.Cursor.SW_RESIZE_CURSOR));
         tb_hoaDon.setGridColor(new java.awt.Color(255, 255, 255));
         tb_hoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
