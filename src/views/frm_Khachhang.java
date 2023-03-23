@@ -66,7 +66,6 @@ public class frm_Khachhang extends javax.swing.JPanel {
         Btn_capNhat = new swing.MyButton();
         date_ngaysinh1 = new com.toedter.calendar.JDateChooser();
         btn_LamMoi = new swing.MyButton();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -227,8 +226,6 @@ public class frm_Khachhang extends javax.swing.JPanel {
 
         panelGradiente1.add(panelBorder1);
         panelBorder1.setBounds(10, 0, 990, 260);
-        panelGradiente1.add(jTabbedPane2);
-        jTabbedPane2.setBounds(100, 350, 0, 1);
 
         jTabbedPane3.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -236,16 +233,14 @@ public class frm_Khachhang extends javax.swing.JPanel {
 
         TB_bang1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Họ Và Tên", "Giới Tính", "Ngày Sinh", "SĐT", "Email", "Điểm Thưởng"
             }
         ));
         TB_bang1.setGridColor(new java.awt.Color(255, 255, 255));
+        TB_bang1.setRowHeight(25);
         TB_bang1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TB_bang1MouseClicked(evt);
@@ -307,15 +302,13 @@ public class frm_Khachhang extends javax.swing.JPanel {
 
         TB_bang02.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Họ Và Tên", "SĐT", "Mã Hoá Đơn", "Ngày Tạo Hoá Đơn", "Tổng Tiền", "Trạng Thái"
             }
         ));
+        TB_bang02.setRowHeight(25);
         jScrollPane4.setViewportView(TB_bang02);
 
         btn_LamMoi1.setBackground(new java.awt.Color(125, 224, 237));
@@ -437,7 +430,6 @@ public class frm_Khachhang extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTable jTable1;
     private swing.PanelBorder panelBorder1;

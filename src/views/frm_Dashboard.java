@@ -126,7 +126,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
             }
         });
 
-        lbltieude.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbltieude.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbltieude.setForeground(new java.awt.Color(255, 51, 51));
         lbltieude.setText("Bán hàng");
 
@@ -154,13 +154,13 @@ public class frm_Dashboard extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 0, 128));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_tenNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lbl_tenNhanVien.setForeground(new java.awt.Color(102, 255, 204));
+        lbl_tenNhanVien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_tenNhanVien.setForeground(new java.awt.Color(204, 204, 255));
         lbl_tenNhanVien.setText("TÊN NHÂN VIÊN");
-        jPanel4.add(lbl_tenNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 140, 40));
+        jPanel4.add(lbl_tenNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 160, 40));
 
         jLabel2.setForeground(new java.awt.Color(204, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Saviourmachine-Chat-Shopping-girl.128.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chaneo.png"))); // NOI18N
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 130, 120));
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 160));

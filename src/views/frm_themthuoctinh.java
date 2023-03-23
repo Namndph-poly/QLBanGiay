@@ -8,6 +8,25 @@ import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import models.ChatLieu;
+import models.DanhMucSP;
+import models.KichCo;
+import models.MauSac;
+import models.NSX;
+import models.ThuongHieu;
+import services.IChatLieuServices;
+import services.IDanhMucSPServices;
+import services.IKichCoServices;
+import services.IMauSacServices;
+import services.INSXServices;
+import services.IThuongHieuServices;
+import services.imp.ChatLieuServices;
+import services.imp.DanhMucSPServices;
+import services.imp.KichCoServices;
+import services.imp.MauSacServices;
+import services.imp.NSXServices;
+import services.imp.ThuongHieuServices;
+import viewmodels.Objecttt;
 
 
 /**
@@ -15,16 +34,96 @@ import javax.swing.table.DefaultTableModel;
  * @author hungh
  */
 public class frm_themthuoctinh extends javax.swing.JDialog {
-
+ private INSXServices iNSXServices;
+    private IMauSacServices iMauSacServices;
+    private IDanhMucSPServices iDanhMucSPServices;
+    private IKichCoServices iKichCoServices;
+    private IChatLieuServices iChatLieuServices;
+    private IThuongHieuServices iThuongHieuServices;
     
 
     public frm_themthuoctinh(java.awt.Frame parent, boolean modal) {
-       
+            super(parent, modal);
+        iChatLieuServices = new ChatLieuServices();
+        iDanhMucSPServices = new DanhMucSPServices();
+        iKichCoServices = new KichCoServices();
+        iMauSacServices = new MauSacServices();
+        iNSXServices = new NSXServices();
+        iThuongHieuServices = new ThuongHieuServices();
         initComponents();
+        setLocationRelativeTo(null);
+        inittable();
+        rdoChatlieu.setSelected(true);
+        loadtablechatlieu();
        
 
     }
-    
+      int xx;
+    int yy;
+     private void inittable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setColumnCount(0);
+        model.addColumn("ID");
+        model.addColumn("Tên");
+    }
+
+    private void loadtablechatlieu() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (ChatLieu x : iChatLieuServices.getAll()) {
+            model.addRow(new Object[]{x.getId(), x.getTen()});
+        }
+    }
+
+    private void loadtablensx() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (NSX x : iNSXServices.getAll()) {
+            model.addRow(new Object[]{x.getId(), x.getTen()});
+        }
+    }
+
+    private void loadtablemausac() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (MauSac x : iMauSacServices.getAll()) {
+            model.addRow(new Object[]{x.getId(), x.getTen()});
+        }
+    }
+
+    private void loadtablesize() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (KichCo x : iKichCoServices.getAll()) {
+            model.addRow(new Object[]{x.getId(), x.getTen()});
+        }
+    }
+
+    private void loadtabledanhmuc() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (DanhMucSP x : iDanhMucSPServices.getAll()) {
+            model.addRow(new Object[]{x.getId(), x.getTen()});
+        }
+    }
+
+    private void loadtablethuonghieu() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        for (ThuongHieu x : iThuongHieuServices.getAll()) {
+            model.addRow(new Object[]{x.getId(), x.getTen()});
+        }
+    }
+
+    private Objecttt getdatdtb(int row) {
+        if (row == -1) {
+            return null;
+        }
+        int id = (int) jTable1.getValueAt(row, 0);
+        String ten = (String) jTable1.getValueAt(row, 1);
+        return new Objecttt(id, ten);
+    }
+
    
 
     /**
@@ -305,59 +404,166 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
-
+clearfrom();
+        if (rdoChatlieu.isSelected() == true) {
+            loadtablechatlieu();
+        } else if (rdoNSX.isSelected() == true) {
+            loadtablensx();
+        } else if (rdoMausac.isSelected() == true) {
+            loadtablemausac();
+        } else if (rdoSize.isSelected() == true) {
+            loadtablesize();
+        } else if (rdodanhmuc.isSelected() == true) {
+            loadtabledanhmuc();
+        } else if (rdoThuonghieu.isSelected() == true) {
+            loadtablethuonghieu();
+        }
     }//GEN-LAST:event_btn_LamMoiActionPerformed
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-        
+         if (getdatafrom() == null) {
+
+            return;
+        }
+        if (rdoChatlieu.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iChatLieuServices.Add(getdatafrom()));
+            loadtablechatlieu();
+        } else if (rdoNSX.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iNSXServices.Add(getdatafrom()));
+            loadtablensx();
+        } else if (rdoMausac.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iMauSacServices.Add(getdatafrom()));
+            loadtablemausac();
+        } else if (rdoSize.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iKichCoServices.Add(getdatafrom()));
+            loadtablesize();
+        } else if (rdodanhmuc.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iDanhMucSPServices.Add(getdatafrom()));
+            loadtabledanhmuc();
+        } else if (rdoThuonghieu.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iThuongHieuServices.Add(getdatafrom()));
+            loadtablethuonghieu();
+        }
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void Btn_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_capNhatActionPerformed
-       
+        int row = jTable1.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Bạn cần chọn 1 dòng để sửa");
+            return;
+        }
+        if (JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn sửa không")!= JOptionPane.YES_OPTION) {
+            return;
+        }
+        int id = (int) jTable1.getValueAt(row, 0);
+        if (rdoChatlieu.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iChatLieuServices.Update(getdatafrom(), id));
+            loadtablechatlieu();
+        } else if (rdoNSX.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iNSXServices.Update(getdatafrom(), id));
+            loadtablensx();
+        } else if (rdoMausac.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iMauSacServices.Update(getdatafrom(), id));
+            loadtablemausac();
+        } else if (rdoSize.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iKichCoServices.Update(getdatafrom(), id));
+            loadtablesize();
+        } else if (rdodanhmuc.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iDanhMucSPServices.Update(getdatafrom(), id));
+            loadtabledanhmuc();
+        } else if (rdoThuonghieu.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iThuongHieuServices.Update(getdatafrom(), id));
+            loadtablethuonghieu();
+        }
     }//GEN-LAST:event_Btn_capNhatActionPerformed
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
-        
+        int row = jTable1.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "chọn 1 dòng để xóa");
+            return;
+        }
+        int id = (int) jTable1.getValueAt(row, 0);
+        if (rdoChatlieu.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iChatLieuServices.Delete(id));
+            loadtablechatlieu();
+        } else if (rdoNSX.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iNSXServices.Delete(id));
+            loadtablensx();
+        } else if (rdoMausac.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iMauSacServices.Delete(id));
+            loadtablemausac();
+        } else if (rdoSize.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iKichCoServices.Delete(id));
+            loadtablesize();
+        } else if (rdodanhmuc.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iDanhMucSPServices.Delete(id));
+            loadtabledanhmuc();
+        } else if (rdoThuonghieu.isSelected() == true) {
+            JOptionPane.showMessageDialog(this, iThuongHieuServices.Delete(id));
+            loadtablethuonghieu();
+        }
     }//GEN-LAST:event_btn_xoaActionPerformed
 
     private void rdoChatlieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoChatlieuActionPerformed
-      
+      if (rdoChatlieu.isSelected() == true) {
+            loadtablechatlieu();
+        }
     }//GEN-LAST:event_rdoChatlieuActionPerformed
 
     private void rdoNSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoNSXActionPerformed
-       
+       if (rdoNSX.isSelected() == true) {
+            loadtablensx();
+        }
     }//GEN-LAST:event_rdoNSXActionPerformed
 
     private void rdoMausacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoMausacActionPerformed
-       
+       if (rdoMausac.isSelected() == true) {
+            loadtablemausac();
+        }
     }//GEN-LAST:event_rdoMausacActionPerformed
 
     private void rdoSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoSizeActionPerformed
-       
+       if (rdoSize.isSelected() == true) {
+            loadtablesize();
+        }
     }//GEN-LAST:event_rdoSizeActionPerformed
 
     private void rdodanhmucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdodanhmucActionPerformed
-        
+           if (rdodanhmuc.isSelected() == true) {
+            loadtabledanhmuc();
+        }
     }//GEN-LAST:event_rdodanhmucActionPerformed
 
     private void rdoThuonghieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoThuonghieuActionPerformed
-       
+          if (rdoThuonghieu.isSelected() == true) {
+            loadtablethuonghieu();
+        }
     }//GEN-LAST:event_rdoThuonghieuActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
+         int row = jTable1.getSelectedRow();
+        if (row == -1) {
+            return;
+        }
+        Objecttt x = getdatdtb(row);
+        jTextField1.setText(x.getTen());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        
+        this.dispose();
+        new frm_Sanpham().initcbo();
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
-       
+            xx = evt.getX();
+        yy = evt.getY();
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-   
+    int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - yy);
     }//GEN-LAST:event_jPanel1MouseDragged
 
 
@@ -388,5 +594,30 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
     private javax.swing.JRadioButton rdodanhmuc;
     private swing.SearchText searchText1;
     // End of variables declaration//GEN-END:variables
+  private Objecttt getdatafrom() {
+        Pattern p = Pattern.compile("^[0-9]+$");
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, " Bạn chưa nhập tên thuộc tính!");
+            jTextField1.requestFocus();
+            return null;
+        }
 
+        if (jTextField1.getText().length() > 30) {
+            JOptionPane.showMessageDialog(this, "Tên thuộc tính sản phẩm không quá 30 kí tự!");
+            jTextField1.requestFocus();
+            return null;
+        }
+        
+        if (p.matcher(jTextField1.getText()).find() == true) {
+            JOptionPane.showMessageDialog(this, "Tên thuộc tính sản phẩm phải là chữ!");
+            jTextField1.requestFocus();
+            return null;
+        }
+        return new Objecttt(0, jTextField1.getText());
+
+    }
+
+    private void clearfrom() {
+        jTextField1.setText("");
+    }
 }

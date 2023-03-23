@@ -74,11 +74,11 @@ public class frm_Dangnhap extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(328, 373));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Đăng nhập");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 257, 40));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 257, 40));
 
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtPass.setMinimumSize(new java.awt.Dimension(300, 40));
@@ -97,7 +97,7 @@ public class frm_Dangnhap extends javax.swing.JPanel {
         myButton1.setBackground(new java.awt.Color(125, 229, 251));
         myButton1.setForeground(new java.awt.Color(0, 51, 102));
         myButton1.setText("Thoát");
-        myButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        myButton1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         myButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 myButton1ActionPerformed(evt);
@@ -124,7 +124,7 @@ public class frm_Dangnhap extends javax.swing.JPanel {
         myButton2.setBackground(new java.awt.Color(125, 229, 251));
         myButton2.setForeground(new java.awt.Color(0, 51, 102));
         myButton2.setText("Đăng nhập");
-        myButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        myButton2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         myButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 myButton2ActionPerformed(evt);
@@ -140,6 +140,7 @@ public class frm_Dangnhap extends javax.swing.JPanel {
         });
         add(hideshow, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 30, 40));
 
+        quenmatkhau1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         quenmatkhau1.setForeground(new java.awt.Color(255, 51, 51));
         quenmatkhau1.setText("Quên mật khẩu ?");
         quenmatkhau1.setBorder(null);

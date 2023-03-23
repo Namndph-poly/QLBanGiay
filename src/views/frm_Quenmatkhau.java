@@ -80,11 +80,11 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         jLabel1.setText("Tài khoản");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, 24));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Quên mật khẩu");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 11, 257, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 257, -1));
 
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 280, 40));
@@ -103,12 +103,13 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         });
         add(myButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 120, 40));
 
+        cmdBackLogin.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         cmdBackLogin.setForeground(new java.awt.Color(30, 122, 236));
         cmdBackLogin.setText("Đăng nhập ?");
         cmdBackLogin.setBorder(null);
         cmdBackLogin.setContentAreaFilled(false);
         cmdBackLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(cmdBackLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, -1, -1));
+        add(cmdBackLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
 
         jLabel4.setText("Confirm Password");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, 24));
@@ -154,11 +155,6 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         btn_send.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_sendMouseClicked(evt);
-            }
-        });
-        btn_send.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_sendActionPerformed(evt);
             }
         });
         add(btn_send, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 40, 40));

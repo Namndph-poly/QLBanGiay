@@ -32,6 +32,7 @@ import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -64,6 +65,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         initComponents();
         inintWebCam();
         
+
         chk_inHoaDon.setSelected(true);
 
     }
