@@ -553,7 +553,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
             } else {
                 rd_nu.setSelected(true);
             }
-            if (tblnhanvien.getValueAt(index, 10).toString().equals("Quản lý")) {
+            if (tblnhanvien.getValueAt(index, 10).toString().equals("quản lý")) {
                 cbochucvu.setSelectedIndex(0);
             } else {
                 cbochucvu.setSelectedIndex(1);
