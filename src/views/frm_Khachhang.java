@@ -13,7 +13,9 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import models.KhachHang;
+import services.KhachHangService;
+import services.imp.IKhachHangService;
 
 /**
  *
@@ -21,14 +23,73 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frm_Khachhang extends javax.swing.JPanel {
 
-
+    private KhachHangService khSe = new IKhachHangService();
+    private List<KhachHang> list = this.khSe.getList();
+    private DefaultTableModel tblModel = new DefaultTableModel();
 
     public frm_Khachhang() {
         initComponents();
-
+        tblModel = (DefaultTableModel) tblKhachHang.getModel();
+        this.loadTable(list);
 
     }
 
+    private void loadTable(List<KhachHang> listShow) {
+        tblModel.setRowCount(0);
+        for (KhachHang kh : list) {
+            Object[] toDatarow = new Object[]{kh.getTen(), kh.getTenDem(), kh.getHo(), kh.isGioiTinh() ? "Nam" : "Nu", kh.getNgaySinh(), kh.getEmail(), kh.getSdt(), kh.getDiemThuong()};
+            tblModel.addRow(toDatarow);
+        }
+
+    }
+
+    private void LamMoi() {
+        txt_Ho.setText("");
+        txt_Ten.setText("");
+        txt_tenDem.setText("");
+        txt_email.setText("");
+        txt_sdt.setText("");
+        txt_timKiem01.setText("");
+    }
+
+    private KhachHang docForm() {
+        String ten = txt_Ten.getText();
+        String tenDem = txt_tenDem.getText();
+        String ho = txt_Ho.getText();
+        boolean gt = rd_Nam.isSelected() ? true : false;
+        Date ngaySinh = txtNgaySinh.getDate();
+        String email = txt_email.getText();
+        String sdt = txt_sdt.getText();
+        KhachHang kh = new KhachHang(ten, tenDem, ho, gt, ngaySinh, email, sdt);
+        return kh;
+    }
+
+    private void fillTable(int i) {
+        KhachHang k = list.get(i);
+        txt_Ho.setText(k.getHo());
+        txt_Ten.setText(k.getTen());
+        txt_tenDem.setText(k.getTenDem());
+        txt_email.setText(k.getEmail());
+        txt_sdt.setText(k.getSdt());
+        txtNgaySinh.setDate(k.getNgaySinh());
+        if (k.isGioiTinh()) {
+            rd_Nam.setSelected(true);
+        } else {
+            rd_nu.setSelected(true);
+        }
+    }
+
+    private boolean checkForm() {
+        if (txt_Ho.getText().isEmpty()
+                || txt_Ten.getText().isEmpty()
+                || txt_email.getText().isEmpty()
+                || txt_sdt.getText().isEmpty()
+                || txt_tenDem.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Khong duoc de trong");
+            return false;
+        }
+        return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,12 +125,12 @@ public class frm_Khachhang extends javax.swing.JPanel {
         txt_email = new swing.MyTextField();
         btn_them = new swing.MyButton();
         Btn_capNhat = new swing.MyButton();
-        date_ngaysinh1 = new com.toedter.calendar.JDateChooser();
+        txtNgaySinh = new com.toedter.calendar.JDateChooser();
         btn_LamMoi = new swing.MyButton();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        TB_bang1 = new javax.swing.JTable();
+        tblKhachHang = new javax.swing.JTable();
         panelBorder3 = new swing.PanelBorder();
         Btn_timKiem1 = new javax.swing.JLabel();
         txt_timKiem01 = new swing.SearchText();
@@ -207,10 +268,10 @@ public class frm_Khachhang extends javax.swing.JPanel {
         panelBorder1.add(Btn_capNhat);
         Btn_capNhat.setBounds(670, 90, 120, 40);
 
-        date_ngaysinh1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204), 2));
-        date_ngaysinh1.setDateFormatString("dd/MM/yyyy");
-        panelBorder1.add(date_ngaysinh1);
-        date_ngaysinh1.setBounds(390, 30, 210, 30);
+        txtNgaySinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204), 2));
+        txtNgaySinh.setDateFormatString("dd/MM/yyyy");
+        panelBorder1.add(txtNgaySinh);
+        txtNgaySinh.setBounds(390, 30, 210, 30);
 
         btn_LamMoi.setBackground(new java.awt.Color(125, 224, 237));
         btn_LamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
@@ -231,22 +292,33 @@ public class frm_Khachhang extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        TB_bang1.setModel(new javax.swing.table.DefaultTableModel(
+        tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Họ Và Tên", "Giới Tính", "Ngày Sinh", "SĐT", "Email", "Điểm Thưởng"
+                "Tên", "Tên đệm", "Họ", "Giới Tính", "Ngày Sinh", "Email", "SĐT", "Điểm Thưởng"
             }
-        ));
-        TB_bang1.setGridColor(new java.awt.Color(255, 255, 255));
-        TB_bang1.setRowHeight(25);
-        TB_bang1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TB_bang1MouseClicked(evt);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(TB_bang1);
+        tblKhachHang.setGridColor(new java.awt.Color(255, 255, 255));
+        tblKhachHang.setRowHeight(25);
+        tblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKhachHangMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblKhachHang);
+        if (tblKhachHang.getColumnModel().getColumnCount() > 0) {
+            tblKhachHang.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -370,29 +442,65 @@ public class frm_Khachhang extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-     
+        if (this.checkForm()) {
+            int xacNhan = JOptionPane.showConfirmDialog(this, "Ban co chac chan muon them khong?");
+            if (xacNhan != JOptionPane.YES_OPTION) {
+                return;
+            }
+            KhachHang kh = this.docForm();
+            JOptionPane.showMessageDialog(this, khSe.add(kh));
+            list = this.khSe.getList();
+            this.loadTable(list);
+            this.LamMoi();
+        }
+
 
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
-       
+        this.LamMoi();
+        list = this.khSe.getList();
+        this.loadTable(list);
 
     }//GEN-LAST:event_btn_LamMoiActionPerformed
 
     private void Btn_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_capNhatActionPerformed
-       
+        int row = tblKhachHang.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Ban chua chon dong nao");
+            return;
+        }
+        if (this.checkForm()) {
+            int xacNhan = JOptionPane.showConfirmDialog(this, "Ban co chac chan muon sua khong?");
+            if (xacNhan != JOptionPane.YES_OPTION) {
+                return;
+            }
+            KhachHang kh = this.docForm();
+            JOptionPane.showMessageDialog(this, khSe.update(kh, txt_Ten.getText()));
+            list = this.khSe.getList();
+            this.loadTable(list);
+            this.LamMoi();
+        }
+
+
     }//GEN-LAST:event_Btn_capNhatActionPerformed
 
     private void TB_bangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_bangMouseClicked
 
     }//GEN-LAST:event_TB_bangMouseClicked
 
-    private void TB_bang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_bang1MouseClicked
-
-    }//GEN-LAST:event_TB_bang1MouseClicked
+    private void tblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMouseClicked
+        int row = tblKhachHang.getSelectedRow();
+        this.fillTable(row);
+    }//GEN-LAST:event_tblKhachHangMouseClicked
 
     private void Btn_timKiem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_timKiem1MouseClicked
-
+        list = khSe.search(txt_timKiem01.getText());
+        if (list.size() == 0) {
+            JOptionPane.showMessageDialog(this, "Khong tim thay ket qua phu hop");
+            return;
+        }
+        this.loadTable(list);
     }//GEN-LAST:event_Btn_timKiem1MouseClicked
 
     private void txt_timKiem01KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_timKiem01KeyReleased
@@ -400,7 +508,7 @@ public class frm_Khachhang extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_timKiem01KeyReleased
 
     private void btn_LamMoi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoi1ActionPerformed
-        
+
     }//GEN-LAST:event_btn_LamMoi1ActionPerformed
 
 
@@ -410,13 +518,11 @@ public class frm_Khachhang extends javax.swing.JPanel {
     private javax.swing.JLabel LBL_SOLUONG;
     private javax.swing.JTable TB_bang;
     private javax.swing.JTable TB_bang02;
-    private javax.swing.JTable TB_bang1;
     private javax.swing.JLabel TXT_01;
     private swing.MyButton btn_LamMoi;
     private swing.MyButton btn_LamMoi1;
     private swing.MyButton btn_them;
     private javax.swing.ButtonGroup buttonGroup1;
-    private com.toedter.calendar.JDateChooser date_ngaysinh1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -437,6 +543,8 @@ public class frm_Khachhang extends javax.swing.JPanel {
     private swing.PanelGradiente panelGradiente1;
     private javax.swing.JRadioButton rd_Nam;
     private javax.swing.JRadioButton rd_nu;
+    private javax.swing.JTable tblKhachHang;
+    private com.toedter.calendar.JDateChooser txtNgaySinh;
     private swing.MyTextField txt_Ho;
     private swing.MyTextField txt_Ten;
     private swing.MyTextField txt_email;
