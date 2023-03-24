@@ -125,7 +125,7 @@ public class KhachHangRepository {
             ps.setObject(1, sdt);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                KhachHang kh = new KhachHang(rs.getString(1), rs.getString(2), rs.getString(3), rs.getBoolean(4), rs.getDate(5), rs.getString(6), rs.getString(7), rs.getInt(7));
+                KhachHang kh = new KhachHang(rs.getString(1), rs.getString(2), rs.getString(3), rs.getBoolean(4), rs.getDate(5), rs.getString(6), rs.getString(7), rs.getInt(8));
                 list.add(kh);
             }
             return list;
