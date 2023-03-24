@@ -49,6 +49,7 @@ public class frm_Khachhang extends javax.swing.JPanel {
         txt_tenDem.setText("");
         txt_email.setText("");
         txt_sdt.setText("");
+        txtNgaySinh.setCalendar(null);
         txt_timKiem01.setText("");
     }
 
