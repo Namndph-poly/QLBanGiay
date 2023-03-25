@@ -22,6 +22,7 @@ public class UsersReposytory implements IUsersReposytory {
 
     final String SQL_SELECT_BY_TK = "SELECT Users.id,Users.Ten,TenDem,Ho,NgaySinh,Gioitinh,Sdt,IdCV,TaiKhoan,MatKhau,Email,ChucVu.Ten,TrangThai FROM Users join ChucVu on ChucVu.Id = Users.IdCV where Taikhoan = ?";
 
+    // all Nhan Vien
     @Override
     public List<Users> getAllNhanVien() {
         List<Users> nvv = new ArrayList<>();
@@ -117,6 +118,7 @@ public class UsersReposytory implements IUsersReposytory {
         }
     }
 
+    // Search Nhan Vien
     @Override
     public List<Users> SearchNVV(String Ten) {
         List<Users> nvv = new ArrayList<>();
@@ -136,6 +138,7 @@ public class UsersReposytory implements IUsersReposytory {
         return nvv;
     }
 
+    //Delele Nhan Vien
     @Override
     public boolean delete(String id) {
         String sql = "delete from Users where Id = ?";
