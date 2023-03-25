@@ -149,7 +149,6 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
         panelBorder4 = new swing.PanelBorder();
         jTextField1 = new javax.swing.JTextField();
         btn_them = new swing.MyButton();
-        btn_xoa = new swing.MyButton();
         btn_LamMoi = new swing.MyButton();
         Btn_capNhat = new swing.MyButton();
         panelBorder2 = new swing.PanelBorder();
@@ -274,18 +273,6 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
         });
         panelBorder1.add(btn_them);
         btn_them.setBounds(1010, 50, 120, 33);
-
-        btn_xoa.setBackground(new java.awt.Color(125, 224, 237));
-        btn_xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tay.png"))); // NOI18N
-        btn_xoa.setText("Xóa");
-        btn_xoa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btn_xoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_xoaActionPerformed(evt);
-            }
-        });
-        panelBorder1.add(btn_xoa);
-        btn_xoa.setBounds(1010, 130, 120, 33);
 
         btn_LamMoi.setBackground(new java.awt.Color(125, 224, 237));
         btn_LamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
@@ -477,34 +464,6 @@ clearfrom();
         }
     }//GEN-LAST:event_Btn_capNhatActionPerformed
 
-    private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
-        int row = jTable1.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "chọn 1 dòng để xóa");
-            return;
-        }
-        int id = (int) jTable1.getValueAt(row, 0);
-        if (rdoChatlieu.isSelected() == true) {
-            JOptionPane.showMessageDialog(this, iChatLieuServices.Delete(id));
-            loadtablechatlieu();
-        } else if (rdoNSX.isSelected() == true) {
-            JOptionPane.showMessageDialog(this, iNSXServices.Delete(id));
-            loadtablensx();
-        } else if (rdoMausac.isSelected() == true) {
-            JOptionPane.showMessageDialog(this, iMauSacServices.Delete(id));
-            loadtablemausac();
-        } else if (rdoSize.isSelected() == true) {
-            JOptionPane.showMessageDialog(this, iKichCoServices.Delete(id));
-            loadtablesize();
-        } else if (rdodanhmuc.isSelected() == true) {
-            JOptionPane.showMessageDialog(this, iDanhMucSPServices.Delete(id));
-            loadtabledanhmuc();
-        } else if (rdoThuonghieu.isSelected() == true) {
-            JOptionPane.showMessageDialog(this, iThuongHieuServices.Delete(id));
-            loadtablethuonghieu();
-        }
-    }//GEN-LAST:event_btn_xoaActionPerformed
-
     private void rdoChatlieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoChatlieuActionPerformed
       if (rdoChatlieu.isSelected() == true) {
             loadtablechatlieu();
@@ -571,7 +530,6 @@ clearfrom();
     private swing.MyButton Btn_capNhat;
     private swing.MyButton btn_LamMoi;
     private swing.MyButton btn_them;
-    private swing.MyButton btn_xoa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

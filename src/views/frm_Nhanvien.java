@@ -431,7 +431,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         chk_tt.setText("Làm việc");
         panelGradiente1.add(chk_tt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 90, -1));
 
-        lblTongnv.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblTongnv.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         lblTongnv.setForeground(new java.awt.Color(255, 0, 0));
         lblTongnv.setText("Tổng nhân viên :");
         panelGradiente1.add(lblTongnv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 200, -1));

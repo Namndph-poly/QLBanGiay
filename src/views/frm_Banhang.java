@@ -386,7 +386,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 btn_xacNhanActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_xacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 90, 30));
+        panelGradiente4.add(btn_xacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 100, 30));
 
         btn_suDung.setBackground(new java.awt.Color(125, 224, 237));
         btn_suDung.setText("Sử dụng");
@@ -443,7 +443,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 btn_thayDoiActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_thayDoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 90, 30));
+        panelGradiente4.add(btn_thayDoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 100, 30));
         panelGradiente4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 220, -1));
 
         lbl_sdt.setForeground(new java.awt.Color(0, 153, 153));
