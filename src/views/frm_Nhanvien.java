@@ -44,7 +44,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         cbochucvu.setModel(new DefaultComboBoxModel((cvv.toArray())));
 //        txtTaikhoan.setEditable(true);
         defaultTableModel = (DefaultTableModel) tblnhanvien.getModel();
-        loaddata();
+        Loaddata();
     }
 
     private void inittable() {
@@ -64,7 +64,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         model.addColumn("Trạng thái");
     }
 
-    public void loaddata() {
+    public void Loaddata() {
         defaultTableModel.setRowCount(0);
         List<UsersViewmodel> nvv = nhanVienService.getAllNhanVien();
         int stt = 1;
@@ -100,7 +100,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         chk_tt.setSelected(false);
         cbochucvu.setSelectedIndex(0);
         datengaysinh.setDate(null);
-        loaddata();
+        Loaddata();
     }
 
     public void Showtable() {
@@ -141,59 +141,59 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         String sdt = "(0\\d{9})";
         String mail = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
         UsersViewmodel nv = new UsersViewmodel();
-        Pattern p =  Pattern.compile("^[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
 // Tên
         try {
             if (txtten.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Bạn chưa nhập tên!");
+                JOptionPane.showMessageDialog(this, "Vui lòng nhâm tên ");
                 return null;
             }
         } catch (Exception e) {
         }
-        if (p.matcher(txtten.getText()).find()==true) {
+        if (p.matcher(txtten.getText()).find() == true) {
             JOptionPane.showMessageDialog(this, "Tên không được nhập số");
             return null;
         }
-        if (txtten.getText().length()>30) {
+        if (txtten.getText().length() > 30) {
             JOptionPane.showMessageDialog(this, "Tên không được quá 30 kí tự");
             return null;
         }
 // Tên Đệm
         try {
             if (txttendem.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Bạn chưa nhập tên đệm!");
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên đệm");
                 return null;
             }
         } catch (Exception e) {
         }
-        if (p.matcher(txttendem.getText()).find()==true) {
+        if (p.matcher(txttendem.getText()).find() == true) {
             JOptionPane.showMessageDialog(this, "Tên đệm không được nhập số");
             return null;
         }
-        if (txttendem.getText().length()>30) {
+        if (txttendem.getText().length() > 30) {
             JOptionPane.showMessageDialog(this, "Tên đệm không được quá 30 kí tự");
             return null;
         }
 // Họ
         try {
             if (txtho.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Bạn chưa nhập họ!");
+                JOptionPane.showMessageDialog(this,"Vui lòng nhập họ");
                 return null;
             }
         } catch (Exception e) {
         }
-        if (p.matcher(txtho.getText()).find()==true) {
+        if (p.matcher(txtho.getText()).find() == true) {
             JOptionPane.showMessageDialog(this, "Họ không được nhập số");
             return null;
         }
-        if (txtho.getText().length()>30) {
+        if (txtho.getText().length() > 30) {
             JOptionPane.showMessageDialog(this, "Họ không được quá 30 kí tự");
             return null;
         }
 // Ngày Sinh        
         try {
             if (datengaysinh.getDate() == null) {
-                JOptionPane.showMessageDialog(this, "Bạn chưa Chọn ngày sinh!");
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn ngày sinh");
                 return null;
             }
         } catch (Exception e) {
@@ -201,7 +201,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
 // SĐT
         try {
             if (txtsdt.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Bạn chưa nhập sdt!");
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập số điện thoại");
                 return null;
             }
         } catch (Exception e) {
@@ -223,7 +223,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
 // TÀi Khoản
         try {
             if (txtTaikhoan.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Bạn Chưa Nhập Tài Khoản");
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập tài khoản");
                 return null;
             }
         } catch (Exception e) {
@@ -235,7 +235,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
 // Mật Khẩu
         try {
             if (txtMatkhau.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Bạn chưa nhập mật khẩu!");
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu");
                 return null;
             }
         } catch (Exception e) {
@@ -243,7 +243,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
 // Email        
         try {
             if (txtemail.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Bạn chưa nhập email!");
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập email");
                 return null;
             }
         } catch (Exception e) {
@@ -465,6 +465,11 @@ public class frm_Nhanvien extends javax.swing.JPanel {
                 searchtxtCaretUpdate(evt);
             }
         });
+        searchtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchtxtActionPerformed(evt);
+            }
+        });
         panelBorder2.add(searchtxt);
         searchtxt.setBounds(10, 0, 240, 40);
 
@@ -484,6 +489,11 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         panelGradiente1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 220, 20));
 
         cbochucvu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204), 2));
+        cbochucvu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbochucvuActionPerformed(evt);
+            }
+        });
         panelGradiente1.add(cbochucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 220, 40));
 
         datengaysinh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204), 2));
@@ -518,10 +528,10 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         if (nv == null) {
             return;
         }
-        if (JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm ?","Add",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm ?", "Add", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             if (nhanVienService.add(nv) != false) {
                 JOptionPane.showMessageDialog(this, "Thêm Thành Công");
-                loaddata();
+                Loaddata();
             } else {
                 JOptionPane.showMessageDialog(this, "Thêm Thất Bại");
             }
@@ -570,10 +580,10 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         UsersViewmodel nv = new UsersViewmodel();
         Integer row = tblnhanvien.getSelectedRow();
         if (row < 0) {
-            JOptionPane.showMessageDialog(this, "Bạn Cần Chọn 1 Dòng Muốn Sửa!");
+            JOptionPane.showMessageDialog(this, "Hãy chọn dòng cần sửa !");
             return;
         }
-        
+
         nv.setTen(txtten.getText());
         nv.setTendem(txttendem.getText());
         nv.setHo(txtho.getText());
@@ -586,6 +596,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         } else {
             gt = 0;
         }
+
         nv.setGioitinh(gt);
         nv.setSdt(txtsdt.getText());
         nv.setTk(txtTaikhoan.getText());
@@ -599,12 +610,12 @@ public class frm_Nhanvien extends javax.swing.JPanel {
             nv.setTT(0);
         }
 
-        if (JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn sửa ?","Update",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn sửa ?", "Update", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             IUsersReposytory usersReposytory = new UsersReposytory();
             List<Users> lst = usersReposytory.getAllNhanVien();
             if (nhanVienService.update(nv, lst.get(row).getId()) != false) {
                 JOptionPane.showMessageDialog(this, "Sửa Thành Công");
-                loaddata();
+                Loaddata();
             } else {
                 JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
                 Showtable();
@@ -615,7 +626,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
     private void btnlmmoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlmmoiActionPerformed
         //        loaddata();
         ClearForm();
-        loaddata();
+        Loaddata();
     }//GEN-LAST:event_btnlmmoiActionPerformed
 
     private void lbl_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_searchMouseClicked
@@ -646,6 +657,14 @@ public class frm_Nhanvien extends javax.swing.JPanel {
             stt++;
         }
     }//GEN-LAST:event_searchtxtCaretUpdate
+
+    private void searchtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchtxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchtxtActionPerformed
+
+    private void cbochucvuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbochucvuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbochucvuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

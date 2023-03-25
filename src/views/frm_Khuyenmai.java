@@ -471,7 +471,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             khuyenmaiService.Update(km, lst.get(r).getID());
             khuyenmaiService.UpdateTT2();
             LoadData();
-            JOptionPane.showMessageDialog(this, "Sửa thành công");
+            JOptionPane.showMessageDialog(this, "Sửa thành công ");
 
         }
     }//GEN-LAST:event_btn_suaActionPerformed
@@ -534,7 +534,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String date3 = sdf.format(dateTK_BD.getDate());
             if (khuyenmaiService.GetOnebyBD(date3).isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Không có khuyến mãi nào");
+                JOptionPane.showMessageDialog(this, "Không có khuyến mãi nào !");
                 return;
             }
             defaultTableModel.setRowCount(0);
