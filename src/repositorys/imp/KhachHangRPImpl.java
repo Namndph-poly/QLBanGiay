@@ -4,7 +4,7 @@
  */
 package repositorys.imp;
 
-import repositorys.IKhachHangreposytory;
+import repositorys.IKhachHangReposytory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +23,7 @@ import viewmodels.KhachHangViewMD;
  *
  * @author Admin
  */
-public class KhachHangRPImpl implements IKhachHangreposytory{
+public class KhachHangRPImpl implements IKhachHangReposytory{
     @Override
     public List<KhachHang> getall() {
         String query = "SELECT [Id]\n"
