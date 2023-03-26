@@ -72,13 +72,14 @@ public class frm_Dangnhap extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(328, 373));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(328, 373));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 32)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Đăng nhập");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 257, 40));
+        jLabel2.setText("LOGIN");
+        add(jLabel2);
+        jLabel2.setBounds(70, 30, 257, 40);
 
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtPass.setMinimumSize(new java.awt.Dimension(300, 40));
@@ -88,11 +89,14 @@ public class frm_Dangnhap extends javax.swing.JPanel {
                 txtPassKeyPressed(evt);
             }
         });
-        add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 280, 40));
+        add(txtPass);
+        txtPass.setBounds(60, 220, 280, 40);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setBackground(new java.awt.Color(102, 102, 255));
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Mật khẩu");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, 24));
+        add(jLabel3);
+        jLabel3.setBounds(60, 190, 80, 24);
 
         myButton1.setBackground(new java.awt.Color(125, 229, 251));
         myButton1.setForeground(new java.awt.Color(0, 51, 102));
@@ -103,23 +107,28 @@ public class frm_Dangnhap extends javax.swing.JPanel {
                 myButton1ActionPerformed(evt);
             }
         });
-        add(myButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 120, 48));
+        add(myButton1);
+        myButton1.setBounds(230, 350, 120, 48);
 
         lbl_thongBao.setForeground(new java.awt.Color(255, 51, 51));
         lbl_thongBao.setBorder(null);
         lbl_thongBao.setContentAreaFilled(false);
         lbl_thongBao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(lbl_thongBao, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, -1));
+        add(lbl_thongBao);
+        lbl_thongBao.setBounds(240, 270, 0, 0);
 
         txtUser.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtUser.setMinimumSize(new java.awt.Dimension(300, 40));
         txtUser.setName(""); // NOI18N
         txtUser.setPreferredSize(new java.awt.Dimension(300, 40));
-        add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 280, 41));
+        add(txtUser);
+        txtUser.setBounds(60, 130, 280, 41);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Tài khoản");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 60, 24));
+        add(jLabel1);
+        jLabel1.setBounds(60, 100, 90, 24);
 
         myButton2.setBackground(new java.awt.Color(125, 229, 251));
         myButton2.setForeground(new java.awt.Color(0, 51, 102));
@@ -130,7 +139,8 @@ public class frm_Dangnhap extends javax.swing.JPanel {
                 myButton2ActionPerformed(evt);
             }
         });
-        add(myButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 120, 48));
+        add(myButton2);
+        myButton2.setBounds(60, 350, 120, 48);
 
         hideshow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hide.png"))); // NOI18N
         hideshow.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -138,15 +148,17 @@ public class frm_Dangnhap extends javax.swing.JPanel {
                 hideshowMouseClicked(evt);
             }
         });
-        add(hideshow, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 30, 40));
+        add(hideshow);
+        hideshow.setBounds(360, 220, 30, 40);
 
-        quenmatkhau1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        quenmatkhau1.setForeground(new java.awt.Color(255, 51, 51));
-        quenmatkhau1.setText("Quên mật khẩu ?");
+        quenmatkhau1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        quenmatkhau1.setForeground(new java.awt.Color(204, 0, 0));
+        quenmatkhau1.setText("Forget password?");
         quenmatkhau1.setBorder(null);
         quenmatkhau1.setContentAreaFilled(false);
         quenmatkhau1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(quenmatkhau1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, -1, -1));
+        add(quenmatkhau1);
+        quenmatkhau1.setBounds(240, 300, 120, 19);
     }// </editor-fold>//GEN-END:initComponents
 
     private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
