@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.KhachHang;
-import services.KhachHangService;
+import services.imp.KhachHangService;
 import services.imp.IKhachHangService;
 
 /**
@@ -23,74 +23,14 @@ import services.imp.IKhachHangService;
  */
 public class frm_Khachhang extends javax.swing.JPanel {
 
-    private KhachHangService khSe = new IKhachHangService();
-    private List<KhachHang> list = this.khSe.getList();
-    private DefaultTableModel tblModel = new DefaultTableModel();
-
+   
     public frm_Khachhang() {
         initComponents();
-        tblModel = (DefaultTableModel) tblKhachHang.getModel();
-        this.loadTable(list);
+        
 
     }
 
-    private void loadTable(List<KhachHang> listShow) {
-        tblModel.setRowCount(0);
-        for (KhachHang kh : list) {
-            Object[] toDatarow = new Object[]{kh.getTen(), kh.getTenDem(), kh.getHo(), kh.isGioiTinh() ? "Nam" : "Nu", kh.getNgaySinh(), kh.getEmail(), kh.getSdt(), kh.getDiemThuong()};
-            tblModel.addRow(toDatarow);
-        }
-
-    }
-
-    private void LamMoi() {
-        txt_Ho.setText("");
-        txt_Ten.setText("");
-        txt_tenDem.setText("");
-        txt_email.setText("");
-        txt_sdt.setText("");
-        txtNgaySinh.setCalendar(null);
-        txt_timKiem01.setText("");
-    }
-
-    private KhachHang docForm() {
-        String ten = txt_Ten.getText();
-        String tenDem = txt_tenDem.getText();
-        String ho = txt_Ho.getText();
-        boolean gt = rd_Nam.isSelected() ? true : false;
-        Date ngaySinh = txtNgaySinh.getDate();
-        String email = txt_email.getText();
-        String sdt = txt_sdt.getText();
-        KhachHang kh = new KhachHang(ten, tenDem, ho, gt, ngaySinh, email, sdt);
-        return kh;
-    }
-
-    private void fillTable(int i) {
-        KhachHang k = list.get(i);
-        txt_Ho.setText(k.getHo());
-        txt_Ten.setText(k.getTen());
-        txt_tenDem.setText(k.getTenDem());
-        txt_email.setText(k.getEmail());
-        txt_sdt.setText(k.getSdt());
-        txtNgaySinh.setDate(k.getNgaySinh());
-        if (k.isGioiTinh()) {
-            rd_Nam.setSelected(true);
-        } else {
-            rd_nu.setSelected(true);
-        }
-    }
-
-    private boolean checkForm() {
-        if (txt_Ho.getText().isEmpty()
-                || txt_Ten.getText().isEmpty()
-                || txt_email.getText().isEmpty()
-                || txt_sdt.getText().isEmpty()
-                || txt_tenDem.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Khong duoc de trong");
-            return false;
-        }
-        return true;
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -443,45 +383,18 @@ public class frm_Khachhang extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-        if (this.checkForm()) {
-            int xacNhan = JOptionPane.showConfirmDialog(this, "Ban co chac chan muon them khong?");
-            if (xacNhan != JOptionPane.YES_OPTION) {
-                return;
-            }
-            KhachHang kh = this.docForm();
-            JOptionPane.showMessageDialog(this, khSe.add(kh));
-            list = this.khSe.getList();
-            this.loadTable(list);
-            this.LamMoi();
-        }
+       
 
 
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void btn_LamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LamMoiActionPerformed
-        this.LamMoi();
-        list = this.khSe.getList();
-        this.loadTable(list);
+      
 
     }//GEN-LAST:event_btn_LamMoiActionPerformed
 
     private void Btn_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_capNhatActionPerformed
-        int row = tblKhachHang.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(this, "Ban chua chon dong nao");
-            return;
-        }
-        if (this.checkForm()) {
-            int xacNhan = JOptionPane.showConfirmDialog(this, "Ban co chac chan muon sua khong?");
-            if (xacNhan != JOptionPane.YES_OPTION) {
-                return;
-            }
-            KhachHang kh = this.docForm();
-            JOptionPane.showMessageDialog(this, khSe.update(kh, txt_Ten.getText()));
-            list = this.khSe.getList();
-            this.loadTable(list);
-            this.LamMoi();
-        }
+      
 
 
     }//GEN-LAST:event_Btn_capNhatActionPerformed
@@ -491,17 +404,12 @@ public class frm_Khachhang extends javax.swing.JPanel {
     }//GEN-LAST:event_TB_bangMouseClicked
 
     private void tblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMouseClicked
-        int row = tblKhachHang.getSelectedRow();
-        this.fillTable(row);
+      
     }//GEN-LAST:event_tblKhachHangMouseClicked
 
     private void Btn_timKiem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_timKiem1MouseClicked
-        list = khSe.search(txt_timKiem01.getText());
-        if (list.size() == 0) {
-            JOptionPane.showMessageDialog(this, "Khong tim thay ket qua phu hop");
-            return;
-        }
-        this.loadTable(list);
+       
+       
     }//GEN-LAST:event_Btn_timKiem1MouseClicked
 
     private void txt_timKiem01KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_timKiem01KeyReleased

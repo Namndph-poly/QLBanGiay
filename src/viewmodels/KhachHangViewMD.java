@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package models;
+package viewmodels;
 
 import java.util.Date;
 
@@ -10,8 +10,8 @@ import java.util.Date;
  *
  * @author Admin
  */
-public class KhachHang {
-    private int id;
+public class KhachHangViewMD {
+     private int id;
     private String ten;
     private String tendem;
     private String ho;
@@ -21,10 +21,10 @@ public class KhachHang {
     private String sdt;
     private int diemthuong;
 
-    public KhachHang() {
+    public KhachHangViewMD() {
     }
 
-    public KhachHang(int id, String ten, String tendem, String ho, int gioitinh, Date ngaysinh, String email, String sdt, int diemthuong) {
+    public KhachHangViewMD(int id, String ten, String tendem, String ho, int gioitinh, Date ngaysinh, String email, String sdt, int diemthuong) {
         this.id = id;
         this.ten = ten;
         this.tendem = tendem;
@@ -84,6 +84,8 @@ public class KhachHang {
         this.ngaysinh = ngaysinh;
     }
 
+   
+
     public String getEmail() {
         return email;
     }
@@ -107,6 +109,10 @@ public class KhachHang {
     public void setDiemthuong(int diemthuong) {
         this.diemthuong = diemthuong;
     }
-    
-    
+
+    public Object[] toDataRow() {
+        return new Object[]{id, ho + " " + tendem + " " + ten, gioitinh == 0 ? "Nam" : "Nữ", ngaysinh, sdt, email, diemthuong};
+
+    }
+
 }

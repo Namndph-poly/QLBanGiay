@@ -2,38 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/models/Users.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/imp/ChatLieuServices.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/KhachHangForm.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/IUserRepostory.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Sanpham.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Banhang.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/KhachHangRepository.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Hoadon.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IUsersService.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/imp/UserRepostory.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/KhachHangService.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/utilconnext/SendMail.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Dashboard.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/imp/UsersService.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Thongke.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/utilconnext/DBConnection.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Dangnhap.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/imp/IKhachHangService.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/application/main.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/models/KhachHang.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IChatLieuServices.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/imp/UserServiec.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IUserServiec.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/imp/UsersReposytory.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_themthuoctinh.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/IUsersReposytory.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Khachhang.java</file>
-=======
-            <file>file:/C:/Users/HieuIT/OneDrive/Documents/QLBanGiay/src/models/ChatLieu.java</file>
->>>>>>> c5a7b12f46cf01d825309b334938717d98d53a96
-        </group>
+        <group/>
     </open-files>
 </project-private>
