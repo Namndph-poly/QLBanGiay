@@ -161,7 +161,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         setName(""); // NOI18N
 
         panelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
-        panelGradiente1.setColorSecundario(new java.awt.Color(255, 204, 255));
+        panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
 
         tb_sanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -225,7 +225,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         panelBorder1.setBounds(10, 20, 230, 30);
 
         panelGradiente2.setColorPrimario(new java.awt.Color(204, 255, 255));
-        panelGradiente2.setColorSecundario(new java.awt.Color(255, 204, 255));
+        panelGradiente2.setColorSecundario(new java.awt.Color(204, 204, 255));
 
         btn_xoa.setBackground(new java.awt.Color(125, 224, 237));
         btn_xoa.setText("Xóa");
@@ -235,7 +235,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
         });
         panelGradiente2.add(btn_xoa);
-        btn_xoa.setBounds(490, 50, 90, 30);
+        btn_xoa.setBounds(490, 50, 100, 30);
 
         btn_clear.setBackground(new java.awt.Color(125, 224, 237));
         btn_clear.setText("Xoá Tất Cả");
@@ -245,7 +245,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
         });
         panelGradiente2.add(btn_clear);
-        btn_clear.setBounds(490, 110, 90, 30);
+        btn_clear.setBounds(490, 110, 100, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
@@ -269,7 +269,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         jScrollPane3.setBounds(10, 20, 470, 150);
 
         panelGradiente3.setColorPrimario(new java.awt.Color(204, 255, 255));
-        panelGradiente3.setColorSecundario(new java.awt.Color(255, 204, 255));
+        panelGradiente3.setColorSecundario(new java.awt.Color(204, 204, 255));
 
         tb_hoaDon.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tb_hoaDon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -308,7 +308,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         jPanel1.setBounds(380, 20, 220, 150);
 
         panelGradiente4.setColorPrimario(new java.awt.Color(204, 255, 255));
-        panelGradiente4.setColorSecundario(new java.awt.Color(255, 204, 255));
+        panelGradiente4.setColorSecundario(new java.awt.Color(204, 204, 255));
         panelGradiente4.setMinimumSize(new java.awt.Dimension(1010, 640));
         panelGradiente4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -322,7 +322,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         panelGradiente4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 100, 20));
 
         jLabel8.setText("SĐT khách hàng");
-        panelGradiente4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 250, 20));
+        panelGradiente4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 240, 20));
 
         txt_diem.setForeground(new java.awt.Color(0, 153, 153));
         panelGradiente4.add(txt_diem, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 250, 30));
@@ -362,7 +362,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         panelGradiente4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 250, 60));
 
-        chk_inHoaDon.setBackground(new java.awt.Color(255, 204, 255));
+        chk_inHoaDon.setBackground(new java.awt.Color(204, 204, 255));
         chk_inHoaDon.setText("In hóa đơn");
         panelGradiente4.add(chk_inHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, -1));
 
@@ -376,7 +376,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 btn_thanhToanActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_thanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 260, 40));
+        panelGradiente4.add(btn_thanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 260, 50));
 
         btn_xacNhan.setBackground(new java.awt.Color(125, 224, 237));
         btn_xacNhan.setText("Xác Nhận");
@@ -386,7 +386,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 btn_xacNhanActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_xacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 100, 30));
+        panelGradiente4.add(btn_xacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 110, 30));
 
         btn_suDung.setBackground(new java.awt.Color(125, 224, 237));
         btn_suDung.setText("Sử dụng");
@@ -419,6 +419,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         panelGradiente4.add(lbl_giamGia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 250, 20));
 
         myButton9.setBackground(new java.awt.Color(125, 224, 237));
+        myButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
         myButton9.setText("Làm Mới");
         myButton9.setMaximumSize(new java.awt.Dimension(101, 25));
         myButton9.setMinimumSize(new java.awt.Dimension(101, 25));
@@ -427,10 +428,10 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 myButton9ActionPerformed(evt);
             }
         });
-        panelGradiente4.add(myButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 110, 30));
+        panelGradiente4.add(myButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 110, 40));
 
         lbl_tenKhachHang.setForeground(new java.awt.Color(0, 153, 153));
-        panelGradiente4.add(lbl_tenKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 150, 20));
+        panelGradiente4.add(lbl_tenKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 140, 20));
 
         lbl_diemThuong.setForeground(new java.awt.Color(255, 51, 51));
         panelGradiente4.add(lbl_diemThuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 220, 20));
@@ -443,7 +444,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 btn_thayDoiActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_thayDoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 100, 30));
+        panelGradiente4.add(btn_thayDoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 110, 30));
         panelGradiente4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 220, -1));
 
         lbl_sdt.setForeground(new java.awt.Color(0, 153, 153));
@@ -456,7 +457,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 btn_taoHoaDonActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_taoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 110, 30));
+        panelGradiente4.add(btn_taoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 110, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

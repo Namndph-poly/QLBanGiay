@@ -122,7 +122,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
 
         panelGradiente1.setBackground(new java.awt.Color(204, 255, 255));
         panelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
-        panelGradiente1.setColorSecundario(new java.awt.Color(255, 204, 255));
+        panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
 
         panelBorder1.setBackground(new java.awt.Color(204, 204, 255));
 

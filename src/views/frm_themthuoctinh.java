@@ -167,6 +167,7 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
         setResizable(false);
 
         panelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
+        panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
 
         panelBorder1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -350,7 +351,7 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
         panelGradiente1.add(jLabel3);
         jLabel3.setBounds(1140, 0, 40, 40);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel1MouseDragged(evt);

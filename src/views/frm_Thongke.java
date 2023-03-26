@@ -108,7 +108,7 @@ public class frm_Thongke extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1010, 640));
 
         panelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
-        panelGradiente1.setColorSecundario(new java.awt.Color(255, 204, 255));
+        panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
         panelGradiente1.setMaximumSize(new java.awt.Dimension(1000, 630));
         panelGradiente1.setMinimumSize(new java.awt.Dimension(1000, 630));
         panelGradiente1.setName(""); // NOI18N
@@ -210,7 +210,7 @@ public class frm_Thongke extends javax.swing.JPanel {
             }
         });
         panelBorder1.add(rd_ngay);
-        rd_ngay.setBounds(30, 0, 60, 25);
+        rd_ngay.setBounds(30, 0, 60, 21);
 
         rd_thang.setBackground(new java.awt.Color(204, 204, 255));
         buttonGroup1.add(rd_thang);
@@ -221,7 +221,7 @@ public class frm_Thongke extends javax.swing.JPanel {
             }
         });
         panelBorder1.add(rd_thang);
-        rd_thang.setBounds(30, 20, 60, 25);
+        rd_thang.setBounds(30, 20, 60, 21);
 
         rd_nam.setBackground(new java.awt.Color(204, 204, 255));
         buttonGroup1.add(rd_nam);
@@ -268,7 +268,7 @@ public class frm_Thongke extends javax.swing.JPanel {
             }
         });
         panelBorder1.add(rd_khoang);
-        rd_khoang.setBounds(30, 60, 120, 25);
+        rd_khoang.setBounds(30, 60, 120, 21);
         panelBorder1.add(date_tu);
         date_tu.setBounds(200, 60, 125, 22);
         panelBorder1.add(Date_den);

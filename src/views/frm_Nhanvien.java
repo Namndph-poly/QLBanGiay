@@ -343,7 +343,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1010, 640));
 
         panelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
-        panelGradiente1.setColorSecundario(new java.awt.Color(255, 204, 255));
+        panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
         panelGradiente1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
