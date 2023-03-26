@@ -140,7 +140,7 @@ public class frm_Dangnhap extends javax.swing.JPanel {
         });
         add(hideshow, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 30, 40));
 
-        quenmatkhau1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        quenmatkhau1.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         quenmatkhau1.setForeground(new java.awt.Color(255, 51, 51));
         quenmatkhau1.setText("Quên mật khẩu ?");
         quenmatkhau1.setBorder(null);
