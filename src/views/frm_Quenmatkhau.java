@@ -132,9 +132,10 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         jLabel5.setText("Mã bảo mật");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 24));
 
-        btn_doimk.setBackground(new java.awt.Color(125, 229, 251));
+        btn_doimk.setBackground(new java.awt.Color(204, 204, 255));
         btn_doimk.setForeground(new java.awt.Color(0, 51, 102));
         btn_doimk.setText("Đổi mật khẩu");
+        btn_doimk.setColor(new java.awt.Color(204, 204, 255));
         btn_doimk.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_doimk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
