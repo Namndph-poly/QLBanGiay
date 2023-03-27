@@ -38,6 +38,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import models.DanhMucSP;
 
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -45,14 +46,18 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import repositorys.IHoaDonRepostory;
+import repositorys.imp.HoaDonRepostory;
 
 //import repositorys.IHoaDonRepostory;
 //import repositorys.imp.HoaDonRepostory;
 import services.IDanhMucSPServices;
+import services.IHoaDonServiec;
 //import services.IHoaDonServiec;
 import services.IKhachHangService;
 import services.ISanPhamServiecs;
 import services.imp.DanhMucSPServices;
+import services.imp.HoaDonServiec;
 //import services.imp.HoaDonServiec;
 import services.imp.SanPhamServiec;
 import services.imp.khahangsvImpl;
@@ -63,27 +68,47 @@ import viewmodels.HoaDonViewModel;
 import viewmodels.KhachHangViewMD;
 import viewmodels.SanPhamViewModel;
 
-
 //import viewmodels.barCode;
-
 /**
  *
  * @author hungh
  */
 public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadFactory {
 
-
     private WebcamPanel panel = null;
     private Webcam webcam = null;
     private Executor executor = Executors.newSingleThreadExecutor(this);
 
+    private DefaultTableModel model;
+    private DefaultTableModel modelGioHang;
+    private DefaultComboBoxModel combox;
+    private ISanPhamServiecs sanISamPhamServiecs;
+    private IHoaDonServiec hoaDonServiec;
+    private IKhachHangService khachHangService = new khahangsvImpl();
+    private List<GioHangViewModel> listGioHang = new ArrayList<>();
+
+    private Integer id;
+    private String TenNhanVien;
+    private IHoaDonRepostory hoaDonRepostory = new HoaDonRepostory();
+    private IDanhMucSPServices danhMucSPServices = new DanhMucSPServices();
 
     public frm_Banhang(Integer idNhanVien, String TenNV) {
         initComponents();
         inintWebCam();
-        
 
         chk_inHoaDon.setSelected(true);
+        chk_inHoaDon.setSelected(true);
+        model = new DefaultTableModel();
+        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
+        combox = new DefaultComboBoxModel();
+        sanISamPhamServiecs = new SanPhamServiec();
+        hoaDonServiec = new HoaDonServiec();
+
+        TenNhanVien = TenNV;
+        id = idNhanVien;
+        getListSP();
+        getListHoaDon();
+        loadCBMau();
 
     }
 
@@ -99,9 +124,80 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         executor.execute(this);
     }
 
-    
+    private void getListSP() {
+        model = (DefaultTableModel) tb_sanPham.getModel();
+        model.setRowCount(0);
+        List<SanPhamViewModel> getList = sanISamPhamServiecs.getListSanPham();
+        for (SanPhamViewModel x : getList) {
+            model.addRow(new Object[]{
+                x.getMa(),
+                x.getTen(),
+                x.getMauSac().getTen(),
+                String.format("%.0f", x.getKhuyenMai().getGiaTriGiam()),
+                x.getKhuyenMai().getHinhThucKM(),
+                x.getChatLieu().getTen(),
+                x.getKichCo().getTen(),
+                String.format("%.0f", x.getGiaBan()),
+                x.getSoLuongTon(),});
+        }
+    }
 
- 
+    private void getListGioHang() {
+        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
+        modelGioHang.setRowCount(0);
+        for (GioHangViewModel x : listGioHang) {
+            modelGioHang.addRow(new Object[]{
+                x.getMaSP(),
+                x.getTenSP(),
+                x.getSoLuong(),
+                String.format("%.0f", x.getDonGia()),
+                String.format("%.0f", x.getThanhTien())
+            });
+        }
+    }
+
+    private void getListGioHangHDCT(String MaHD) {
+        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
+        modelGioHang.setRowCount(0);
+        List<HoaDonCHiTietViewModel> list = hoaDonServiec.getListHoaDonChiTiet(MaHD);
+        if (list.isEmpty()) {
+            return;
+        }
+        for (HoaDonCHiTietViewModel x : list) {
+            GioHangViewModel gioHang = new GioHangViewModel();
+            gioHang.setMaSP(x.getSanPham().getMa());
+            gioHang.setTenSP(x.getSanPham().getTen());
+            gioHang.setSoLuong(x.getSoluong());
+            gioHang.setDonGia(x.getDonGia());
+            gioHang.setGiamGia(x.getSanPham().getKhuenMai().getGiaTriGiam());
+            gioHang.setHinhThucGiamGia(x.getSanPham().getKhuenMai().getHinhThucKM());
+            listGioHang.add(gioHang);
+            getListGioHang();
+
+        }
+    }
+    
+    private void clear() {
+        lbl_sdt.setText("");
+        txt_diem.setText("");
+        lbl_tongTien1.setText(String.valueOf(0));
+        lbl_giamGia1.setText(String.valueOf(0.0));
+        lbl_thanhTien.setText(String.valueOf(0));
+        lbl_diemThuong.setText(String.valueOf(0));
+        txt_tienKhachDua.setText("");
+        lbl_tienThua.setText("");
+        txt_ghiChu.setText("");
+        lbl_sdt.setText("");
+        txt_diem.setText("");
+        lbl_tenKhachHang.setText("");
+    }
+    
+    private void loadCBMau() {
+        combox = (DefaultComboBoxModel) cb_danhMuc.getModel();
+        List<DanhMucSP> listDanhMuc = danhMucSPServices.getAll();
+        listDanhMuc.forEach(danhMuc -> combox.addElement(danhMuc.getTen()));
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -540,36 +636,36 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }// </editor-fold>//GEN-END:initComponents
 
     private void tb_sanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_sanPhamMouseClicked
-       
+
     }//GEN-LAST:event_tb_sanPhamMouseClicked
 
     private void btn_thanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thanhToanActionPerformed
-        
+
     }//GEN-LAST:event_btn_thanhToanActionPerformed
 
     private void btn_taoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_taoHoaDonActionPerformed
-      
+
     }//GEN-LAST:event_btn_taoHoaDonActionPerformed
 
     private void btn_suDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suDungActionPerformed
-       
+
     }//GEN-LAST:event_btn_suDungActionPerformed
 
     private void tb_hoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_hoaDonMouseClicked
-        
+
     }//GEN-LAST:event_tb_hoaDonMouseClicked
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
-       
+
     }//GEN-LAST:event_btn_xoaActionPerformed
 
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-        
+
 
     }//GEN-LAST:event_btn_clearActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-      
+
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -578,7 +674,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }//GEN-LAST:event_searchText1CaretUpdate
 
     private void myButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton9ActionPerformed
-     
+
     }//GEN-LAST:event_myButton9ActionPerformed
 
     private void btn_xacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xacNhanActionPerformed
