@@ -119,7 +119,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/power.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/turn-off.png"))); // NOI18N
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
@@ -190,7 +190,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shopping32px.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add-to-cart.png"))); // NOI18N
         jLabel4.setText("Bán Hàng");
 
         javax.swing.GroupLayout btnbanhangLayout = new javax.swing.GroupLayout(btnbanhang);
@@ -235,7 +235,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sport-shoes.png"))); // NOI18N
         jLabel5.setText("Sản Phẩm");
 
         javax.swing.GroupLayout btnsanphamLayout = new javax.swing.GroupLayout(btnsanpham);
@@ -283,7 +283,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/coupon.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sale-tag.png"))); // NOI18N
         jLabel6.setText("Khuyễn Mãi");
 
         javax.swing.GroupLayout btnkhuyenmaiLayout = new javax.swing.GroupLayout(btnkhuyenmai);
@@ -351,7 +351,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/people.png"))); // NOI18N
         jLabel7.setText("Khách Hàng");
         jLabel7.setRequestFocusEnabled(false);
 
@@ -401,7 +401,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(0, 0, 128));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/id-card.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/worker.png"))); // NOI18N
         jLabel3.setText("Nhân Viên");
 
         javax.swing.GroupLayout btnnhanvienLayout = new javax.swing.GroupLayout(btnnhanvien);
@@ -452,7 +452,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/validating-ticket.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bill (3).png"))); // NOI18N
         jLabel9.setText("Hóa Đơn");
 
         javax.swing.GroupLayout btnhoadonLayout = new javax.swing.GroupLayout(btnhoadon);
@@ -506,7 +506,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chart.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/analysis.png"))); // NOI18N
         jLabel10.setText("Thống Kê");
         btnthongke.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 140, 60));
 
@@ -539,7 +539,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout (1).png"))); // NOI18N
         jLabel11.setText("Đăng xuất");
 
         javax.swing.GroupLayout btndangxuatLayout = new javax.swing.GroupLayout(btndangxuat);
@@ -548,9 +548,9 @@ public class frm_Dashboard extends javax.swing.JFrame {
             btndangxuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btndangxuatLayout.createSequentialGroup()
                 .addComponent(crepp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         btndangxuatLayout.setVerticalGroup(
             btndangxuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

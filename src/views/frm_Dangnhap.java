@@ -81,6 +81,7 @@ public class frm_Dangnhap extends javax.swing.JPanel {
         add(jLabel2);
         jLabel2.setBounds(70, 30, 257, 40);
 
+        txtPass.setBackground(new java.awt.Color(227, 255, 255));
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtPass.setMinimumSize(new java.awt.Dimension(300, 40));
         txtPass.setPreferredSize(new java.awt.Dimension(300, 40));
@@ -117,6 +118,7 @@ public class frm_Dangnhap extends javax.swing.JPanel {
         add(lbl_thongBao);
         lbl_thongBao.setBounds(240, 270, 0, 0);
 
+        txtUser.setBackground(new java.awt.Color(227, 255, 255));
         txtUser.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtUser.setMinimumSize(new java.awt.Dimension(300, 40));
         txtUser.setName(""); // NOI18N

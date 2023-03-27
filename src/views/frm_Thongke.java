@@ -185,6 +185,7 @@ public class frm_Thongke extends javax.swing.JPanel {
 
         panelBorder1.setBackground(new java.awt.Color(204, 204, 255));
 
+        Tb_Sp.setBackground(new java.awt.Color(255, 245, 255));
         Tb_Sp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

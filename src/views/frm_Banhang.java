@@ -147,6 +147,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         jLabel6 = new javax.swing.JLabel();
         lbl_sdt = new javax.swing.JLabel();
         btn_taoHoaDon = new swing.MyButton();
+        jLabel17 = new javax.swing.JLabel();
 
         jMenuItem1.setText("Thêm");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +164,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         panelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
         panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
 
+        tb_sanPham.setBackground(new java.awt.Color(255, 245, 255));
         tb_sanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -229,6 +231,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         btn_xoa.setBackground(new java.awt.Color(125, 224, 237));
         btn_xoa.setText("Xóa");
+        btn_xoa.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         btn_xoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_xoaActionPerformed(evt);
@@ -239,6 +242,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         btn_clear.setBackground(new java.awt.Color(125, 224, 237));
         btn_clear.setText("Xoá Tất Cả");
+        btn_clear.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         btn_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_clearActionPerformed(evt);
@@ -253,6 +257,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         panelGradiente2.add(jLabel2);
         jLabel2.setBounds(0, 0, 55, 15);
 
+        tb_gioHang.setBackground(new java.awt.Color(255, 245, 255));
         tb_gioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -271,6 +276,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         panelGradiente3.setColorPrimario(new java.awt.Color(204, 255, 255));
         panelGradiente3.setColorSecundario(new java.awt.Color(204, 204, 255));
 
+        tb_hoaDon.setBackground(new java.awt.Color(255, 245, 255));
         tb_hoaDon.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tb_hoaDon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tb_hoaDon.setModel(new javax.swing.table.DefaultTableModel(
@@ -312,47 +318,58 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         panelGradiente4.setMinimumSize(new java.awt.Dimension(1010, 640));
         panelGradiente4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 102));
         jLabel5.setText("Thanh toán");
         jLabel5.setToolTipText("");
         panelGradiente4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, -1));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Tên khách hàng");
         panelGradiente4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 100, 20));
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("SĐT khách hàng");
-        panelGradiente4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 240, 20));
+        panelGradiente4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 210, 20));
 
+        txt_diem.setBackground(new java.awt.Color(244, 244, 254));
         txt_diem.setForeground(new java.awt.Color(0, 153, 153));
-        panelGradiente4.add(txt_diem, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 250, 30));
+        panelGradiente4.add(txt_diem, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 200, 30));
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("Điểm thưởng");
         panelGradiente4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 250, 20));
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("Khách Hàng Được Điểm");
         panelGradiente4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 250, 20));
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setText("Khách Cần Trả");
         panelGradiente4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 250, 20));
 
+        txt_tienKhachDua.setBackground(new java.awt.Color(244, 244, 254));
         txt_tienKhachDua.setForeground(new java.awt.Color(255, 51, 51));
         txt_tienKhachDua.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txt_tienKhachDuaCaretUpdate(evt);
             }
         });
-        panelGradiente4.add(txt_tienKhachDua, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 250, 30));
+        panelGradiente4.add(txt_tienKhachDua, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 200, 30));
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("Tiền khách đưa");
         panelGradiente4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 250, 20));
 
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel13.setText("Ghi chú");
-        panelGradiente4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 250, 20));
+        panelGradiente4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 250, 20));
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel14.setText("Tiền thừa");
-        panelGradiente4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 70, 20));
+        panelGradiente4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 70, 20));
 
+        txt_ghiChu.setBackground(new java.awt.Color(244, 244, 254));
         txt_ghiChu.setColumns(20);
         txt_ghiChu.setRows(3);
         txt_ghiChu.setTabSize(0);
@@ -360,15 +377,21 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         jScrollPane4.setViewportView(txt_ghiChu);
         txt_ghiChu.getAccessibleContext().setAccessibleDescription("");
 
-        panelGradiente4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 250, 60));
+        panelGradiente4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 240, 90));
 
         chk_inHoaDon.setBackground(new java.awt.Color(204, 204, 255));
+        chk_inHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         chk_inHoaDon.setText("In hóa đơn");
-        panelGradiente4.add(chk_inHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, -1));
+        chk_inHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chk_inHoaDonActionPerformed(evt);
+            }
+        });
+        panelGradiente4.add(chk_inHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 100, -1));
 
         btn_thanhToan.setBackground(new java.awt.Color(125, 224, 237));
         btn_thanhToan.setForeground(new java.awt.Color(0, 51, 102));
-        btn_thanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/credit-card.png"))); // NOI18N
+        btn_thanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/credit-card 3.png"))); // NOI18N
         btn_thanhToan.setText("Thanh toán");
         btn_thanhToan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_thanhToan.addActionListener(new java.awt.event.ActionListener() {
@@ -376,26 +399,30 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 btn_thanhToanActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_thanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 260, 50));
+        panelGradiente4.add(btn_thanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 310, 50));
 
         btn_xacNhan.setBackground(new java.awt.Color(125, 224, 237));
+        btn_xacNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/check-mark.png"))); // NOI18N
         btn_xacNhan.setText("Xác Nhận");
+        btn_xacNhan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_xacNhan.setRolloverEnabled(false);
         btn_xacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_xacNhanActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_xacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 110, 30));
+        panelGradiente4.add(btn_xacNhan, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 110, 30));
 
         btn_suDung.setBackground(new java.awt.Color(125, 224, 237));
+        btn_suDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/circular-economy.png"))); // NOI18N
         btn_suDung.setText("Sử dụng");
+        btn_suDung.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_suDung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_suDungActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_suDung, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 90, 30));
+        panelGradiente4.add(btn_suDung, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 110, 30));
 
         lbl_thanhTien.setForeground(new java.awt.Color(255, 51, 51));
         lbl_thanhTien.setText("0");
@@ -404,6 +431,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         lbl_tienThua.setForeground(new java.awt.Color(0, 153, 153));
         panelGradiente4.add(lbl_tienThua, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 240, 20));
 
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel15.setText("Tổng tiền");
         panelGradiente4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 250, 20));
 
@@ -411,6 +439,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         lbl_tongTien1.setText("0");
         panelGradiente4.add(lbl_tongTien1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 240, 20));
 
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel16.setText("Giảm Giá");
         panelGradiente4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 60, 20));
 
@@ -421,6 +450,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         myButton9.setBackground(new java.awt.Color(125, 224, 237));
         myButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
         myButton9.setText("Làm Mới");
+        myButton9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         myButton9.setMaximumSize(new java.awt.Dimension(101, 25));
         myButton9.setMinimumSize(new java.awt.Dimension(101, 25));
         myButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -428,36 +458,42 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 myButton9ActionPerformed(evt);
             }
         });
-        panelGradiente4.add(myButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 110, 40));
+        panelGradiente4.add(myButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 140, 40));
 
         lbl_tenKhachHang.setForeground(new java.awt.Color(0, 153, 153));
-        panelGradiente4.add(lbl_tenKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 140, 20));
+        panelGradiente4.add(lbl_tenKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 120, 20));
 
         lbl_diemThuong.setForeground(new java.awt.Color(255, 51, 51));
         panelGradiente4.add(lbl_diemThuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 220, 20));
 
         btn_thayDoi.setBackground(new java.awt.Color(125, 224, 237));
         btn_thayDoi.setText("Khách Hàng");
+        btn_thayDoi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_thayDoi.setRolloverEnabled(false);
         btn_thayDoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_thayDoiActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_thayDoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 110, 30));
+        panelGradiente4.add(btn_thayDoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 110, 40));
         panelGradiente4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 220, -1));
 
         lbl_sdt.setForeground(new java.awt.Color(0, 153, 153));
         panelGradiente4.add(lbl_sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 220, -1));
 
         btn_taoHoaDon.setBackground(new java.awt.Color(125, 224, 237));
+        btn_taoHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bill (2).png"))); // NOI18N
         btn_taoHoaDon.setText("Tạo Hoá Đơn");
+        btn_taoHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_taoHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_taoHoaDonActionPerformed(evt);
             }
         });
-        panelGradiente4.add(btn_taoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 110, 40));
+        panelGradiente4.add(btn_taoHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 150, 40));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/excel (1).png"))); // NOI18N
+        panelGradiente4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -553,6 +589,10 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         // TODO add your handling code here:
     }//GEN-LAST:event_tb_hoaDonMouseEntered
 
+    private void chk_inHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chk_inHoaDonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chk_inHoaDonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private swing.MyButton btn_clear;
@@ -572,6 +612,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

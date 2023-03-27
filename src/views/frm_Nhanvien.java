@@ -385,7 +385,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         panelGradiente1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 60, 20));
         panelGradiente1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 220, 40));
 
-        tblnhanvien.setBackground(new java.awt.Color(248, 248, 255));
+        tblnhanvien.setBackground(new java.awt.Color(255, 245, 255));
         tblnhanvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},

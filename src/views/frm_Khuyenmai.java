@@ -215,6 +215,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
         panelBorder1.add(btn_clear);
         btn_clear.setBounds(750, 170, 130, 40);
 
+        tb_sp.setBackground(new java.awt.Color(255, 245, 255));
         tb_sp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -250,6 +251,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
         panelGradiente1.add(panelBorder1);
         panelBorder1.setBounds(10, 0, 990, 300);
 
+        tb_khuyenmai.setBackground(new java.awt.Color(255, 245, 255));
         tb_khuyenmai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

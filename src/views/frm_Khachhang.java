@@ -472,6 +472,7 @@ public class frm_Khachhang extends javax.swing.JPanel {
         TXT_01.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         TXT_01.setForeground(new java.awt.Color(255, 51, 0));
 
+        TB_bang1.setBackground(new java.awt.Color(255, 245, 255));
         TB_bang1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},

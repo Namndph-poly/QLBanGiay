@@ -394,6 +394,7 @@ innitTable();
         panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
 
         panelBorder1.setBackground(new java.awt.Color(204, 204, 255));
+        panelBorder1.setToolTipText("");
         panelBorder1.add(txt_ma);
         txt_ma.setBounds(30, 30, 210, 40);
 
@@ -554,6 +555,7 @@ innitTable();
 
         panelBorder2.setBackground(new java.awt.Color(204, 204, 255));
 
+        tbl_sp.setBackground(new java.awt.Color(255, 245, 255));
         tbl_sp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

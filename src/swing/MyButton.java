@@ -34,7 +34,7 @@ public class MyButton extends JButton {
     public MyButton() {
         setContentAreaFilled(false);
         colorOver = new Color(255 ,225, 255);
-        color = new Color(255 ,187 ,255);
+        color = new Color(125,224,237);
         colorClick = new Color(255, 225 ,255);
         addMouseListener(new MouseAdapter() {
             @Override

@@ -75,6 +75,7 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         setVerifyInputWhenFocusTarget(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txt_email.setBackground(new java.awt.Color(227, 255, 255));
         txt_email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 280, 40));
 
@@ -89,6 +90,7 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         jLabel2.setText("Quên mật khẩu");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 257, -1));
 
+        txtPass.setBackground(new java.awt.Color(227, 255, 255));
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 280, 40));
 
@@ -121,9 +123,11 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         jLabel4.setText("Confirm Password");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, 24));
 
+        txtPass1.setBackground(new java.awt.Color(227, 255, 255));
         txtPass1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(txtPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 280, 40));
 
+        txt_code.setBackground(new java.awt.Color(227, 255, 255));
         txt_code.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(txt_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 280, 40));
 
@@ -132,10 +136,10 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         jLabel5.setText("Mã bảo mật");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 24));
 
-        btn_doimk.setBackground(new java.awt.Color(204, 204, 255));
+        btn_doimk.setBackground(new java.awt.Color(125, 229, 251));
         btn_doimk.setForeground(new java.awt.Color(0, 51, 102));
         btn_doimk.setText("Đổi mật khẩu");
-        btn_doimk.setColor(new java.awt.Color(204, 204, 255));
+        btn_doimk.setColor(new java.awt.Color(125, 229, 251));
         btn_doimk.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_doimk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
