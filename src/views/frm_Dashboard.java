@@ -284,7 +284,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sale-tag.png"))); // NOI18N
-        jLabel6.setText("Khuyễn Mãi");
+        jLabel6.setText("Khuyến Mãi");
 
         javax.swing.GroupLayout btnkhuyenmaiLayout = new javax.swing.GroupLayout(btnkhuyenmai);
         btnkhuyenmai.setLayout(btnkhuyenmaiLayout);
@@ -610,7 +610,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
             crep3.setOpaque(true);
             resetColor(new JPanel[]{btnbanhang, btnsanpham, btnkhachhang, btnnhanvien, btnthongke, btnhoadon, btndangxuat}, new JPanel[]{crep1, crep2, crep4, crep5, crepp1, crepp2, crepp3});
             setpanal(new frm_Khuyenmai());
-            lbltieude.setText("Khuyễn mãi");
+            lbltieude.setText("Khuyến mãi");
         } else {
             JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập !");
             setdashboad();

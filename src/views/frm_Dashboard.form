@@ -386,7 +386,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/sale-tag.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Khuy&#x1ec5;n M&#xe3;i"/>
+                <Property name="text" type="java.lang.String" value="Khuy&#x1ebf;n M&#xe3;i"/>
               </Properties>
             </Component>
           </SubComponents>

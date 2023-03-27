@@ -249,10 +249,7 @@ innitTable();
             return null;
         }
 
-        if (Integer.valueOf(txt_soluongton.getText()) <= 0) {
-            JOptionPane.showMessageDialog(this, "Số lượng tồn phải lớn hơn 0!");
-            return null;
-        }
+  
 // giá nhập
 
         if (txt_gianhap.getText().isEmpty()) {
@@ -645,6 +642,10 @@ innitTable();
         }
         int chon = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn thêm sản phẩm ?", "Thêm sản phẩm mới", JOptionPane.YES_NO_OPTION);
         if (chon == JOptionPane.YES_OPTION) {
+            if (Integer.valueOf(txt_soluongton.getText()) <= 0) {
+            JOptionPane.showMessageDialog(this, "Số lượng tồn phải lớn hơn 0!");
+            return ;
+        }
             boolean kq = iChiTietSPServices.Add(x);
             if (kq == true) {
                 loadData(iChiTietSPServices.getAll());
