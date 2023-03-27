@@ -39,6 +39,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import models.DanhMucSP;
+import models.HoaDon;
 import models.KhachHang;
 import models.SanPham;
 
@@ -867,7 +868,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
             titleGraph.setAlignment(ParagraphAlignment.CENTER);
 
-            String title = "CỬA HÀNG BÁN QUẦN ÁO";
+            String title = "CỬA HÀNG BÁN GIÀY THỂ THAO NỮ";
 
             XWPFRun titleRun = titleGraph.createRun();
 
@@ -883,14 +884,14 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             XWPFParagraph xWPFParagraph2 = document.createParagraph();
             xWPFParagraph2.setAlignment(ParagraphAlignment.CENTER);
             run = xWPFParagraph2.createRun();
-            run.setText("SĐT:0395123133 ");
+            run.setText("SĐT:0967493115 ");
 
             XWPFParagraph xWPFParagraph3 = document.createParagraph();
 
             xWPFParagraph3.setAlignment(ParagraphAlignment.CENTER);
 
             run = xWPFParagraph3.createRun();
-            run.setText("HOÁ ĐƠN BÁN QUẦN ÁO");
+            run.setText("HOÁ ĐƠN BÁN GIÀY");
 
             XWPFParagraph xWPFParagraph4 = document.createParagraph();
             run = xWPFParagraph4.createRun();
@@ -1253,7 +1254,19 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }//GEN-LAST:event_myButton9ActionPerformed
 
     private void btn_xacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xacNhanActionPerformed
+ int rowHD = tb_hoaDon.getSelectedRow();
+        if (rowHD < 0) {
+            JOptionPane.showMessageDialog(this, "chọn 1 hoá đơn hiện thị khách hàng");
+            return;
+        }
 
+        List<HoaDon> getList = hoaDonServiec.getKhachHang(tb_hoaDon.getValueAt(rowHD, 0).toString());
+        for (HoaDon hoaDon : getList) {
+            lbl_tenKhachHang.setText(hoaDon.getKhachHang().getTen());
+            lbl_sdt.setText(hoaDon.getKhachHang().getSdt());
+            txt_diem.setText(String.valueOf(hoaDon.getKhachHang().getDiemthuong()));
+            return;
+        }
     }//GEN-LAST:event_btn_xacNhanActionPerformed
 
     private void txt_tienKhachDuaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txt_tienKhachDuaCaretUpdate
@@ -1275,7 +1288,12 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }//GEN-LAST:event_jLabel3AncestorAdded
 
     private void btn_thayDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thayDoiActionPerformed
-
+ int rowHD = tb_hoaDon.getSelectedRow();
+        if (rowHD < 0) {
+            JOptionPane.showMessageDialog(this, "chọn hoá đơn bạn muốn thêm khách hàng vào");
+            return;
+        }
+        new KhachHangForm(tb_hoaDon.getValueAt(rowHD, 0).toString()).setVisible(true);
     }//GEN-LAST:event_btn_thayDoiActionPerformed
 
     private void cb_danhMucItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_danhMucItemStateChanged
