@@ -51,8 +51,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lbltieude" min="-2" pref="116" max="-2" attributes="0"/>
-                  <EmptySpace pref="854" max="32767" attributes="0"/>
+                  <Component id="lbltieude" min="-2" pref="231" max="-2" attributes="0"/>
+                  <EmptySpace pref="739" max="32767" attributes="0"/>
                   <Component id="jLabel8" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -84,7 +84,7 @@
               <Font name="Times New Roman" size="26" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
+              <Color blue="ff" green="0" red="cc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="B&#xe1;n h&#xe0;ng"/>
           </Properties>
