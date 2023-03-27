@@ -329,8 +329,8 @@ innitTable();
         int soluong = (int) tbl_sp.getValueAt(row, 9);
         double gianhap = (double) tbl_sp.getValueAt(row, 10);
         double giaban = (double) tbl_sp.getValueAt(row, 11);
-        String mota = tbl_sp.getValueAt(row, 12).toString();
-        String barcode = tbl_sp.getValueAt(row, 13).toString();
+        String mota = tbl_sp.getValueAt(row, 13).toString();
+        String barcode = tbl_sp.getValueAt(row, 14).toString();
         return new ChiTietSPViewModel(ma, ten, nsx, ms, dmsp, kc, cl, th, km, soluong, gianhap, giaban, mota, barcode);
     }
 
@@ -813,6 +813,7 @@ int row = tbl_sp.getSelectedRow();
         defaultTableModel.addColumn("Số lượng tồn");
         defaultTableModel.addColumn("Giá nhập");
         defaultTableModel.addColumn("Giá bán");
+        defaultTableModel.addColumn("Được giảm");
         defaultTableModel.addColumn("Mô tả");
         defaultTableModel.addColumn("Barcode");
 
@@ -835,10 +836,12 @@ int row = tbl_sp.getSelectedRow();
                 x.getSoluongton(),
                 x.getGianhap(),
                 x.getGiaban(),
+               String.format("%.0f", x.getKhuyenmai().getGiaTriGiam()) + " " + x.getKhuyenmai().getHinhThucKM(),
                 x.getMota(),
                 x.getQrcode()
             });
         }
+        System.out.println();
     }
 
 //    public ChiTietSP getData() {
