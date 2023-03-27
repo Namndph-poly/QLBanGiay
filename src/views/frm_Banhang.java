@@ -188,7 +188,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Sản phẩm");
         panelGradiente1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 100, 15);
+        jLabel1.setBounds(10, 0, 100, 15);
 
         cb_danhMuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
         cb_danhMuc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204), 2));
@@ -255,7 +255,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Giỏ hàng");
         panelGradiente2.add(jLabel2);
-        jLabel2.setBounds(0, 0, 55, 15);
+        jLabel2.setBounds(10, 0, 55, 15);
 
         tb_gioHang.setBackground(new java.awt.Color(255, 245, 255));
         tb_gioHang.setModel(new javax.swing.table.DefaultTableModel(
@@ -307,7 +307,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         jLabel4.setText("Hóa đơn chờ");
         jLabel4.setToolTipText("");
         panelGradiente3.add(jLabel4);
-        jLabel4.setBounds(0, 0, 90, 15);
+        jLabel4.setBounds(10, 0, 90, 15);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panelGradiente3.add(jPanel1);
