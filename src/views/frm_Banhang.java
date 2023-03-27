@@ -1386,5 +1386,68 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     private javax.swing.JTextArea txt_ghiChu;
     private swing.MyTextField txt_tienKhachDua;
     // End of variables declaration//GEN-END:variables
+
+@Override
+    public void run() {
+        do {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Result result = null;
+            BufferedImage image = null;
+
+            if (webcam.isOpen()) {
+
+                if ((image = webcam.getImage()) == null) {
+                    continue;
+                }
+
+                LuminanceSource source = new BufferedImageLuminanceSource(image);
+                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+
+                try {
+                    result = new MultiFormatReader().decode(bitmap);
+                } catch (NotFoundException e) {
+                }
+            }
+
+            if (result != null) {
+                searchText1.setText(result.getText());
+
+                model = (DefaultTableModel) tb_sanPham.getModel();
+                model.setRowCount(0);
+                List<SanPham> getListSanPham = sanISamPhamServiecs.seachBarCodeS(result.getText());
+                for (SanPham x : getListSanPham) {
+                    model.addRow(new Object[]{
+                        x.getMa(),
+                        x.getTen(),
+                        x.getMauSac().getTen(),
+                        String.format("%.0f", x.getKhuenMai().getGiaTriGiam()),
+                        x.getKhuenMai().getHinhThucKM(),
+                        x.getChatLieu().getTen(),
+                        x.getKichCo().getTen(),
+                        String.format("%.0f", x.getGiaBan()),
+                        x.getSoLuongTon()
+                    });
+
+                }
+
+            }
+
+//            }
+        } while (true);
+
+    }
+
+    @Override
+
+    public Thread newThread(Runnable r) {
+        Thread t = new Thread(r, "example-runner");
+        t.setDaemon(true);
+        return t;
+    }
   
 }
