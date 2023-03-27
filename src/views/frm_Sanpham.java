@@ -513,7 +513,7 @@ innitTable();
         btn_lammoi.setBounds(810, 20, 140, 40);
 
         btn_xoa.setBackground(new java.awt.Color(125, 224, 237));
-        btn_xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/file.png"))); // NOI18N
+        btn_xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/printer.png"))); // NOI18N
         btn_xoa.setText("In QRcode");
         btn_xoa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_xoa.addActionListener(new java.awt.event.ActionListener() {

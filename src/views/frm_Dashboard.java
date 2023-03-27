@@ -126,8 +126,8 @@ public class frm_Dashboard extends javax.swing.JFrame {
             }
         });
 
-        lbltieude.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lbltieude.setForeground(new java.awt.Color(255, 51, 51));
+        lbltieude.setFont(new java.awt.Font("Times New Roman", 3, 26)); // NOI18N
+        lbltieude.setForeground(new java.awt.Color(255, 0, 0));
         lbltieude.setText("Bán hàng");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -135,9 +135,9 @@ public class frm_Dashboard extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lbltieude, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 709, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(lbltieude, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 854, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
