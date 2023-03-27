@@ -176,6 +176,31 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         }
     }
+        private String getTrangThaiHD(int TrangThai) {
+        if (TrangThai == 0) {
+            return "chờ thanh Toán";
+        }
+        if (TrangThai == 1) {
+            return "Đã thanh Toán";
+        }
+
+        return null;
+    }
+
+    private void getListHoaDon() {
+        model = (DefaultTableModel) tb_hoaDon.getModel();
+        model.setRowCount(0);
+        List<HoaDonViewModel> getList = hoaDonServiec.getListHD(0);
+        for (HoaDonViewModel x : getList) {
+            model.addRow(new Object[]{
+                x.getMa(),
+                x.getNgayTao(),
+                x.getUs().getTen(),
+                getTrangThaiHD(x.getTinhTrang())
+
+            });
+        }
+    }
     
     private void clear() {
         lbl_sdt.setText("");
@@ -196,6 +221,69 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         combox = (DefaultComboBoxModel) cb_danhMuc.getModel();
         List<DanhMucSP> listDanhMuc = danhMucSPServices.getAll();
         listDanhMuc.forEach(danhMuc -> combox.addElement(danhMuc.getTen()));
+
+    }
+     private HoaDonViewModel inputHD() {
+        HoaDonViewModel hd = new HoaDonViewModel();
+        String Ma = "HD";
+        Random random = new Random();
+        hd.setMa(Ma + random.nextInt());
+
+        long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        hd.setNgayTao(date);
+
+        return hd;
+    }
+
+    private HoaDonCHiTietViewModel inputHDCT(Double DonGia, int SoLuong) {
+        HoaDonCHiTietViewModel hdct = new HoaDonCHiTietViewModel();
+        hdct.setDonGia(DonGia);
+        hdct.setSoluong(SoLuong);
+
+        return hdct;
+    }
+
+    private void mouse() {
+        int rowHD = tb_hoaDon.getSelectedRow();
+        int row = tb_hoaDon.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        listGioHang.clear();
+        String MaHD = tb_hoaDon.getValueAt(row, 0).toString();
+        lbl_tongTien1.setText(String.valueOf(0));
+        lbl_giamGia1.setText(String.valueOf(0));
+        lbl_thanhTien.setText(String.valueOf(0));
+        getListGioHangHDCT(MaHD);
+        Double tongPT = 0.0;
+        Double tongVN = 0.0;
+        Double tongTien = 0.0;
+        Double giam = Double.parseDouble(lbl_giamGia1.getText());
+        int count = 0;
+        List<HoaDonCHiTietViewModel> list = hoaDonServiec.getListHoaDonChiTiet(MaHD);
+        for (HoaDonCHiTietViewModel x : list) {
+            tongTien = tongTien + x.getThanhTien();
+            lbl_tongTien1.setText(String.format("%.0f", tongTien));
+            List<SanPhamViewModel> listSanPham = sanISamPhamServiecs.getListSanPham();
+            if (tb_gioHang.getValueAt(count, 0).equals(x.getSanPham().getMa()) && x.getSanPham().getKhuenMai().getHinhThucKM().equals("%")) {
+                tongPT = x.getThanhTien() * x.getSanPham().getKhuenMai().getGiaTriGiam() / 100;
+                lbl_giamGia1.setText(String.valueOf(giam += tongPT));
+                lbl_giamGia1.setText(String.format("%.0f", giam));
+            } else {
+                tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam();
+                lbl_giamGia1.setText(String.valueOf(giam += tongVN));
+            }
+            count++;
+        }
+        Double ThanhTien = Double.parseDouble(lbl_tongTien1.getText()) - Double.parseDouble(lbl_giamGia1.getText());
+        lbl_thanhTien.setText(String.valueOf(String.format("%.0f", ThanhTien)));
+        if (Integer.parseInt(lbl_thanhTien.getText()) >= 500000) {
+            int diemThuong = Integer.parseInt(lbl_thanhTien.getText()) / 100000;
+            lbl_diemThuong.setText(String.valueOf(diemThuong));
+        } else {
+            lbl_diemThuong.setText(String.valueOf(0));
+        }
 
     }
 
@@ -644,7 +732,16 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }//GEN-LAST:event_btn_thanhToanActionPerformed
 
     private void btn_taoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_taoHoaDonActionPerformed
-
+        HoaDonViewModel hoaDon = inputHD();
+        Integer add = hoaDonServiec.saveHD(hoaDon, id);
+        if (add > 0) {
+            System.out.println("thêm thành công");
+            List<HoaDonViewModel> list = hoaDonServiec.getListHD(1);
+            list.clear();
+            getListHoaDon();
+        } else {
+            System.out.println("thêm thất bại");
+        }
     }//GEN-LAST:event_btn_taoHoaDonActionPerformed
 
     private void btn_suDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suDungActionPerformed
@@ -652,7 +749,60 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }//GEN-LAST:event_btn_suDungActionPerformed
 
     private void tb_hoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_hoaDonMouseClicked
+ int row = tb_hoaDon.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        listGioHang.clear();
+        String MaHD = tb_hoaDon.getValueAt(row, 0).toString();
+        try {
+            lbl_tongTien1.setText(String.valueOf(0));
+            lbl_giamGia1.setText(String.valueOf(0));
+            lbl_thanhTien.setText(String.valueOf(0));
 
+            getListGioHangHDCT(MaHD);
+            lbl_tenKhachHang.setText("");
+            lbl_sdt.setText("");
+            txt_diem.setText("");
+            Double tongPT = 0.0;
+            Double tongVN = 0.0;
+            Double tongTien = 0.0;
+            Double giam = Double.parseDouble(lbl_giamGia1.getText());
+            int count = 0;
+            List<HoaDonCHiTietViewModel> list = hoaDonServiec.getListHoaDonChiTiet(MaHD);
+
+            for (HoaDonCHiTietViewModel x : list) {
+                tongTien = tongTien + x.getThanhTien();
+                lbl_tongTien1.setText(String.format("%.0f", tongTien));
+
+                List<SanPhamViewModel> listSanPham = sanISamPhamServiecs.getListSanPham();
+
+                if (tb_gioHang.getValueAt(count, 0).equals(x.getSanPham().getMa()) && x.getSanPham().getKhuenMai().getHinhThucKM().equals("%")) {
+                    tongPT = x.getThanhTien() * x.getSanPham().getKhuenMai().getGiaTriGiam() / 100;
+                    lbl_giamGia1.setText(String.valueOf(giam += tongPT));
+                    lbl_giamGia1.setText(String.format("%.0f", giam));
+                } else {
+                    tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam();
+                    lbl_giamGia1.setText(String.valueOf(giam += tongVN));
+                }
+
+                count++;
+
+            }
+            Double ThanhTien = Double.parseDouble(lbl_tongTien1.getText()) - Double.parseDouble(lbl_giamGia1.getText());
+            lbl_thanhTien.setText(String.valueOf(String.format("%.0f", ThanhTien)));
+            if (Integer.parseInt(lbl_thanhTien.getText()) >= 500000) {
+                int diemThuong = Integer.parseInt(lbl_thanhTien.getText()) / 100000;
+                lbl_diemThuong.setText(String.valueOf(diemThuong));
+            } else {
+                lbl_diemThuong.setText(String.valueOf(0));
+            }
+
+        } catch (Exception e) {
+            lbl_tongTien1.setText(String.valueOf(0));
+            lbl_giamGia1.setText(String.valueOf(0));
+            lbl_thanhTien.setText(String.valueOf(0));
+        }
     }//GEN-LAST:event_tb_hoaDonMouseClicked
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
