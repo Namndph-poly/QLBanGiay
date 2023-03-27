@@ -40,7 +40,7 @@
           <Color blue="ff" green="ff" red="e3" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
+          <Font name="Segoe UI" size="18" style="0"/>
         </Property>
       </Properties>
       <Constraints>
@@ -195,7 +195,7 @@
           <Color blue="ff" green="ff" red="e3" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
+          <Font name="Segoe UI" size="18" style="0"/>
         </Property>
       </Properties>
       <Constraints>

@@ -484,7 +484,6 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         tb_hoaDon.setBackground(new java.awt.Color(255, 245, 255));
         tb_hoaDon.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tb_hoaDon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tb_hoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -493,7 +492,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 "Mã HD", "Ngày Tạo", "Nhân Viên", "Trạng Thái"
             }
         ));
-        tb_hoaDon.setCursor(new java.awt.Cursor(java.awt.Cursor.SW_RESIZE_CURSOR));
+        tb_hoaDon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tb_hoaDon.setGridColor(new java.awt.Color(255, 255, 255));
         tb_hoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

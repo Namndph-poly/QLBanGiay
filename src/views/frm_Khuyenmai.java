@@ -239,6 +239,8 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
         jScrollPane2.setBounds(20, 160, 580, 130);
 
         cb_selectAll.setBackground(new java.awt.Color(204, 204, 255));
+        cb_selectAll.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        cb_selectAll.setForeground(new java.awt.Color(102, 102, 255));
         cb_selectAll.setText("Select All");
         cb_selectAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +248,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             }
         });
         panelBorder1.add(cb_selectAll);
-        cb_selectAll.setBounds(20, 130, 71, 20);
+        cb_selectAll.setBounds(20, 130, 130, 24);
 
         panelGradiente1.add(panelBorder1);
         panelBorder1.setBounds(10, 0, 990, 300);

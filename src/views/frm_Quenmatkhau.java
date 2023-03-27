@@ -76,7 +76,7 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_email.setBackground(new java.awt.Color(227, 255, 255));
-        txt_email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 280, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -128,7 +128,7 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         add(txtPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 280, 40));
 
         txt_code.setBackground(new java.awt.Color(227, 255, 255));
-        txt_code.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_code.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         add(txt_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 280, 40));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
