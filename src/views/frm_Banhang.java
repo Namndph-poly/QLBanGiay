@@ -248,6 +248,48 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         return hdct;
     }
+    private void mouse() {
+        int rowHD = tb_hoaDon.getSelectedRow();
+        int row = tb_hoaDon.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        listGioHang.clear();
+        String MaHD = tb_hoaDon.getValueAt(row, 0).toString();
+        lbl_tongTien1.setText(String.valueOf(0));
+        lbl_giamGia1.setText(String.valueOf(0));
+        lbl_thanhTien.setText(String.valueOf(0));
+        getListGioHangHDCT(MaHD);
+        Double tongPT = 0.0;
+        Double tongVN = 0.0;
+        Double tongTien = 0.0;
+        Double giam = Double.parseDouble(lbl_giamGia1.getText());
+        int count = 0;
+        List<HoaDonCHiTietViewModel> list = hoaDonServiec.getListHoaDonChiTiet(MaHD);
+        for (HoaDonCHiTietViewModel x : list) {
+            tongTien = tongTien + x.getThanhTien();
+            lbl_tongTien1.setText(String.format("%.0f", tongTien));
+            List<SanPhamViewModel> listSanPham = sanISamPhamServiecs.getListSanPham();
+            if (tb_gioHang.getValueAt(count, 0).equals(x.getSanPham().getMa()) && x.getSanPham().getKhuenMai().getHinhThucKM().equals("%")) {
+                tongPT = x.getThanhTien() * x.getSanPham().getKhuenMai().getGiaTriGiam() / 100;
+                lbl_giamGia1.setText(String.valueOf(giam += tongPT));
+                lbl_giamGia1.setText(String.format("%.0f", giam));
+            } else {
+                tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam();
+                lbl_giamGia1.setText(String.valueOf(giam += tongVN));
+            }
+            count++;
+        }
+        Double ThanhTien = Double.parseDouble(lbl_tongTien1.getText()) - Double.parseDouble(lbl_giamGia1.getText());
+        lbl_thanhTien.setText(String.valueOf(String.format("%.0f", ThanhTien)));
+        if (Integer.parseInt(lbl_thanhTien.getText()) >= 500000) {
+            int diemThuong = Integer.parseInt(lbl_thanhTien.getText()) / 100000;
+            lbl_diemThuong.setText(String.valueOf(diemThuong));
+        } else {
+            lbl_diemThuong.setText(String.valueOf(0));
+        }
+
+    }
 
 
     /**
