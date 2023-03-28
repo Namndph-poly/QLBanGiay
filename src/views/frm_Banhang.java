@@ -156,6 +156,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 x.getTenSP(),
                 x.getSoLuong(),
                 String.format("%.0f", x.getDonGia()),
+                String.format("%.0f", x.getGiamGia()) + " " + x.getHinhThucGiamGia(),
                 String.format("%.0f", x.getThanhTien())
             });
         }
@@ -471,7 +472,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
             },
             new String [] {
-                "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá", "Thành Tiền"
+                "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá", "Được giảm", "Thành Tiền"
             }
         ));
         tb_gioHang.setComponentPopupMenu(jPopupMenu1);
