@@ -14,6 +14,7 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.event.MouseEvent;
@@ -98,7 +99,8 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     public frm_Banhang(Integer idNhanVien, String TenNV) {
         initComponents();
         inintWebCam();
-
+        jMenuItem1.setText("Thay đổi số lượng");
+        jMenuItem1.setBackground(Color.CYAN);
         chk_inHoaDon.setSelected(true);
         chk_inHoaDon.setSelected(true);
         model = new DefaultTableModel();
