@@ -7,12 +7,14 @@
             <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/viewmodels/KhachHang02ViewMD.java</file>
             <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IKhachHangService.java</file>
             <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/IChatLieuRepository.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/imp/KhachHangRPImpl.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/IKhachHangReposytory.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IKhuyenmaiService.java</file>
             <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/viewmodels/KhachHangViewMD.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/application/main.java</file>
             <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/models/KhachHang.java</file>
             <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IChatLieuServices.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/imp/KhachHangRPImpl.java</file>
             <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/imp/khahangsvImpl.java</file>
-            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/IKhachHangReposytory.java</file>
             <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Khuyenmai.java</file>
             <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Khachhang.java</file>
         </group>
