@@ -167,6 +167,7 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
         setResizable(false);
 
         panelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
+        panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
 
         panelBorder1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -272,7 +273,7 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
             }
         });
         panelBorder1.add(btn_them);
-        btn_them.setBounds(1010, 50, 120, 33);
+        btn_them.setBounds(1010, 50, 120, 31);
 
         btn_LamMoi.setBackground(new java.awt.Color(125, 224, 237));
         btn_LamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
@@ -284,7 +285,7 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
             }
         });
         panelBorder1.add(btn_LamMoi);
-        btn_LamMoi.setBounds(860, 50, 120, 33);
+        btn_LamMoi.setBounds(860, 50, 120, 31);
 
         Btn_capNhat.setBackground(new java.awt.Color(125, 224, 237));
         Btn_capNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/floppy-disk.png"))); // NOI18N
@@ -296,7 +297,7 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
             }
         });
         panelBorder1.add(Btn_capNhat);
-        Btn_capNhat.setBounds(860, 130, 120, 33);
+        Btn_capNhat.setBounds(860, 130, 120, 31);
 
         panelGradiente1.add(panelBorder1);
         panelBorder1.setBounds(10, 50, 1160, 230);
@@ -305,6 +306,7 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTable1.setBackground(new java.awt.Color(255, 245, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -350,7 +352,7 @@ public class frm_themthuoctinh extends javax.swing.JDialog {
         panelGradiente1.add(jLabel3);
         jLabel3.setBounds(1140, 0, 40, 40);
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel1MouseDragged(evt);

@@ -343,7 +343,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1010, 640));
 
         panelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
-        panelGradiente1.setColorSecundario(new java.awt.Color(255, 204, 255));
+        panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
         panelGradiente1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -385,7 +385,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         panelGradiente1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 60, 20));
         panelGradiente1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 220, 40));
 
-        tblnhanvien.setBackground(new java.awt.Color(248, 248, 255));
+        tblnhanvien.setBackground(new java.awt.Color(255, 245, 255));
         tblnhanvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},

@@ -10,7 +10,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import models.KhachHang;
+import services.IHoaDonServiec;
+import services.IKhachHangService;
+import services.imp.HoaDonServiec;
+import services.imp.khahangsvImpl;
+import viewmodels.KhachHangViewMD;
 
 /**
  *
@@ -18,15 +23,208 @@ import javax.swing.table.DefaultTableModel;
  */
 public class KhachHangForm extends javax.swing.JFrame {
 
-   
+    DefaultTableModel defaultTableModel = new DefaultTableModel();
+    List<KhachHangViewMD> listKhachHang;
+    private IKhachHangService KH;
+    private IHoaDonServiec hoaDonServiec;
+    String Ma;
 
     public KhachHangForm(String MaHD) {
         initComponents();
         setLocationRelativeTo(null);
-       
+        KH = new khahangsvImpl();
+        hoaDonServiec = new HoaDonServiec();
+        listKhachHang = KH.getall();
+
+        Ma = MaHD;
+        showTable(listKhachHang);
+
     }
 
-    
+    public void showTable(List<KhachHangViewMD> list) {
+        defaultTableModel = (DefaultTableModel) tb_khachHang.getModel();
+        defaultTableModel.setRowCount(0);
+        for (KhachHangViewMD khachHang01 : list) {
+            defaultTableModel.addRow(khachHang01.toDataRow());
+        }
+    }
+
+    private KhachHang getData() {
+        KhachHang cv = new KhachHang();
+        cv.setTen(txt_Ten1.getText());
+        cv.setTendem(txt_TenDem.getText());
+        cv.setHo(txt_Ho.getText());
+        int gt;
+        if (rd_nam.isSelected()) {
+            gt = 0;
+        } else {
+            gt = 1;
+        }
+        cv.setGioitinh(gt);
+        cv.setNgaysinh(date_ngaysinh.getDate());
+        cv.setSdt(txt_sdt.getText());
+        cv.setEmail(txt_email.getText());
+
+        return cv;
+    }
+
+    public int layid() {
+        Integer row = tb_khachHang.getSelectedRow();
+        int id = (int) tb_khachHang.getValueAt(row, 0);
+        return id;
+
+    }
+
+    public boolean check() {
+        String sdt = "(0\\d{9})";
+        String mail = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        Pattern p = Pattern.compile("^[0-9]+$");
+        if (txt_Ten1.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập tên!");
+            return false;
+        }
+        if (p.matcher(txt_Ten1.getText()).find() == true) {
+            JOptionPane.showMessageDialog(this, "Tên của bạn không được nhập số");
+            return false;
+        } else if (txt_Ten1.getText().length() > 30) {
+            JOptionPane.showMessageDialog(this, "Tên không được quá 30 kí tự");
+            return false;
+        }
+        if (txt_sdt.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập SĐT!");
+            return false;
+        }
+        try {
+            if (!txt_sdt.getText().matches(sdt)) {
+                JOptionPane.showMessageDialog(this, "Số điện thoại của bạn chưa đúng định dạng");
+                return false;
+            }
+        } catch (Exception e) {
+        }
+        if (KH.kiemtrasdt(txt_sdt.getText()) != null) {
+            JOptionPane.showMessageDialog(this, "Số điện thoại của bạn đã tồn tại");
+            return false;
+        }
+        if (txt_email.getText().equals("")) {
+            return true;
+        } else {
+            try {
+                if (!txt_email.getText().matches(mail)) {
+                    JOptionPane.showMessageDialog(this, "Email của bạn chưa đúng định dạng");
+                    return false;
+                }
+            } catch (Exception e) {
+            }
+        }
+        if (KH.kiemtra(txt_email.getText()) != null) {
+            JOptionPane.showMessageDialog(this, "Email đã tồn tại");
+            return false;
+        }
+
+        return true;
+
+    }
+
+    public boolean check2() {
+        Pattern p = Pattern.compile("^[0-9]+$");
+        if (txt_Ho.getText().equals("") & txt_TenDem.getText().equals("")) {
+            return true;
+        } else {
+            if (p.matcher(txt_Ho.getText()).find() == true) {
+                JOptionPane.showMessageDialog(this, "Họ của bạn không được nhập số");
+                return false;
+            }
+            if (txt_Ho.getText().length() > 30) {
+                JOptionPane.showMessageDialog(this, "Họ không được quá 30 kí tự");
+                return false;
+            }
+            if (p.matcher(txt_TenDem.getText()).find() == true) {
+                JOptionPane.showMessageDialog(this, "Tên đệm của bạn không được nhập số");
+                return false;
+            }
+            if (txt_TenDem.getText().length() > 30) {
+                JOptionPane.showMessageDialog(this, "Tên Đệm không được quá 30 kí tự");
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+    public boolean check3() {
+        String sdt = "(0\\d{9})";
+        String mail = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        Pattern p = Pattern.compile("^[0-9]+$");
+        if (txt_Ten1.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập tên!");
+            return false;
+        }
+        if (p.matcher(txt_Ten1.getText()).find() == true) {
+            JOptionPane.showMessageDialog(this, "Tên của bạn không được nhập số");
+            return false;
+        }
+        if (txt_Ten1.getText().length() > 30) {
+            JOptionPane.showMessageDialog(this, "Tên không được quá 30 kí tự");
+            return false;
+        }
+        if (txt_sdt.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập SĐT!");
+            return false;
+        }
+        try {
+            if (!txt_sdt.getText().matches(sdt)) {
+                JOptionPane.showMessageDialog(this, "Số điện thoại của bạn chưa đúng định dạng");
+                return false;
+            }
+        } catch (Exception e) {
+        }
+
+        if (txt_email.getText().equals("")) {
+            return true;
+        } else {
+            try {
+
+                if (!txt_email.getText().matches(mail)) {
+                    JOptionPane.showMessageDialog(this, "Email của bạn chưa đúng định dạng");
+                    return false;
+                }
+
+            } catch (Exception e) {
+            }
+        }
+
+        return true;
+    }
+
+    public boolean check4() {
+        Pattern p = Pattern.compile("^[0-9]+$");
+
+        if (txt_Ho.getText() == null & txt_TenDem.getText() == null) {
+            return true;
+        } else {
+
+            if (p.matcher(txt_Ho.getText()).find() == true) {
+                JOptionPane.showMessageDialog(this, "Họ của bạn không được nhập số");
+                return false;
+            }
+            if (txt_Ho.getText().length() > 30) {
+                JOptionPane.showMessageDialog(this, "Họ không được quá 30 kí tự");
+                return false;
+            }
+            if (p.matcher(txt_TenDem.getText()).find() == true) {
+                JOptionPane.showMessageDialog(this, "Tên đệm của bạn không được nhập số");
+                return false;
+            }
+            if (txt_TenDem.getText().length() > 30) {
+                JOptionPane.showMessageDialog(this, "Tên Đệm không được quá 30 kí tự");
+                return false;
+
+            }
+        }
+
+        return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,7 +265,10 @@ public class KhachHangForm extends javax.swing.JFrame {
 
         tb_khachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
                 "ID", "Họ Tên Khách Hàng", "Giới Tính", "Ngày Sinh", "SĐT", "Email", "Điểm Thưởng"
@@ -263,15 +464,39 @@ public class KhachHangForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_capNhatActionPerformed
+        int row = tb_khachHang.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this, "cần chọn khách hàng để cập nhật");
+            return;
+        }
+        if (check3() && check4()) {
 
+            if (JOptionPane.showConfirmDialog(this, "Bạn có muốn cập nhật không?") == JOptionPane.YES_OPTION) {
+                int id = layid();
+
+                JOptionPane.showMessageDialog(this, KH.update(id, getData()));
+                listKhachHang = KH.getall();
+                showTable(listKhachHang);
+            }
+        }
     }//GEN-LAST:event_Btn_capNhatActionPerformed
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-
+         if (check() && check2()) {
+            JOptionPane.showMessageDialog(this, KH.add(getData()));
+            listKhachHang = KH.getall();
+            showTable(listKhachHang);
+        }
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void btn_chonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_chonActionPerformed
-
+        int rowKh = tb_khachHang.getSelectedRow();
+        if (rowKh < 0) {
+            JOptionPane.showMessageDialog(this, "lựa 1 khách hàng");
+            return;
+        }
+        Integer updateHoaDonKh = hoaDonServiec.updateHoaDonKhachHang(Integer.parseInt(tb_khachHang.getValueAt(rowKh, 0).toString()), Ma);
+        dispose();
     }//GEN-LAST:event_btn_chonActionPerformed
 
     private void txt_timKiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txt_timKiemCaretUpdate
@@ -279,7 +504,22 @@ public class KhachHangForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_timKiemCaretUpdate
 
     private void tb_khachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_khachHangMouseClicked
+        int id = layid();
 
+        int row = tb_khachHang.getSelectedRow();
+        KhachHangViewMD kh = listKhachHang.get(row);
+        txt_Ten1.setText(kh.getTen());
+        txt_TenDem.setText(kh.getTendem());
+        txt_Ho.setText(kh.getHo());
+        String gt = (tb_khachHang.getValueAt(row, 2).toString());
+        if (gt == "Nam") {
+            rd_nam.setSelected(true);
+        } else {
+            rd_nu.setSelected(true);
+        }
+        date_ngaysinh.setDate((Date) tb_khachHang.getValueAt(row, 3));
+        txt_sdt.setText(kh.getSdt());
+        txt_email.setText(kh.getEmail());
     }//GEN-LAST:event_tb_khachHangMouseClicked
 
     private void txt_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_timKiemActionPerformed
@@ -287,7 +527,11 @@ public class KhachHangForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_timKiemActionPerformed
 
     private void txt_timKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_timKiemKeyReleased
-
+       defaultTableModel = (DefaultTableModel) tb_khachHang.getModel();
+        defaultTableModel.setRowCount(0);
+        for (KhachHangViewMD khachHang01 : KH.GetTK(txt_timKiem.getText())) {
+            defaultTableModel.addRow(khachHang01.toDataRow());
+        }
     }//GEN-LAST:event_txt_timKiemKeyReleased
 
     /**

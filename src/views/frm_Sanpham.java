@@ -249,10 +249,7 @@ innitTable();
             return null;
         }
 
-        if (Integer.valueOf(txt_soluongton.getText()) <= 0) {
-            JOptionPane.showMessageDialog(this, "Số lượng tồn phải lớn hơn 0!");
-            return null;
-        }
+  
 // giá nhập
 
         if (txt_gianhap.getText().isEmpty()) {
@@ -329,8 +326,8 @@ innitTable();
         int soluong = (int) tbl_sp.getValueAt(row, 9);
         double gianhap = (double) tbl_sp.getValueAt(row, 10);
         double giaban = (double) tbl_sp.getValueAt(row, 11);
-        String mota = tbl_sp.getValueAt(row, 12).toString();
-        String barcode = tbl_sp.getValueAt(row, 13).toString();
+        String mota = tbl_sp.getValueAt(row, 13).toString();
+        String barcode = tbl_sp.getValueAt(row, 14).toString();
         return new ChiTietSPViewModel(ma, ten, nsx, ms, dmsp, kc, cl, th, km, soluong, gianhap, giaban, mota, barcode);
     }
 
@@ -391,9 +388,10 @@ innitTable();
         setMinimumSize(new java.awt.Dimension(1010, 640));
 
         panelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
-        panelGradiente1.setColorSecundario(new java.awt.Color(255, 204, 255));
+        panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
 
         panelBorder1.setBackground(new java.awt.Color(204, 204, 255));
+        panelBorder1.setToolTipText("");
         panelBorder1.add(txt_ma);
         txt_ma.setBounds(30, 30, 210, 40);
 
@@ -512,7 +510,7 @@ innitTable();
         btn_lammoi.setBounds(810, 20, 140, 40);
 
         btn_xoa.setBackground(new java.awt.Color(125, 224, 237));
-        btn_xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/file.png"))); // NOI18N
+        btn_xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/printer.png"))); // NOI18N
         btn_xoa.setText("In QRcode");
         btn_xoa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_xoa.addActionListener(new java.awt.event.ActionListener() {
@@ -554,6 +552,7 @@ innitTable();
 
         panelBorder2.setBackground(new java.awt.Color(204, 204, 255));
 
+        tbl_sp.setBackground(new java.awt.Color(255, 245, 255));
         tbl_sp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -643,6 +642,10 @@ innitTable();
         }
         int chon = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn thêm sản phẩm ?", "Thêm sản phẩm mới", JOptionPane.YES_NO_OPTION);
         if (chon == JOptionPane.YES_OPTION) {
+            if (Integer.valueOf(txt_soluongton.getText()) <= 0) {
+            JOptionPane.showMessageDialog(this, "Số lượng tồn phải lớn hơn 0!");
+            return ;
+        }
             boolean kq = iChiTietSPServices.Add(x);
             if (kq == true) {
                 loadData(iChiTietSPServices.getAll());
@@ -811,6 +814,7 @@ int row = tbl_sp.getSelectedRow();
         defaultTableModel.addColumn("Số lượng tồn");
         defaultTableModel.addColumn("Giá nhập");
         defaultTableModel.addColumn("Giá bán");
+        defaultTableModel.addColumn("Được giảm");
         defaultTableModel.addColumn("Mô tả");
         defaultTableModel.addColumn("Barcode");
 
@@ -833,10 +837,12 @@ int row = tbl_sp.getSelectedRow();
                 x.getSoluongton(),
                 x.getGianhap(),
                 x.getGiaban(),
+               String.format("%.0f", x.getKhuyenmai().getGiaTriGiam()) + " " + x.getKhuyenmai().getHinhThucKM(),
                 x.getMota(),
                 x.getQrcode()
             });
         }
+        System.out.println();
     }
 
 //    public ChiTietSP getData() {

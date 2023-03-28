@@ -33,9 +33,9 @@ public class MyButton extends JButton {
 
     public MyButton() {
         setContentAreaFilled(false);
-        colorOver = new Color(181, 242, 254);
-        color = new Color(125, 224, 237);
-        colorClick = new Color(158, 212, 237);
+        colorOver = new Color(255 ,225, 255);
+        color = new Color(125,224,237);
+        colorClick = new Color(255, 225 ,255);
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent me) {
