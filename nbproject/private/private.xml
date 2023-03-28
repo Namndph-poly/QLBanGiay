@@ -4,6 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Dashboard.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/viewmodels/KhachHang02ViewMD.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IKhachHangService.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/IChatLieuRepository.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/imp/KhachHangRPImpl.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/IKhachHangReposytory.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IKhuyenmaiService.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/viewmodels/KhachHangViewMD.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/application/main.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/models/KhachHang.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IChatLieuServices.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/imp/khahangsvImpl.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Khuyenmai.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Khachhang.java</file>
+=======
+<<<<<<< HEAD
             <file>file:/C:/Users/admin/Documents/QLBanGiay/src/application/main.java</file>
 =======
             <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Dangnhap.java</file>
@@ -12,6 +28,7 @@
             <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Khachhang.java</file>
             <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Quenmatkhau.java</file>
 >>>>>>> 958f27ceabd71840d59607857525cb126cb1c987
+>>>>>>> 154b9792c6c905f94f1a05b4094f568206ee50e1
         </group>
     </open-files>
 </project-private>

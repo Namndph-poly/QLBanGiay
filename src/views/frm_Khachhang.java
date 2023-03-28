@@ -475,13 +475,13 @@ public class frm_Khachhang extends javax.swing.JPanel {
         TB_bang1.setBackground(new java.awt.Color(255, 245, 255));
         TB_bang1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Họ Và Tên", "Giới Tính", "Ngày Sinh", "SĐT", "Email", "Điểm Thưởng"
+                "ID", "Họ Và Tên", "Giới Tính", "Ngày Sinh", "SĐT", "Email"
             }
         ));
         TB_bang1.setGridColor(new java.awt.Color(255, 255, 255));
