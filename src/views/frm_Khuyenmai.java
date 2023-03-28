@@ -122,7 +122,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
 
         panelGradiente1.setBackground(new java.awt.Color(204, 255, 255));
         panelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
-        panelGradiente1.setColorSecundario(new java.awt.Color(255, 204, 255));
+        panelGradiente1.setColorSecundario(new java.awt.Color(204, 204, 255));
 
         panelBorder1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -215,6 +215,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
         panelBorder1.add(btn_clear);
         btn_clear.setBounds(750, 170, 130, 40);
 
+        tb_sp.setBackground(new java.awt.Color(255, 245, 255));
         tb_sp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -238,6 +239,8 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
         jScrollPane2.setBounds(20, 160, 580, 130);
 
         cb_selectAll.setBackground(new java.awt.Color(204, 204, 255));
+        cb_selectAll.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        cb_selectAll.setForeground(new java.awt.Color(102, 102, 255));
         cb_selectAll.setText("Select All");
         cb_selectAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,11 +248,12 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             }
         });
         panelBorder1.add(cb_selectAll);
-        cb_selectAll.setBounds(20, 130, 71, 20);
+        cb_selectAll.setBounds(20, 130, 130, 24);
 
         panelGradiente1.add(panelBorder1);
         panelBorder1.setBounds(10, 0, 990, 300);
 
+        tb_khuyenmai.setBackground(new java.awt.Color(255, 245, 255));
         tb_khuyenmai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

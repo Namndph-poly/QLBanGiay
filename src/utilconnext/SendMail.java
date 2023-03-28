@@ -14,8 +14,8 @@ import javax.mail.internet.*;
  */
 public class SendMail {
     public static void send(String emailto,String sub,String msb) {
-        final String username = "cuahangdienthoaipoly@gmail.com";
-        final String password = "ydispkdidsxfrcek";
+        final String username = "namndph22694@fpt.edu.vn";
+        final String password = "namheo123";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");

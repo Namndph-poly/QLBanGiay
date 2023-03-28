@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/admin/Documents/QLBanGiay/src/application/main.java</file>
+=======
+            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Dangnhap.java</file>
+            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Khuyenmai.java</file>
+            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Banhang.java</file>
+            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Khachhang.java</file>
+            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Quenmatkhau.java</file>
+>>>>>>> 958f27ceabd71840d59607857525cb126cb1c987
         </group>
     </open-files>
 </project-private>

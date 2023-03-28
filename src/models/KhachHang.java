@@ -11,38 +11,37 @@ import java.util.Date;
  * @author Admin
  */
 public class KhachHang {
-    private String id;
+    private int id;
     private String ten;
-    private String tenDem;
+    private String tendem;
     private String ho;
-    private boolean gioiTinh;
-    private Date ngaySinh;
+    private int gioitinh;
+    private Date ngaysinh;
     private String email;
     private String sdt;
-    private int diemThuong;
+    private int diemthuong;
 
     public KhachHang() {
     }
 
-    public KhachHang(String ten, String tenDem, String ho, boolean gioiTinh, Date ngaySinh, String email, String sdt) {
+    public KhachHang(int id, String ten, String tendem, String ho, int gioitinh, Date ngaysinh, String email, String sdt, int diemthuong) {
+        this.id = id;
         this.ten = ten;
-        this.tenDem = tenDem;
+        this.tendem = tendem;
         this.ho = ho;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
+        this.gioitinh = gioitinh;
+        this.ngaysinh = ngaysinh;
         this.email = email;
         this.sdt = sdt;
+        this.diemthuong = diemthuong;
     }
 
-    public KhachHang(String ten, String tenDem, String ho, boolean gioiTinh, Date ngaySinh, String email, String sdt, int diemThuong) {
-        this.ten = ten;
-        this.tenDem = tenDem;
-        this.ho = ho;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.email = email;
-        this.sdt = sdt;
-        this.diemThuong = diemThuong;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTen() {
@@ -53,12 +52,12 @@ public class KhachHang {
         this.ten = ten;
     }
 
-    public String getTenDem() {
-        return tenDem;
+    public String getTendem() {
+        return tendem;
     }
 
-    public void setTenDem(String tenDem) {
-        this.tenDem = tenDem;
+    public void setTendem(String tendem) {
+        this.tendem = tendem;
     }
 
     public String getHo() {
@@ -69,20 +68,20 @@ public class KhachHang {
         this.ho = ho;
     }
 
-    public boolean isGioiTinh() {
-        return gioiTinh;
+    public int getGioitinh() {
+        return gioitinh;
     }
 
-    public void setGioiTinh(boolean gioiTinh) {
-        this.gioiTinh = gioiTinh;
+    public void setGioitinh(int gioitinh) {
+        this.gioitinh = gioitinh;
     }
 
-    public Date getNgaySinh() {
-        return ngaySinh;
+    public Date getNgaysinh() {
+        return ngaysinh;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
-        this.ngaySinh = ngaySinh;
+    public void setNgaysinh(Date ngaysinh) {
+        this.ngaysinh = ngaysinh;
     }
 
     public String getEmail() {
@@ -101,20 +100,12 @@ public class KhachHang {
         this.sdt = sdt;
     }
 
-    public int getDiemThuong() {
-        return diemThuong;
+    public int getDiemthuong() {
+        return diemthuong;
     }
 
-    public void setDiemThuong(int diemThuong) {
-        this.diemThuong = diemThuong;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setDiemthuong(int diemthuong) {
+        this.diemthuong = diemthuong;
     }
     
     

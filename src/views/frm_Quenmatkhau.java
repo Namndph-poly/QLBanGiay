@@ -65,6 +65,7 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         hideshow1 = new javax.swing.JLabel();
         hideshow = new javax.swing.JLabel();
         btn_send = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(410, 450));
@@ -74,21 +75,27 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         setVerifyInputWhenFocusTarget(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_email.setBackground(new java.awt.Color(227, 255, 255));
+        txt_email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 280, 40));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Tài khoản");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, 24));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Quên mật khẩu");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 257, -1));
 
+        txtPass.setBackground(new java.awt.Color(227, 255, 255));
         txtPass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 280, 40));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, 24));
 
@@ -111,21 +118,28 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         cmdBackLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(cmdBackLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Confirm Password");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, 24));
 
+        txtPass1.setBackground(new java.awt.Color(227, 255, 255));
         txtPass1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         add(txtPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 280, 40));
 
-        txt_code.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_code.setBackground(new java.awt.Color(227, 255, 255));
+        txt_code.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         add(txt_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 280, 40));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Mã bảo mật");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 24));
 
         btn_doimk.setBackground(new java.awt.Color(125, 229, 251));
         btn_doimk.setForeground(new java.awt.Color(0, 51, 102));
         btn_doimk.setText("Đổi mật khẩu");
+        btn_doimk.setColor(new java.awt.Color(125, 229, 251));
         btn_doimk.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_doimk.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -158,6 +172,9 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
             }
         });
         add(btn_send, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 40, 40));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/HD-wallpaper-city-shoes-nike-heights-wristwatch-parkour.jpg"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-360, -110, 940, 610));
     }// </editor-fold>//GEN-END:initComponents
 
     private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
@@ -313,6 +330,7 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private swing.MyButton myButton1;
     private swing.MyPassword txtPass;
     private swing.MyPassword txtPass1;
