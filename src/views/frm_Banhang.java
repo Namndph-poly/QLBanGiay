@@ -149,41 +149,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         }
     }
 
-    private void getListGioHang() {
-        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
-        modelGioHang.setRowCount(0);
-        for (GioHangViewModel x : listGioHang) {
-            modelGioHang.addRow(new Object[]{
-                x.getMaSP(),
-                x.getTenSP(),
-                x.getSoLuong(),
-                String.format("%.0f", x.getDonGia()),
-                String.format("%.0f", x.getGiamGia()) + " " + x.getHinhThucGiamGia(),
-                String.format("%.0f", x.getThanhTien())
-            });
-        }
-    }
 
-    private void getListGioHangHDCT(String MaHD) {
-        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
-        modelGioHang.setRowCount(0);
-        List<HoaDonCHiTietViewModel> list = hoaDonServiec.getListHoaDonChiTiet(MaHD);
-        if (list.isEmpty()) {
-            return;
-        }
-        for (HoaDonCHiTietViewModel x : list) {
-            GioHangViewModel gioHang = new GioHangViewModel();
-            gioHang.setMaSP(x.getSanPham().getMa());
-            gioHang.setTenSP(x.getSanPham().getTen());
-            gioHang.setSoLuong(x.getSoluong());
-            gioHang.setDonGia(x.getDonGia());
-            gioHang.setGiamGia(x.getSanPham().getKhuenMai().getGiaTriGiam());
-            gioHang.setHinhThucGiamGia(x.getSanPham().getKhuenMai().getHinhThucKM());
-            listGioHang.add(gioHang);
-            getListGioHang();
-
-        }
-    }
 
     private String getTrangThaiHD(int TrangThai) {
         if (TrangThai == 0) {
@@ -710,9 +676,6 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             JOptionPane.showMessageDialog(this, "Bạn cần chọn hóa đơn để thêm sản phẩm!");
             return;
         }
-       
-
-     
         try {
            
             int NhapSoLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập Số Lượng!"));
