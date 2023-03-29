@@ -33,6 +33,8 @@ import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
@@ -708,7 +710,11 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             JOptionPane.showMessageDialog(this, "Bạn cần chọn hóa đơn để thêm sản phẩm!");
             return;
         }
+       
+
+     
         try {
+           
             int NhapSoLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập Số Lượng!"));
             String MaSP = tb_sanPham.getValueAt(row, 0).toString();
             String TenSP = tb_sanPham.getValueAt(row, 1).toString();
@@ -717,6 +723,19 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             Double GiamGia = Double.parseDouble(tb_sanPham.getValueAt(row, 3).toString());
             String hinhThucGiamGia = tb_sanPham.getValueAt(row, 4).toString();
             List<HoaDonCHiTietViewModel> listh = hoaDonServiec.getListHoaDonChiTiet(tb_hoaDon.getValueAt(rowHD, 0).toString());
+            //validate nam
+          
+             
+            if(NhapSoLuong<=0){
+             
+              JOptionPane.showMessageDialog(null, "Số lượng phải lớn hơn 0 !","Chú ý",JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+    
+            
+            
+            
+            //ket thuc validate nam
             if (SoLuong >= NhapSoLuong) {
                 for (HoaDonCHiTietViewModel x : listh) {
                     if (x.getSanPham().getMa().equals(MaSP)) {
@@ -755,7 +774,9 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 lbl_thanhTien.setText(String.valueOf(String.format("%.0f", ThanhTien)));
 
             } else if (SoLuong < NhapSoLuong) {
-                JOptionPane.showMessageDialog(this, "Sản phẩm không đủ ");
+                
+                            JOptionPane.showMessageDialog(null, "Sản phẩm không đủ", "Cảnh báo", JOptionPane.ERROR_MESSAGE);
+
                 return;
             }
 //            if (Integer.parseInt(lbl_thanhTien.getText()) >= 500000) {
@@ -776,6 +797,8 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
 
         } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, "Số lượng phải là số \n Không được chứa chữ và kí tự đặc biệt", "Cảnh báo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_tb_sanPhamMouseClicked
 
