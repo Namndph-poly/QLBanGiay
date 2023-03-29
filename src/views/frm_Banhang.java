@@ -156,8 +156,8 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 x.getTenSP(),
                 x.getSoLuong(),
                 String.format("%.0f", x.getDonGia()),
-                String.format("%.0f", x.khuyenMai()),
-                String.format("%.0f", x.tongTien())
+                String.format("%.0f", x.getGiamGia()) + " " + x.getHinhThucGiamGia(),
+                String.format("%.0f", x.getThanhTien())
             });
         }
     }
@@ -211,7 +211,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
     private void clear() {
         lbl_sdt.setText("");
-  
+
         lbl_tongTien1.setText(String.valueOf(0));
         lbl_giamGia1.setText(String.valueOf(0.0));
         lbl_thanhTien.setText(String.valueOf(0));
@@ -220,7 +220,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         lbl_tienThua.setText("");
         txt_ghiChu.setText("");
         lbl_sdt.setText("");
-     
+
         lbl_tenKhachHang.setText("");
     }
 
@@ -251,6 +251,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         return hdct;
     }
+
     private void mouse() {
         int rowHD = tb_hoaDon.getSelectedRow();
         int row = tb_hoaDon.getSelectedRow();
@@ -278,7 +279,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 lbl_giamGia1.setText(String.valueOf(giam += tongPT));
                 lbl_giamGia1.setText(String.format("%.0f", giam));
             } else {
-                tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam();
+                tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam() * x.getSoluong();
                 lbl_giamGia1.setText(String.valueOf(giam += tongVN));
             }
             count++;
@@ -293,7 +294,6 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 //        }
 
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -747,7 +747,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                         lbl_giamGia1.setText(String.valueOf(giam += tongPT));
                         lbl_giamGia1.setText(String.format("%.0f", giam));
                     } else {
-                        tongVN = x.getGiamGia();
+                        tongVN = x.getGiamGia() * x.getSoLuong();
                         lbl_giamGia1.setText(String.valueOf(giam + tongVN));
                     }
                     count++;
@@ -783,7 +783,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }//GEN-LAST:event_tb_sanPhamMouseClicked
 
     private void btn_thanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thanhToanActionPerformed
-        if(tb_gioHang.getRowCount()==0){
+        if (tb_gioHang.getRowCount() == 0) {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn sản phẩm lên giỏ hàng !");
             return;
         }
@@ -820,13 +820,11 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         hoaDon.setTongTien(Double.parseDouble(lbl_thanhTien.getText()));
         hoaDonServiec.updateTrangThaiHoaDon(hoaDon);
 
-    
 //        List<KhachHang> getListKhachHang = khachHangService.TenDiemKhachHang(lbl_sdt.getText());
 //        for (KhachHang khachHang : getListKhachHang) {
 //            khachHangService.updateDiemKhachHang(lbl_sdt.getText(), khachHang.getDiemthuong() + Integer.parseInt(lbl_diemThuong.getText()));
 //            break;
 //        }
-
         JOptionPane.showMessageDialog(this, "thanh toán thành công");
         if (chk_inHoaDon.isSelected()) {
             XWPFDocument document = new XWPFDocument();
@@ -896,7 +894,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                         "Đơn Giá)");
                 tableRowOne.addNewTableCell().setText(
                         "Thành Tiền");
-int row = 0;
+                int row = 0;
 
                 for (int i = 0; i < tb_gioHang.getRowCount(); i++) {
                     XWPFTableRow tableRowTwo = table.createRow();
@@ -993,7 +991,7 @@ int row = 0;
             getListGioHangHDCT(MaHD);
             lbl_tenKhachHang.setText("");
             lbl_sdt.setText("");
-        
+
             Double tongPT = 0.0;
             Double tongVN = 0.0;
             Double tongTien = 0.0;
@@ -1012,7 +1010,7 @@ int row = 0;
                     lbl_giamGia1.setText(String.valueOf(giam += tongPT));
                     lbl_giamGia1.setText(String.format("%.0f", giam));
                 } else {
-                    tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam();
+                    tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam() * x.getSoluong();
                     lbl_giamGia1.setText(String.valueOf(giam += tongVN));
                 }
 
@@ -1107,7 +1105,7 @@ int row = 0;
             lbl_tongTien1.setText(String.valueOf(0));
             lbl_giamGia1.setText(String.valueOf(0));
             lbl_thanhTien.setText(String.valueOf(0));
-          
+
 //            lbl_diemThuong.setText("");
         } else {
             return;
@@ -1185,7 +1183,7 @@ int row = 0;
     }//GEN-LAST:event_myButton9ActionPerformed
 
     private void btn_xacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xacNhanActionPerformed
- int rowHD = tb_hoaDon.getSelectedRow();
+        int rowHD = tb_hoaDon.getSelectedRow();
         if (rowHD < 0) {
             JOptionPane.showMessageDialog(this, "chọn 1 hoá đơn hiện thị khách hàng");
             return;
@@ -1195,7 +1193,7 @@ int row = 0;
         for (HoaDon hoaDon : getList) {
             lbl_tenKhachHang.setText(hoaDon.getKhachHang().getTen());
             lbl_sdt.setText(hoaDon.getKhachHang().getSdt());
-           
+
             return;
         }
     }//GEN-LAST:event_btn_xacNhanActionPerformed
@@ -1219,7 +1217,7 @@ int row = 0;
     }//GEN-LAST:event_jLabel3AncestorAdded
 
     private void btn_thayDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thayDoiActionPerformed
- int rowHD = tb_hoaDon.getSelectedRow();
+        int rowHD = tb_hoaDon.getSelectedRow();
         if (rowHD < 0) {
             JOptionPane.showMessageDialog(this, "chọn hoá đơn bạn muốn thêm khách hàng vào");
             return;
@@ -1313,7 +1311,7 @@ int row = 0;
     private swing.MyTextField txt_tienKhachDua;
     // End of variables declaration//GEN-END:variables
 
-@Override
+    @Override
     public void run() {
         do {
             try {
@@ -1375,5 +1373,5 @@ int row = 0;
         t.setDaemon(true);
         return t;
     }
-  
+
 }
