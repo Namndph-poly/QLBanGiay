@@ -12,21 +12,18 @@ import models.SanPham;
  * @author Admin
  */
 public class HoaDonCHiTietViewModel {
+
     private int Soluong;
     private Double DonGia;
-
     private HoaDon haDon;
     private SanPham sanPham;
-   
-    
-  
+
     public HoaDonCHiTietViewModel() {
     }
 
-    public HoaDonCHiTietViewModel( int Soluong, Double DonGia, HoaDon haDon, SanPham sanPham) {
+    public HoaDonCHiTietViewModel(int Soluong, Double DonGia, HoaDon haDon, SanPham sanPham) {
         this.Soluong = Soluong;
         this.DonGia = DonGia;
-      
         this.haDon = haDon;
         this.sanPham = sanPham;
     }
@@ -47,8 +44,6 @@ public class HoaDonCHiTietViewModel {
         this.DonGia = DonGia;
     }
 
-   
-
     public HoaDon getHaDon() {
         return haDon;
     }
@@ -65,8 +60,8 @@ public class HoaDonCHiTietViewModel {
         this.sanPham = sanPham;
     }
 
-    public double getThanhTien(){
-        return DonGia*Soluong;
+    public double getThanhTien() {
+        return DonGia * Soluong;
     }
-    
+
 }

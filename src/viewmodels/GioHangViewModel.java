@@ -9,6 +9,7 @@ package viewmodels;
  * @author Admin
  */
 public class GioHangViewModel {
+
     private String MaSP;
     private String TenSP;
     private int SoLuong;
@@ -16,7 +17,7 @@ public class GioHangViewModel {
     private Double ThanhTien;
     private Double GiamGia;
     private String HinhThucGiamGia;
-   
+
     public GioHangViewModel() {
     }
 
@@ -25,12 +26,11 @@ public class GioHangViewModel {
         this.TenSP = TenSP;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
-      
+
         this.GiamGia = GiamGia;
         this.HinhThucGiamGia = HinhThucGiamGia;
-       
+
     }
- 
 
     public String getMaSP() {
         return MaSP;
@@ -63,9 +63,9 @@ public class GioHangViewModel {
     public void setDonGia(Double DonGia) {
         this.DonGia = DonGia;
     }
-    
-    public Double getThanhTien(){
-    return DonGia * SoLuong;
+
+    public Double getThanhTien() {
+        return DonGia * SoLuong;
     }
 
     public Double getGiamGia() {
@@ -84,6 +84,12 @@ public class GioHangViewModel {
         this.HinhThucGiamGia = HinhThucGiamGia;
     }
 
- 
-    
+    public Double khuyenMai() {
+        return GiamGia * SoLuong;
+    }
+
+    public Double tongTien() {
+        return DonGia * SoLuong - GiamGia * SoLuong;
+    }
+
 }

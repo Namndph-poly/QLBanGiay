@@ -156,8 +156,8 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 x.getTenSP(),
                 x.getSoLuong(),
                 String.format("%.0f", x.getDonGia()),
-                String.format("%.0f", x.getGiamGia()) + " " + x.getHinhThucGiamGia(),
-                String.format("%.0f", x.getThanhTien())
+                String.format("%.0f", x.khuyenMai()),
+                String.format("%.0f", x.tongTien())
             });
         }
     }
@@ -824,125 +824,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 //        }
 
         JOptionPane.showMessageDialog(this, "thanh toán thành công");
-        if (chk_inHoaDon.isSelected()) {
-            XWPFDocument document = new XWPFDocument();
-            XWPFParagraph xWPFParagraph = document.createParagraph();
-            XWPFRun run = xWPFParagraph.createRun();
-            XWPFParagraph titleGraph = document.createParagraph();
-
-            titleGraph.setAlignment(ParagraphAlignment.CENTER);
-
-            String title = "CỬA HÀNG BÁN GIÀY THỂ THAO NỮ";
-
-            XWPFRun titleRun = titleGraph.createRun();
-
-            titleRun.setBold(true);
-
-            titleRun.setText(title);
-
-            XWPFParagraph xWPFParagraph1 = document.createParagraph();
-            xWPFParagraph1.setAlignment(ParagraphAlignment.CENTER);
-            run = xWPFParagraph1.createRun();
-            run.setText("ĐC: Phố Trinh Văn Bô , Nam Từ Liêm , Hà Nội");
-
-            XWPFParagraph xWPFParagraph2 = document.createParagraph();
-            xWPFParagraph2.setAlignment(ParagraphAlignment.CENTER);
-            run = xWPFParagraph2.createRun();
-            run.setText("SĐT:0967493115 ");
-
-            XWPFParagraph xWPFParagraph3 = document.createParagraph();
-
-            xWPFParagraph3.setAlignment(ParagraphAlignment.CENTER);
-
-            run = xWPFParagraph3.createRun();
-            run.setText("HOÁ ĐƠN BÁN GIÀY");
-
-            XWPFParagraph xWPFParagraph4 = document.createParagraph();
-            run = xWPFParagraph4.createRun();
-            run.setText("Khách Hàng :" + lbl_tenKhachHang.getText());
-
-            XWPFParagraph xWPFParagraph0 = document.createParagraph();
-            run = xWPFParagraph0.createRun();
-            run.setText("Mã Hoá Đơn :" + tb_hoaDon.getValueAt(rowHD, 0));
-
-            XWPFParagraph xWPFParagraph5 = document.createParagraph();
-            run = xWPFParagraph5.createRun();
-            run.setText("Địa Chỉ :");
-
-            XWPFParagraph xWPFParagraph6 = document.createParagraph();
-            run = xWPFParagraph6.createRun();
-            run.setText("Số Điện Thoại :" + lbl_sdt.getText());
-            XWPFParagraph xWPFParagraph7 = document.createParagraph();
-            run = xWPFParagraph7.createRun();
-            run.setText("Ngày lập :" + date);
-
-            File f = new File("D:\\DA1//HoaDon//" + hoaDon.getMa() + ".docx");
-            try {
-                FileOutputStream fos = new FileOutputStream(f);
-                XWPFParagraph xWPFParagraph13 = document.createParagraph();
-                run = xWPFParagraph13.createRun();
-                run.setText("  ");
-                XWPFTable table = document.createTable();
-                table.setWidth(10000);
-                XWPFTableRow tableRowOne = table.getRow(0);
-
-                tableRowOne.getCell(0).setText("tên Sản Phẩm");
-                tableRowOne.addNewTableCell().setText("Số Lượng");
-                tableRowOne.addNewTableCell().setText(
-                        "Đơn Giá)");
-                tableRowOne.addNewTableCell().setText(
-                        "Thành Tiền");
-                int row = 0;
-
-                for (int i = 0; i < tb_gioHang.getRowCount(); i++) {
-                    XWPFTableRow tableRowTwo = table.createRow();
-
-                    tableRowTwo.getCell(0).setText(tb_gioHang.getValueAt(row, 1).toString());
-
-                    tableRowTwo.getCell(1).setText(tb_gioHang.getValueAt(row, 2).toString());
-
-                    tableRowTwo.getCell(2).setText(tb_gioHang.getValueAt(row, 3).toString());
-
-                    tableRowTwo.getCell(3).setText(String.valueOf(Double.parseDouble(tb_gioHang.getValueAt(row, 2).toString()) * Double.parseDouble(tb_gioHang.getValueAt(row, 3).toString())));
-
-                    row++;
-                }
-
-                XWPFParagraph xWPFParagraph14 = document.createParagraph();
-                run = xWPFParagraph14.createRun();
-                run.setText("  ");
-                XWPFParagraph xWPFParagraph8 = document.createParagraph();
-                run = xWPFParagraph8.createRun();
-                run.setText("Giảm Giá :" + lbl_giamGia1.getText());
-
-                XWPFParagraph xWPFParagraph9 = document.createParagraph();
-                run = xWPFParagraph9.createRun();
-                run.setText("Tổng Tiền Thanh Toán :" + lbl_thanhTien.getText());
-                XWPFParagraph xWPFParagraph10 = document.createParagraph();
-                run = xWPFParagraph10.createRun();
-                run.setText("tiền trả lại :" + lbl_tienThua.getText());
-                XWPFParagraph xWPFParagraph11 = document.createParagraph();
-                xWPFParagraph11.setAlignment(ParagraphAlignment.RIGHT);
-
-                run = xWPFParagraph11.createRun();
-                run.setText("Người Lập Hoá Đơn");
-
-                XWPFParagraph xWPFParagraph12 = document.createParagraph();
-                xWPFParagraph12.setAlignment(ParagraphAlignment.RIGHT);
-                run = xWPFParagraph12.createRun();
-                run.setText(TenNhanVien);
-                document.write(fos);
-                fos.close();
-                document.close();
-                System.out.println("xuất hoá đơn thành công");
-
-            } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-        }
+        
 
         List<HoaDonViewModel> getList = hoaDonServiec.getListHD(1);
 
