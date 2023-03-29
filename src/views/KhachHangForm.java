@@ -265,13 +265,13 @@ public class KhachHangForm extends javax.swing.JFrame {
 
         tb_khachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Họ Tên Khách Hàng", "Giới Tính", "Ngày Sinh", "SĐT", "Email", "Điểm Thưởng"
+                "ID", "Họ Tên Khách Hàng", "Giới Tính", "Ngày Sinh", "SĐT", "Email"
             }
         ));
         tb_khachHang.setGridColor(new java.awt.Color(255, 255, 255));
