@@ -292,7 +292,6 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 //        } else {
 //            lbl_diemThuong.setText(String.valueOf(0));
 //        }
-
     }
 
     /**
@@ -725,7 +724,6 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                         return;
                     }
                 }
-
                 listGioHang.add(new GioHangViewModel(MaSP, TenSP, NhapSoLuong, DonGia, GiamGia, hinhThucGiamGia));
                 getListGioHang();
 
@@ -759,7 +757,6 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             } else if (SoLuong < NhapSoLuong) {
                 JOptionPane.showMessageDialog(this, "Sản phẩm không đủ ");
                 return;
-
             }
 //            if (Integer.parseInt(lbl_thanhTien.getText()) >= 500000) {
 //                int diemThuong = Integer.parseInt(lbl_thanhTien.getText()) / 100000;
