@@ -914,6 +914,8 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 XWPFTableRow tableRowOne = table.getRow(0);
 
                 tableRowOne.getCell(0).setText("Tên Sản Phẩm");
+                tableRowOne.addNewTableCell().setText("Màu Sắc");
+                tableRowOne.addNewTableCell().setText("Size");
                 tableRowOne.addNewTableCell().setText("Số Lượng");
                 tableRowOne.addNewTableCell().setText(
                         "Đơn Giá)");
@@ -925,12 +927,16 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                     XWPFTableRow tableRowTwo = table.createRow();
 
                     tableRowTwo.getCell(0).setText(tb_gioHang.getValueAt(row, 1).toString());
+                    
+                    tableRowTwo.getCell(1).setText(tb_gioHang.getValueAt(row, 2).toString());
+                    
+                    tableRowTwo.getCell(2).setText(tb_gioHang.getValueAt(row, 3).toString());
 
-                    tableRowTwo.getCell(1).setText(tb_gioHang.getValueAt(row, 4).toString());
+                    tableRowTwo.getCell(3).setText(tb_gioHang.getValueAt(row, 4).toString());
 
-                    tableRowTwo.getCell(2).setText(tb_gioHang.getValueAt(row, 5).toString());
+                    tableRowTwo.getCell(4).setText(tb_gioHang.getValueAt(row, 5).toString());
 
-                    tableRowTwo.getCell(3).setText(String.valueOf(Double.parseDouble(tb_gioHang.getValueAt(row, 4).toString()) * Double.parseDouble(tb_gioHang.getValueAt(row, 5).toString())));
+                    tableRowTwo.getCell(5).setText(String.valueOf(Double.parseDouble(tb_gioHang.getValueAt(row, 4).toString()) * Double.parseDouble(tb_gioHang.getValueAt(row, 5).toString())));
 
                     row++;
                 }
