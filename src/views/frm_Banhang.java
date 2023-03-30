@@ -219,7 +219,41 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         return hdct;
     }
+private void getListGioHang() {
+        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
+        modelGioHang.setRowCount(0);
+        for (GioHangViewModel x : listGioHang) {
+            modelGioHang.addRow(new Object[]{
+                x.getMaSP(),
+                x.getTenSP(),
+                x.getSoLuong(),
+                String.format("%.0f", x.getDonGia()),
+                String.format("%.0f", x.getGiamGia()) + " " + x.getHinhThucGiamGia(),
+                String.format("%.0f", x.getThanhTien())
+            });
+        }
+    }
 
+    private void getListGioHangHDCT(String MaHD) {
+        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
+        modelGioHang.setRowCount(0);
+        List<HoaDonCHiTietViewModel> list = hoaDonServiec.getListHoaDonChiTiet(MaHD);
+        if (list.isEmpty()) {
+            return;
+        }
+        for (HoaDonCHiTietViewModel x : list) {
+            GioHangViewModel gioHang = new GioHangViewModel();
+            gioHang.setMaSP(x.getSanPham().getMa());
+            gioHang.setTenSP(x.getSanPham().getTen());
+            gioHang.setSoLuong(x.getSoluong());
+            gioHang.setDonGia(x.getDonGia());
+            gioHang.setGiamGia(x.getSanPham().getKhuenMai().getGiaTriGiam());
+            gioHang.setHinhThucGiamGia(x.getSanPham().getKhuenMai().getHinhThucKM());
+            listGioHang.add(gioHang);
+            getListGioHang();
+
+        }
+    }
     private void mouse() {
         int rowHD = tb_hoaDon.getSelectedRow();
         int row = tb_hoaDon.getSelectedRow();
