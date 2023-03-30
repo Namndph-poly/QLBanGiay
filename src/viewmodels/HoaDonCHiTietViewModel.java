@@ -5,6 +5,8 @@
 package viewmodels;
 
 import models.HoaDon;
+import models.KichCo;
+import models.MauSac;
 import models.SanPham;
 
 /**
@@ -13,20 +15,26 @@ import models.SanPham;
  */
 public class HoaDonCHiTietViewModel {
 
-    private int Soluong;
+     private int Soluong;
     private Double DonGia;
     private HoaDon haDon;
     private SanPham sanPham;
+    private MauSac mauSac;
+    private KichCo kichCo;
 
     public HoaDonCHiTietViewModel() {
     }
 
-    public HoaDonCHiTietViewModel(int Soluong, Double DonGia, HoaDon haDon, SanPham sanPham) {
+    public HoaDonCHiTietViewModel(int Soluong, Double DonGia, HoaDon haDon, SanPham sanPham, MauSac mauSac, KichCo kichCo) {
         this.Soluong = Soluong;
         this.DonGia = DonGia;
         this.haDon = haDon;
         this.sanPham = sanPham;
+        this.mauSac = mauSac;
+        this.kichCo = kichCo;
     }
+
+   
 
     public int getSoluong() {
         return Soluong;
@@ -64,4 +72,19 @@ public class HoaDonCHiTietViewModel {
         return DonGia * Soluong;
     }
 
+    public MauSac getMauSac() {
+        return mauSac;
+    }
+
+    public void setMauSac(MauSac mauSac) {
+        this.mauSac = mauSac;
+    }
+
+    public KichCo getKichCo() {
+        return kichCo;
+    }
+
+    public void setKichCo(KichCo kichCo) {
+        this.kichCo = kichCo;
+    }
 }

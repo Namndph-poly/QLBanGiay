@@ -12,6 +12,8 @@ public class GioHangViewModel {
 
     private String MaSP;
     private String TenSP;
+    private String MauSac;
+    private String KichCo;
     private int SoLuong;
     private Double DonGia;
     private Double ThanhTien;
@@ -21,16 +23,19 @@ public class GioHangViewModel {
     public GioHangViewModel() {
     }
 
-    public GioHangViewModel(String MaSP, String TenSP, int SoLuong, Double DonGia, Double GiamGia, String HinhThucGiamGia) {
+    public GioHangViewModel(String MaSP, String TenSP, String MauSac, String KichCo, int SoLuong, Double DonGia, Double GiamGia, String HinhThucGiamGia) {
         this.MaSP = MaSP;
         this.TenSP = TenSP;
+        this.MauSac = MauSac;
+        this.KichCo = KichCo;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
-
+       
         this.GiamGia = GiamGia;
         this.HinhThucGiamGia = HinhThucGiamGia;
-
     }
+
+
 
     public String getMaSP() {
         return MaSP;
@@ -90,6 +95,22 @@ public class GioHangViewModel {
 
     public Double tongTien() {
         return DonGia * SoLuong - GiamGia * SoLuong;
+    }
+
+    public String getMauSac() {
+        return MauSac;
+    }
+
+    public void setMauSac(String MauSac) {
+        this.MauSac = MauSac;
+    }
+
+    public String getKichCo() {
+        return KichCo;
+    }
+
+    public void setKichCo(String KichCo) {
+        this.KichCo = KichCo;
     }
 
 }
