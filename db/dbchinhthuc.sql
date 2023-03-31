@@ -108,7 +108,7 @@ Id INT Identity(1,1) primary key ,
 IdKH INT foreign key references KhachHang(Id),
 IdNV INT foreign key references Users(Id),
 Ma VARCHAR(20) UNIQUE,
-NgayTao DATE DEFAULT NULL,
+NgayTao DATETIME DEFAULT NULL,
 NgayThanhToan DATE DEFAULT NULL,
 TinhTrang bit DEFAULT 0
 )

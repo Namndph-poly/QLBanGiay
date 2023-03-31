@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -204,8 +205,8 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         hd.setMa(Ma + random.nextInt());
 
         long millis = System.currentTimeMillis();
-        Date date = new Date(millis);
-        hd.setNgayTao(date);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        hd.setNgayTao(timestamp);
 
         return hd;
     }

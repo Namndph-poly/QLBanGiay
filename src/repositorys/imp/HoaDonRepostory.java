@@ -36,7 +36,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
                 HoaDon hoadon = new HoaDon();
                 hoadon.setMa(rs.getString(1));
                 hoadon.setGhichu(rs.getString(7));
-                hoadon.setNgayTao(rs.getDate(4));
+                hoadon.setNgayTao(rs.getTimestamp(4));
                 hoadon.setNgayThanhToan(rs.getDate(5));
                 hoadon.setTinhTrang(rs.getInt(6));
                 hoadon.setTongTien(rs.getDouble(8));
@@ -137,7 +137,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
                 HoaDon hoadon = new HoaDon();
                 hoadon.setMa(rs.getString(1));
                 hoadon.setGhichu(rs.getString(7));
-                hoadon.setNgayTao(rs.getDate(4));
+                hoadon.setNgayTao(rs.getTimestamp(4));
                 hoadon.setNgayThanhToan(rs.getDate(5));
                 hoadon.setTinhTrang(rs.getInt(6));
 
@@ -173,7 +173,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
                 HoaDon hoadon = new HoaDon();
                 hoadon.setMa(rs.getString(1));
                 hoadon.setGhichu(rs.getString(7));
-                hoadon.setNgayTao(rs.getDate(4));
+                hoadon.setNgayTao(rs.getTimestamp(4));
                 hoadon.setNgayThanhToan(rs.getDate(5));
                 hoadon.setTinhTrang(rs.getInt(6));
                 hoadon.setTongTien(rs.getDouble(8));
@@ -209,7 +209,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
                 HoaDon hoadon = new HoaDon();
                 hoadon.setMa(rs.getString(1));
                 hoadon.setGhichu(rs.getString(7));
-                hoadon.setNgayTao(rs.getDate(4));
+                hoadon.setNgayTao(rs.getTimestamp(4));
                 hoadon.setNgayThanhToan(rs.getDate(5));
                 hoadon.setTinhTrang(rs.getInt(6));
                 hoadon.setTongTien(rs.getDouble(8));
@@ -240,7 +240,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
             PreparedStatement pr = conn.prepareStatement(sql);
             pr.setString(1, hd.getMa());
             pr.setInt(2, idNV);
-            pr.setDate(3, hd.getNgayTao());
+            pr.setTimestamp(3, hd.getNgayTao());
             pr.setDate(4, hd.getNgayThanhToan());
             pr.setInt(5, hd.getTinhTrang());
             result = pr.executeUpdate();
@@ -287,7 +287,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
                 HoaDon hd = new HoaDon();
 
                 hd.setMa(rs.getString(1));
-                hd.setNgayTao(rs.getDate(2));
+                hd.setNgayTao(rs.getTimestamp(2));
                 User uesr = new User();
                 uesr.setTen(rs.getString(6)+" "+rs.getString(5)+" " + rs.getString(3));
                 hd.setUser(uesr);

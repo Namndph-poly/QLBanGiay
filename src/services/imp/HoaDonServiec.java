@@ -243,14 +243,14 @@ public class HoaDonServiec implements IHoaDonServiec {
 
     @Override
     public Integer updateTrangThaiHoaDon(HoaDonViewModel hd) {
-        HoaDon hoaDon = new HoaDon();
-        hoaDon.setGhichu(hd.getGhiChu());
-        hoaDon.setNgayThanhToan(hd.getNgayThanhToan());
-        hoaDon.setMa(hd.getMa());
-        hoaDon.setTongTien(hd.getTongTien());
-        hoaDon.setTinhTrang(1);
-        return hoaDonRepostory.updateTrangThaiHoaDon(hoaDon);
-    }
+    HoaDon hoaDon = new HoaDon();
+    hoaDon.setGhichu(hd.getGhiChu());
+    hoaDon.setNgayThanhToan(new java.sql.Date(hd.getNgayThanhToan().getTime()));
+    hoaDon.setMa(hd.getMa());
+    hoaDon.setTongTien(hd.getTongTien());
+    hoaDon.setTinhTrang(1);
+    return hoaDonRepostory.updateTrangThaiHoaDon(hoaDon);
+}
 
     @Override
     public Integer updateHoaDonKhachHang(int Ma, String MaHD) {
