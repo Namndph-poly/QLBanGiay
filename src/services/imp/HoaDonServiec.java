@@ -52,7 +52,7 @@ public class HoaDonServiec implements IHoaDonServiec {
 
         List<HoaDon> list = hoadon1.GetAllHD();
         for (HoaDon x : list) {
-            list01.add(new HoaDonViewModel(x.getKhachHang(),x.getUser(),x.getMa(),x.getNgayTao() ,x.getNgayThanhToan() ,x.getTinhTrang(),x.getGhichu(),x.getTongTien()));
+            list01.add(new HoaDonViewModel(x.getKhachHang(), x.getUser(), x.getMa(), x.getNgayTao(), x.getNgayThanhToan(), x.getTinhTrang(), x.getGhichu(), x.getTongTien()));
 //            HoaDonViewModel hd = new HoaDonViewModel();
 //            hd.setKh(x.getKhachHang());
 //            hd.setUs(x.getUser());
@@ -72,7 +72,7 @@ public class HoaDonServiec implements IHoaDonServiec {
 
         List<HoaDon> Listtm = hoaDonRepostory.getHDTen(Ten);
         for (HoaDon x : Listtm) {
-            list04.add(new HoaDonViewModel(x.getKhachHang(),x.getUser(),x.getMa(),x.getNgayTao() ,x.getNgayThanhToan() ,x.getTinhTrang(),x.getGhichu(),x.getTongTien()));
+            list04.add(new HoaDonViewModel(x.getKhachHang(), x.getUser(), x.getMa(), x.getNgayTao(), x.getNgayThanhToan(), x.getTinhTrang(), x.getGhichu(), x.getTongTien()));
 //            HoaDonViewModel hd = new HoaDonViewModel();
 //            hd.setKh(x.getKhachHang());
 //            hd.setUs(x.getUser());
@@ -91,19 +91,18 @@ public class HoaDonServiec implements IHoaDonServiec {
 
         List<HoaDonChiTiet> List00 = hoadon2.GetAllHDCT();
         for (HoaDonChiTiet c : List00) {
-            list02.add(new HoaDonCHiTietViewModel(c.getSoluong(), c.getDonGia(), c.getHaoDon(), c.getSanPham()));
+            list02.add(new HoaDonCHiTietViewModel(c.getSoluong(), c.getDonGia(), c.getHaoDon(), c.getSanPham(), c.getMauSac(), c.getKichCo()));
         }
         return list02;
     }
 
     @Override
     public List<HoaDonCHiTietViewModel> gettimma(String ma) {
-
         List<HoaDonCHiTietViewModel> list03 = new ArrayList<>();
 
         List<HoaDonChiTiet> Listtm = hoadon2.gettimma(ma);
         for (HoaDonChiTiet t : Listtm) {
-            list03.add(new HoaDonCHiTietViewModel(t.getSoluong(), t.getDonGia(), t.getHaoDon(), t.getSanPham()));
+            list03.add(new HoaDonCHiTietViewModel(t.getSoluong(), t.getDonGia(), t.getHaoDon(), t.getSanPham(), t.getMauSac(), t.getKichCo()));
         }
         return list03;
     }
@@ -114,7 +113,7 @@ public class HoaDonServiec implements IHoaDonServiec {
 
         List<HoaDon> Listtm = hoaDonRepostory.getHDTrangThai(TrangThai);
         for (HoaDon x : Listtm) {
-             list05.add(new HoaDonViewModel(x.getKhachHang(),x.getUser(),x.getMa(),x.getNgayTao() ,x.getNgayThanhToan() ,x.getTinhTrang(),x.getGhichu(),x.getTongTien()));
+            list05.add(new HoaDonViewModel(x.getKhachHang(), x.getUser(), x.getMa(), x.getNgayTao(), x.getNgayThanhToan(), x.getTinhTrang(), x.getGhichu(), x.getTongTien()));
             HoaDonViewModel hd = new HoaDonViewModel();
             hd.setKh(x.getKhachHang());
             hd.setUs(x.getUser());
@@ -133,7 +132,7 @@ public class HoaDonServiec implements IHoaDonServiec {
 
         List<HoaDon> Listtm = hoaDonRepostory.GetTimNTT(NgayTT);
         for (HoaDon x : Listtm) {
-             list07.add(new HoaDonViewModel(x.getKhachHang(),x.getUser(),x.getMa(),x.getNgayTao() ,x.getNgayThanhToan() ,x.getTinhTrang(),x.getGhichu(),x.getTongTien()));
+            list07.add(new HoaDonViewModel(x.getKhachHang(), x.getUser(), x.getMa(), x.getNgayTao(), x.getNgayThanhToan(), x.getTinhTrang(), x.getGhichu(), x.getTongTien()));
             HoaDonViewModel hd = new HoaDonViewModel();
             hd.setKh(x.getKhachHang());
             hd.setUs(x.getUser());
@@ -203,6 +202,10 @@ public class HoaDonServiec implements IHoaDonServiec {
             HoaDonCHiTietViewModel hd = new HoaDonCHiTietViewModel();
             hd.setDonGia(hoaDonChiTiet.getDonGia());
             hd.setSoluong(hoaDonChiTiet.getSoluong());
+
+            hd.setMauSac(hoaDonChiTiet.getMauSac());
+            hd.setKichCo(hoaDonChiTiet.getKichCo());
+
             hd.setSanPham(hoaDonChiTiet.getSanPham());
 //            HoaDon hoaDon = new HoaDon();
 //            hoaDon.setKhachHang(hoaDonChiTiet.getHaoDon().getKhachHang());

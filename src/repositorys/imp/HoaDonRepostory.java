@@ -10,6 +10,8 @@ import models.HoaDon;
 import models.HoaDonChiTiet;
 import models.KhachHang;
 import models.KhuyenMai;
+import models.KichCo;
+import models.MauSac;
 import models.SanPham;
 import models.User;
 import repositorys.IHoaDonRepostory;
@@ -276,7 +278,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
     public List<HoaDon> getListHD(int TrangThai) {
         List<HoaDon> getListGD = new ArrayList<>();
         try {
-            String sql = "SELECT HD.Ma , HD.NgayTao , NV.Ten , HD.TinhTrang , NV.TenDem , NV.Ho FROM HoaDon HD JOIN Users NV ON HD.IdNV = NV.Id WHERE HD.TinhTrang = ?";
+            String sql = "SELECT HD.Ma , HD.NgayTao , NV.Ten , HD.TinhTrang , NV.TenDem , NV.Ho FROM HoaDon HD JOIN Users NV ON HD.IdNV = NV.Id WHERE HD.TinhTrang = ? ORDER BY HD.NgayTao DESC";
             Connection conn = DBConnection.openDbConnection();
             PreparedStatement pr = conn.prepareStatement(sql);
             pr.setInt(1, TrangThai);
@@ -321,30 +323,46 @@ public class HoaDonRepostory implements IHoaDonRepostory {
 
     @Override
     public List<HoaDonChiTiet> getListHoaDonChiTiet(String MaHD) {
-        List<HoaDonChiTiet> getList = new ArrayList<>();
+               List<HoaDonChiTiet> getList = new ArrayList<>();
         try {
-            String sql = "SELECT SP.Ma , SP.Ten , HDCT.Dongia , HDCT.Soluong , KM.Giatrigiam , KM.HinhthucKM ,HDCT.IdCTSP  FROM HoaDon HD JOIN HoaDonChiTiet HDCT ON HD.Id = HDCT.IdHD\n"
-                    + "                    JOIN ChitietSP SP ON SP.Id = HDCT.IdCTSP join KhuyenMai km ON SP.IdKM = KM.Id "
-                    + "  WHERE HD.Ma =?";
+            String sql = "SELECT SP.Ma , SP.Ten ,MauSac.Ten,KichCo.Ten, HDCT.Dongia , HDCT.Soluong , KM.Giatrigiam , KM.HinhthucKM ,HDCT.IdCTSP  \n"
+                    + "FROM HoaDon HD JOIN HoaDonChiTiet HDCT ON HD.Id = HDCT.IdHD \n"
+                    + "JOIN ChitietSP SP ON SP.Id = HDCT.IdCTSP join KhuyenMai km ON SP.IdKM = KM.Id \n"
+                    + "JOIN MauSac ON SP.IdMauSac = MauSac.id\n"
+                    + "JOIN KichCo ON SP.IdKC = KichCo.id\n"
+                    + "WHERE HD.Ma = ?";
             Connection conn = DBConnection.openDbConnection();
             PreparedStatement pr = conn.prepareStatement(sql);
             pr.setString(1, MaHD);
             ResultSet rs = pr.executeQuery();
             while (rs.next()) {
-                     HoaDonChiTiet hdct = new HoaDonChiTiet();
+                HoaDonChiTiet hdct = new HoaDonChiTiet();
+                
+                MauSac ms = new MauSac();
+                ms.setTen(rs.getString(3));
+                
+                KichCo kc = new KichCo();
+                kc.setTen(rs.getString(4));
+                
                 KhuyenMai km = new KhuyenMai();
-                km.setGiaTriGiam(rs.getDouble(5));
-                km.setHinhThucKM(rs.getString(6));
+                km.setGiaTriGiam(rs.getDouble(7));
+                km.setHinhThucKM(rs.getString(8));
 
+               
+                
                 SanPham sp = new SanPham();
                 sp.setTen(rs.getString(2));
                 sp.setMa(rs.getString(1));
-                sp.setId(rs.getInt(7));
-              
+                sp.setMauSac(ms);
+                sp.setKichCo(kc);
+                sp.setId(rs.getInt(9));
+               
                 sp.setKhuenMai(km);
                 hdct.setSanPham(sp);
-                hdct.setSoluong(rs.getInt(4));
-                hdct.setDonGia(rs.getDouble(3));
+                hdct.setMauSac(ms);
+                hdct.setKichCo(kc);
+                hdct.setSoluong(rs.getInt(6));
+                hdct.setDonGia(rs.getDouble(5));
                 getList.add(hdct);
             }
         } catch (Exception e) {
