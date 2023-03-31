@@ -728,18 +728,12 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             List<HoaDonCHiTietViewModel> listh = hoaDonServiec.getListHoaDonChiTiet(tb_hoaDon.getValueAt(rowHD, 0).toString());
             //validate nam
 
-            try {
-                if (NhapSoLuong <= 0) {
+            
+                if (NhapSoLuong <= 0) {                    
                     JOptionPane.showMessageDialog(null, "Số lượng phải lớn hơn 0 !", "Chú ý", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-            } catch (NumberFormatException e) {
-               
-                     Integer.parseInt(JOptionPane.showInputDialog(this, "Số lượng phải là số!"));
-                    return;
-                
-                   
-            }
+            
 
             //ket thuc validate nam
             if (SoLuong >= NhapSoLuong) {
@@ -803,7 +797,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
 
         } catch (Exception e) {
-
+  JOptionPane.showMessageDialog(null, "Vui lòng không nhập kí tự","Chú ý",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_tb_sanPhamMouseClicked
 
@@ -1157,13 +1151,13 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         List<SanPhamViewModel> list = sanISamPhamServiecs.getListSanPham();
         try {
-            int NhapSoLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập số lượng"));
+            int NhapSoLuong = Integer.parseInt(JOptionPane.showInputDialog( null, "Mời nhập số lượng cần thay đổi","Hello",JOptionPane.INFORMATION_MESSAGE));
             for (SanPhamViewModel x : list) {
                 if (MaSP.equals(x.getMa())) {
-                    if (x.getSoLuongTon() + Integer.parseInt(tb_gioHang.getValueAt(rowSP, 2).toString()) >= NhapSoLuong) {
+                    if (x.getSoLuongTon() + Integer.parseInt(tb_gioHang.getValueAt(rowSP, 4).toString()) >= NhapSoLuong) {
 
                         Integer isupdate = hoaDonServiec.updateSoLuongGioHang(NhapSoLuong, MaSP, MaHD);
-                        int updateSoLuong = x.getSoLuongTon() + Integer.parseInt(tb_gioHang.getValueAt(rowSP, 2).toString());
+                        int updateSoLuong = x.getSoLuongTon() + Integer.parseInt(tb_gioHang.getValueAt(rowSP, 4).toString());
                         getListGioHangHDCT(MaHD);
                         sanISamPhamServiecs.updateSoLuongSP(x.getMa(), updateSoLuong - NhapSoLuong);
                         list.clear();
@@ -1179,7 +1173,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(this, "vui lòng nhập nó không nhập kí tự");
+            JOptionPane.showMessageDialog(null, "Vui lòng không nhập kí tự","Chú ý",JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
