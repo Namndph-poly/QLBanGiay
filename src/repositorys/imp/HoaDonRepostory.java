@@ -278,7 +278,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
     public List<HoaDon> getListHD(int TrangThai) {
         List<HoaDon> getListGD = new ArrayList<>();
         try {
-            String sql = "SELECT HD.Ma , HD.NgayTao , NV.Ten , HD.TinhTrang , NV.TenDem , NV.Ho FROM HoaDon HD JOIN Users NV ON HD.IdNV = NV.Id WHERE HD.TinhTrang = ?";
+            String sql = "SELECT HD.Ma , HD.NgayTao , NV.Ten , HD.TinhTrang , NV.TenDem , NV.Ho FROM HoaDon HD JOIN Users NV ON HD.IdNV = NV.Id WHERE HD.TinhTrang = ? ORDER BY HD.NgayTao DESC";
             Connection conn = DBConnection.openDbConnection();
             PreparedStatement pr = conn.prepareStatement(sql);
             pr.setInt(1, TrangThai);
