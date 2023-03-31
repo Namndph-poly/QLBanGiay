@@ -39,8 +39,7 @@ public class frm_Hoadon extends javax.swing.JPanel {
                 hoaDonViewModel.getNgayTao(),
                 hoaDonViewModel.getNgayThanhToan(),
                 hoaDonViewModel.getTinhTrang() == 0 ? "Chưa thanh toán" : "Đã thanh toán",
-                hoaDonViewModel.getGhiChu(),
-            });
+                hoaDonViewModel.getGhiChu(),});
         }
 
     }

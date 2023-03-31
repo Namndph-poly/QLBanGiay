@@ -20,6 +20,6 @@ public interface IChatLieuRepository {
     public int update(ChatLieu x, int id);
 
     public int delete(int id);
-    
+
     public ChatLieu getbyid(int id);
 }

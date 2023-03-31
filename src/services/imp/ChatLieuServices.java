@@ -37,7 +37,7 @@ public class ChatLieuServices implements IChatLieuServices {
     @Override
     public String Update(Objecttt x, int id) {
         ChatLieu chatlieu = new ChatLieu(x.getId(), x.getTen());
-        int them = chatLieuRepository.update(chatlieu,id);
+        int them = chatLieuRepository.update(chatlieu, id);
         if (them == 1) {
             return "Thành công";
         }

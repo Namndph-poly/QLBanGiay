@@ -12,5 +12,6 @@ import models.User;
  * @author Admin
  */
 public interface IUserServiec {
-   boolean getUser( String TaiKhoan ,String MatKhau);
+
+    boolean getUser(String TaiKhoan, String MatKhau);
 }

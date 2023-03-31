@@ -23,14 +23,13 @@ import services.imp.KhuyenmaiService;
 import viewmodels.ChiTietSPViewModel;
 import viewmodels.KhuyenmaiViewmodel;
 
-
 /**
  *
  * @author hungh
  */
 public class frm_Khuyenmai extends javax.swing.JPanel {
 
-  DefaultTableModel defaultTableModel;
+    DefaultTableModel defaultTableModel;
     DefaultTableModel defaultTableModel1;
     private IKhuyenmaiService khuyenmaiService;
     IChiTietSPServices chiTietSPServices;
@@ -49,6 +48,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
         LoadData();
         LoadDataSP();
     }
+
     void LoadData() {
         defaultTableModel.setRowCount(0);
         int stt = 1;
@@ -75,8 +75,6 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             });
         }
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -328,7 +326,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
         Pattern p = Pattern.compile("^[0-9]+$");
         try {
             if (txt_tenkm.getText().equals("")) {
@@ -374,7 +372,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Giá trị giảm phải là số!");
             return;
         }
-        
+
         try {
             if (date_KT.getDate().before(date_BD.getDate())) {
                 JOptionPane.showMessageDialog(this, "Ngày kết thúc phải lớn hơn ngày bắt đầu");
@@ -431,7 +429,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
-         // TODO add your handling code here:
+        // TODO add your handling code here:
         int r = tb_khuyenmai.getSelectedRow();
         IKhuyenmaiRepository repository = new KhuyenmaiReponsitory();
         List<KhuyenMai> lst = repository.GetAll();
@@ -481,7 +479,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_suaActionPerformed
 
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
         txt_tenkm.setText("");
         txt_giatrgiam.setText("");
         date_BD.setCalendar(null);
@@ -529,7 +527,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }//GEN-LAST:event_tb_khuyenmaiMouseClicked
 
     private void lbl_timkiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_timkiemMouseClicked
-      // TODO add your handling code here:
+        // TODO add your handling code here:
         if (dateTK_BD.getDate() == null && dateTK_KT.getDate() == null && src_timkiem.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn ngày bắt đầu hoặc ngày kết thúc hoặc tên khuyến mãi để tìm kiếm");
             return;
@@ -604,7 +602,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_timkiemMouseClicked
 
     private void src_timkiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_src_timkiemCaretUpdate
-         // TODO add your handling code here:
+        // TODO add your handling code here:
         defaultTableModel.setRowCount(0);
         int stt = 1;
         for (KhuyenmaiViewmodel x : khuyenmaiService.GetOnebyten("%" + src_timkiem.getText() + "%")) {
@@ -621,7 +619,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }//GEN-LAST:event_src_timkiemCaretUpdate
 
     private void cb_selectAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_selectAllActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
         for (int i = 0; i < tb_sp.getRowCount(); i++) {
             if (cb_selectAll.isSelected() == true) {
                 tb_sp.setValueAt(true, i, 0);

@@ -12,13 +12,14 @@ import models.MauSac;
  * @author vieta
  */
 public interface IMauSacRepository {
+
     public List<MauSac> getAll();
-    
+
     public int insert(MauSac x);
-    
-    public int update(MauSac x,int id);
-    
+
+    public int update(MauSac x, int id);
+
     public int delete(int id);
-    
+
     public MauSac getbyid(int id);
 }

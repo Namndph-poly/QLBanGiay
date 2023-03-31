@@ -21,15 +21,14 @@ public interface IHoaDonServiec {
     public List<HoaDonViewModel> getTimHDTen(String Ten);
 
     public List<HoaDonViewModel> getTimHDTrangThai(int TrangThai);
-    
+
     public List<HoaDonViewModel> GetTimNTT(String NgayTT);
 
     public List<HoaDonCHiTietViewModel> getAllHDCT();
 
     public List<HoaDonCHiTietViewModel> gettimma(String ma);
-    
+
 ///////
-    
     Integer saveHD(HoaDonViewModel hoaDon, int idNV);
 
     Integer saveHDCT(HoaDonCHiTietViewModel hoaDonChiTiet, String MaSP, String MaHD);
@@ -50,7 +49,9 @@ public interface IHoaDonServiec {
 
     Integer updateSoLuongGioHang(int SoLuong, String MaSP, String MaHD);
 
-    Integer updateTrangThaiHoaDon(HoaDonViewModel hd );
-    Integer updateHoaDonKhachHang(int Ma  ,String MaHD);
-       List<HoaDon> getKhachHang(String MaHD);
+    Integer updateTrangThaiHoaDon(HoaDonViewModel hd);
+
+    Integer updateHoaDonKhachHang(int Ma, String MaHD);
+
+    List<HoaDon> getKhachHang(String MaHD);
 }

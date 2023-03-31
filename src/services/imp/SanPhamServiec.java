@@ -27,7 +27,6 @@ public class SanPhamServiec implements ISanPhamServiecs {
     public SanPhamServiec() {
         sanPhamReposory = new SanPhamRepostory();
         getListSP = new ArrayList<>();
-       
 
     }
 
@@ -38,7 +37,7 @@ public class SanPhamServiec implements ISanPhamServiecs {
             List<SanPham> list = sanPhamReposory.getListSanPham();
             for (SanPham sanPham : list) {
                 getListSP.add(new SanPhamViewModel(sanPham.getMa(), sanPham.getTen(), sanPham.getMauSac(), sanPham.getKhuenMai(), sanPham.getKichCo(),
-                         sanPham.getChatLieu(), sanPham.getSoLuongTon(), sanPham.getGiaBan()));
+                        sanPham.getChatLieu(), sanPham.getSoLuongTon(), sanPham.getGiaBan()));
             }
 
         } catch (Exception ex) {
@@ -71,12 +70,12 @@ public class SanPhamServiec implements ISanPhamServiecs {
 
     @Override
     public List<SanPhamViewModel> locTheoDanhMucSP(String TenDanhMuc) {
-         locTheoDanhMucSP = new ArrayList<>();
+        locTheoDanhMucSP = new ArrayList<>();
         try {
             List<SanPham> list = sanPhamReposory.locTheoDanhMucSP(TenDanhMuc);
             for (SanPham sanPham : list) {
                 locTheoDanhMucSP.add(new SanPhamViewModel(sanPham.getMa(), sanPham.getTen(), sanPham.getMauSac(), sanPham.getKhuenMai(), sanPham.getKichCo(),
-                         sanPham.getChatLieu(), sanPham.getSoLuongTon(), sanPham.getGiaBan()));
+                        sanPham.getChatLieu(), sanPham.getSoLuongTon(), sanPham.getGiaBan()));
             }
 
         } catch (Exception ex) {

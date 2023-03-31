@@ -12,5 +12,6 @@ import models.User;
  * @author Admin
  */
 public interface IUserRepostory {
-    List<User> getUser( String TaiKhoan ,String MatKhau);
+
+    List<User> getUser(String TaiKhoan, String MatKhau);
 }

@@ -9,13 +9,14 @@ package models;
  * @author Admin
  */
 public class KichCo {
+
     private int id;
     private String Ten;
 
     public KichCo() {
     }
 
-    public KichCo(int id,String Ten) {
+    public KichCo(int id, String Ten) {
         this.id = id;
         this.Ten = Ten;
     }
@@ -38,8 +39,7 @@ public class KichCo {
 
     @Override
     public String toString() {
-        return  Ten ;
+        return Ten;
     }
-    
-    
+
 }

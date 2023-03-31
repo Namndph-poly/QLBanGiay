@@ -659,7 +659,7 @@ public class frm_Khachhang extends javax.swing.JPanel {
         listKhachHang01 = KH.getall01();
         showTable2(listKhachHang01);
         LBL_SOLUONG.setText("Tổng số hoá đơn là : " + listKhachHang01.size());
-    
+
     }//GEN-LAST:event_btn_LamMoi1ActionPerformed
 
     private void TB_bang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_bang1MouseClicked

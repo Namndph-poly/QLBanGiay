@@ -1,4 +1,3 @@
-
 package models;
 
 import java.sql.Date;
@@ -9,6 +8,7 @@ import java.sql.Timestamp;
  * @author PC
  */
 public class HoaDon {
+
     private User user;
     private Integer id;
     private KhachHang khachHang;
@@ -18,12 +18,11 @@ public class HoaDon {
     private Date NgayThanhToan;
     private int TinhTrang;
     private Double tongTien;
-    
 
     public HoaDon() {
     }
 
-    public HoaDon(User user, Integer id, KhachHang khachHang, String Ma, String Ghichu, Timestamp NgayTao, Date NgayThanhToan, int TinhTrang,Double tongTien) {
+    public HoaDon(User user, Integer id, KhachHang khachHang, String Ma, String Ghichu, Timestamp NgayTao, Date NgayThanhToan, int TinhTrang, Double tongTien) {
         this.user = user;
         this.id = id;
         this.khachHang = khachHang;
@@ -107,10 +106,4 @@ public class HoaDon {
         this.TinhTrang = TinhTrang;
     }
 
-
-   
-    
-     
-
 }
- 

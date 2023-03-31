@@ -19,11 +19,13 @@ import utilconnext.DBConnection;
 import repositorys.IKhachHangReposytory;
 import viewmodels.KhachHang02ViewMD;
 import viewmodels.KhachHangViewMD;
+
 /**
  *
  * @author Admin
  */
-public class KhachHangRPImpl implements IKhachHangReposytory{
+public class KhachHangRPImpl implements IKhachHangReposytory {
+
     @Override
     public List<KhachHang> getall() {
         String query = "SELECT [Id]\n"

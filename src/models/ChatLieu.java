@@ -4,11 +4,13 @@
  */
 package models;
 // fix
+
 /**
  *
  * @author Admin
  */
 public class ChatLieu {
+
     private int id;
     private String Ten;
 
@@ -40,7 +42,5 @@ public class ChatLieu {
     public String toString() {
         return Ten;
     }
-    
-    
- 
+
 }

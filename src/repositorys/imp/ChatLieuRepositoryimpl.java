@@ -17,7 +17,8 @@ import utilconnext.DBConnection;
  *
  * @author vieta
  */
-public class ChatLieuRepositoryimpl implements IChatLieuRepository{
+public class ChatLieuRepositoryimpl implements IChatLieuRepository {
+
     final String SQL_SELECT_ALL = "SELECT Id,Ten FROM dbo.ChatLieu";
     final String SQL_SELECT_BY_ID = "SELECT Id,Ten FROM dbo.ChatLieu WHERE Id = ?";
     final String SQL_INSERT = "INSERT INTO dbo.ChatLieu (Ten) VALUES(?)";
@@ -67,6 +68,5 @@ public class ChatLieuRepositoryimpl implements IChatLieuRepository{
         return lst;
 
     }
-     
-    
+
 }

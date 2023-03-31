@@ -9,6 +9,7 @@ package models;
  * @author Admin
  */
 public class HoaDonChiTiet {
+
     private int Soluong;
     private Double DonGia;
     private Double DonKhiGiam;
@@ -29,7 +30,6 @@ public class HoaDonChiTiet {
         this.mauSac = mauSac;
         this.kichCo = kichCo;
     }
-
 
     public int getSoluong() {
         return Soluong;
