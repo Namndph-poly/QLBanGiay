@@ -1152,6 +1152,11 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         List<SanPhamViewModel> list = sanISamPhamServiecs.getListSanPham();
         try {
             int NhapSoLuong = Integer.parseInt(JOptionPane.showInputDialog( null, "Mời nhập số lượng cần thay đổi","Hello",JOptionPane.INFORMATION_MESSAGE));
+            
+              if (NhapSoLuong <= 0) {                    
+                    JOptionPane.showMessageDialog(null, "Số lượng phải lớn hơn 0 !", "Chú ý", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
             for (SanPhamViewModel x : list) {
                 if (MaSP.equals(x.getMa())) {
                     if (x.getSoLuongTon() + Integer.parseInt(tb_gioHang.getValueAt(rowSP, 4).toString()) >= NhapSoLuong) {
