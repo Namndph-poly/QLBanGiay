@@ -16,21 +16,22 @@ import services.IChucvuService;
  * @author hungh
  */
 public class ChucVuService implements IChucvuService {
+
     IChucvuRepo chucvuRepo;
-    List<Chucvu> lstcv ;
+    List<Chucvu> lstcv;
+
     public ChucVuService() {
         lstcv = new ArrayList<>();
-        chucvuRepo =  new Chucvurepo();
+        chucvuRepo = new Chucvurepo();
     }
+
     @Override
     public List<Chucvu> getAllChucVu() {
         lstcv = new ArrayList<>();
         for (Chucvu cv : chucvuRepo.getAllChucVu()) {
-            lstcv.add(new Chucvu(cv.getId(),cv.getTen()));
+            lstcv.add(new Chucvu(cv.getId(), cv.getTen()));
         }
         return lstcv;
     }
-
-    
 
 }

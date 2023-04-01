@@ -12,13 +12,14 @@ import models.DanhMucSP;
  * @author vieta
  */
 public interface IDanhMucSPRepository {
+
     public List<DanhMucSP> getAll();
-    
+
     public int insert(DanhMucSP x);
-    
-    public int update(DanhMucSP dmsp,int id);
-    
+
+    public int update(DanhMucSP dmsp, int id);
+
     public int delete(int id);
-    
+
     public DanhMucSP getdanhmucbyid(int id);
 }

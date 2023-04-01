@@ -93,7 +93,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         txttendem.setText("");
         txtho.setText("");
         txtTaikhoan.setText("");
-        txtMatkhau.setText("");
+        txtPass.setText("");
         txtemail.setText("");
         txtsdt.setText("");
         buttonGroup1.clearSelection();
@@ -129,7 +129,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
 
             txtsdt.setText(tblnhanvien.getValueAt(row, 6).toString());
             txtTaikhoan.setText(tblnhanvien.getValueAt(row, 7).toString());
-            txtMatkhau.setText(tblnhanvien.getValueAt(row, 8).toString());
+            txtPass.setText(tblnhanvien.getValueAt(row, 8).toString());
             txtemail.setText(tblnhanvien.getValueAt(row, 9).toString());
 
         } catch (ParseException ex) {
@@ -177,7 +177,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
 // Họ
         try {
             if (txtho.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this,"Vui lòng nhập họ");
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập họ");
                 return null;
             }
         } catch (Exception e) {
@@ -234,7 +234,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         }
 // Mật Khẩu
         try {
-            if (txtMatkhau.getText().isEmpty()) {
+            if (txtPass.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu");
                 return null;
             }
@@ -276,7 +276,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         nv.setGioitinh(gt);
         nv.setSdt(txtsdt.getText());
         nv.setTk(txtTaikhoan.getText());
-        nv.setMk(txtMatkhau.getText());
+        nv.setMk(txtPass.getText());
         nv.setEmail(txtemail.getText());
         Chucvu cvv = (Chucvu) cbochucvu.getSelectedItem();
         nv.setChucVu(cvv);
@@ -318,7 +318,6 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         txtTaikhoan = new swing.MyTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtMatkhau = new swing.MyTextField();
         jLabel8 = new javax.swing.JLabel();
         txtemail = new swing.MyTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -338,6 +337,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         cbochucvu = new javax.swing.JComboBox<>();
         datengaysinh = new com.toedter.calendar.JDateChooser();
         btnlmmoi = new swing.MyButton();
+        txtPass = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1010, 640));
@@ -378,7 +378,6 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Mật khẩu");
         panelGradiente1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 220, 20));
-        panelGradiente1.add(txtMatkhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 220, 40));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Giới tính");
@@ -511,6 +510,9 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         });
         panelGradiente1.add(btnlmmoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, 120, 40));
 
+        txtPass.setText("jPasswordField1");
+        panelGradiente1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 220, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -553,7 +555,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
             txtsdt.setText(tblnhanvien.getValueAt(index, 6) + "");
             txtemail.setText(tblnhanvien.getValueAt(index, 9) + "");
             txtTaikhoan.setText(tblnhanvien.getValueAt(index, 7) + "");
-            txtMatkhau.setText(tblnhanvien.getValueAt(index, 8) + "");
+            txtPass.setText(tblnhanvien.getValueAt(index, 8) + "");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date1 = sdf.parse((String) tblnhanvien.getValueAt(index, 4));
             datengaysinh.setDate(date1);
@@ -600,7 +602,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
         nv.setGioitinh(gt);
         nv.setSdt(txtsdt.getText());
         nv.setTk(txtTaikhoan.getText());
-        nv.setMk(txtMatkhau.getText());
+        nv.setMk(txtPass.getText());
         nv.setEmail(txtemail.getText());
         Chucvu cvv = (Chucvu) cbochucvu.getSelectedItem();
         nv.setChucVu(cvv);
@@ -616,6 +618,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
             if (nhanVienService.update(nv, lst.get(row).getId()) != false) {
                 JOptionPane.showMessageDialog(this, "Sửa Thành Công");
                 Loaddata();
+                ClearForm();
             } else {
                 JOptionPane.showMessageDialog(this, "Sửa Thất Bại");
                 Showtable();
@@ -695,7 +698,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
     private javax.swing.JRadioButton rd_nu;
     private swing.SearchText searchtxt;
     private javax.swing.JTable tblnhanvien;
-    private swing.MyTextField txtMatkhau;
+    private javax.swing.JPasswordField txtPass;
     private swing.MyTextField txtTaikhoan;
     private swing.MyTextField txtemail;
     private swing.MyTextField txtho;

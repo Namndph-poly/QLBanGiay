@@ -93,22 +93,25 @@ public class ChiTietSPServices implements IChiTietSPServices {
 
         return lst;
     }
+
     @Override
     public Date checkngay(String id) {
         return chiTietSPRepository.checkngay(id);
     }
+
     @Override
     public Date checkngay2(String id) {
         return chiTietSPRepository.checkngay(id);
     }
+
     @Override
     public boolean Add(ChiTietSPViewModel x) {
         List<ChiTietSP> lst = chiTietSPRepository.check(x.getMa());
-        ChiTietSP ctsp = new ChiTietSP(x.getMa(), x.getTen(), x.getNsx().getId(), x.getMausac().getId(), x.getDanhmuc().getId(), x.getKichco().getId(), x.getChatlieu().getId(), x.getThuonghieu().getId(),0, x.getSoluongton(), x.getGianhap(), x.getGiaban(), x.getMota(), x.getQrcode());
+        ChiTietSP ctsp = new ChiTietSP(x.getMa(), x.getTen(), x.getNsx().getId(), x.getMausac().getId(), x.getDanhmuc().getId(), x.getKichco().getId(), x.getChatlieu().getId(), x.getThuonghieu().getId(), 0, x.getSoluongton(), x.getGianhap(), x.getGiaban(), x.getMota(), x.getQrcode());
         try {
             ChiTietSP xyy = lst.get(0);
             JOptionPane.showMessageDialog(new frm_Sanpham(), "Không để trùng mã");
-            
+
             return false;
         } catch (Exception e) {
             if (chiTietSPRepository.insert(ctsp) == 1) {
@@ -122,7 +125,7 @@ public class ChiTietSPServices implements IChiTietSPServices {
 
     @Override
     public boolean Update(String ma, ChiTietSPViewModel x) {
-        ChiTietSP ctsp = new ChiTietSP(x.getMa(), x.getTen(), x.getNsx().getId(), x.getMausac().getId(), x.getDanhmuc().getId(), x.getKichco().getId(), x.getChatlieu().getId(), x.getThuonghieu().getId(),0, x.getSoluongton(), x.getGianhap(), x.getGiaban(), x.getMota(), x.getQrcode());
+        ChiTietSP ctsp = new ChiTietSP(x.getMa(), x.getTen(), x.getNsx().getId(), x.getMausac().getId(), x.getDanhmuc().getId(), x.getKichco().getId(), x.getChatlieu().getId(), x.getThuonghieu().getId(), 0, x.getSoluongton(), x.getGianhap(), x.getGiaban(), x.getMota(), x.getQrcode());
         if (chiTietSPRepository.update(ctsp, ma) == 1) {
             return true;
         }
@@ -162,7 +165,7 @@ public class ChiTietSPServices implements IChiTietSPServices {
             sp.setMa(x.getMa());
             sp.setTen(x.getTen());
             lst.add(sp);
-                    
+
         }
         return lst;
     }
@@ -171,6 +174,5 @@ public class ChiTietSPServices implements IChiTietSPServices {
     public boolean Update(String ma, String id) {
         return chiTietSPRepository.Update(id, ma);
     }
-
 
 }

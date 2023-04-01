@@ -13,13 +13,12 @@ import viewmodels.KhachHang02ViewMD;
 import java.util.List;
 import models.KhachHang;
 
-
-
 /**
  *
  * @author Admin
  */
 public interface IKhachHangService {
+
     List<KhachHangViewMD> getall();
 
     List<KhachHang02ViewMD> getall01();

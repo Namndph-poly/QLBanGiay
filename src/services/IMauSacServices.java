@@ -13,13 +13,14 @@ import viewmodels.Objecttt;
  * @author vieta
  */
 public interface IMauSacServices {
+
     List<MauSac> getAll();
-    
+
     String Add(Objecttt x);
-    
-    String Update(Objecttt x,int id);
-    
+
+    String Update(Objecttt x, int id);
+
     String Delete(int id);
-    
+
     MauSac getbyid(int id);
 }

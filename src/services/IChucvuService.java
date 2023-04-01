@@ -12,5 +12,6 @@ import models.Chucvu;
  * @author hungh
  */
 public interface IChucvuService {
+
     public List<Chucvu> getAllChucVu();
 }

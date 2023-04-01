@@ -86,7 +86,7 @@ public class KhuyenmaiService implements IKhuyenmaiService {
         List<KhuyenMai> lst = repository.GetOnebyALL(datedb, datekt);
         lstKM = new ArrayList<>();
         for (KhuyenMai x : lst) {
-lstKM.add(new KhuyenmaiViewmodel(x.getTenKM(), x.getHinhThucKM(), x.getNgayBatDau(), x.getNgayKetThuc(), x.getGiaTriGiam(), x.getTrangthai()));
+            lstKM.add(new KhuyenmaiViewmodel(x.getTenKM(), x.getHinhThucKM(), x.getNgayBatDau(), x.getNgayKetThuc(), x.getGiaTriGiam(), x.getTrangthai()));
         }
         return lstKM;
     }

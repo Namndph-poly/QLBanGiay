@@ -159,7 +159,7 @@ public class ChiTietSP {
 
     @Override
     public String toString() {
-        return   ten ;
+        return ten;
     }
 
 }

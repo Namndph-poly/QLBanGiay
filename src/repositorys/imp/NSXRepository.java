@@ -17,8 +17,9 @@ import utilconnext.DBConnection;
  *
  * @author vieta
  */
-public class NSXRepository implements INSXRepository{
-     final String SQL_SELECT_ALL = "SELECT Id,Ten FROM dbo.NSX";
+public class NSXRepository implements INSXRepository {
+
+    final String SQL_SELECT_ALL = "SELECT Id,Ten FROM dbo.NSX";
     final String SQL_SELECT_BY_ID = "SELECT Id,Ten FROM dbo.NSX WHERE Id = ?";
     final String SQL_INSERT = "INSERT INTO dbo.NSX( Ten ) VALUES ( ? )";
     final String SQL_UPDATE = "UPDATE dbo.NSX SET Ten = ? WHERE Id = ?";

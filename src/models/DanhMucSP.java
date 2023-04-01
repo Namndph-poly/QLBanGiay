@@ -9,8 +9,9 @@ package models;
  * @author vieta
  */
 public class DanhMucSP {
-   private int id;
-   private String ten;
+
+    private int id;
+    private String ten;
 
     public DanhMucSP() {
     }
@@ -40,6 +41,5 @@ public class DanhMucSP {
     public String toString() {
         return ten;
     }
-   
-      
+
 }

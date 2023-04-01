@@ -15,10 +15,11 @@ import viewmodels.Objecttt;
  *
  * @author vieta
  */
-public class MauSacServices implements IMauSacServices{
+public class MauSacServices implements IMauSacServices {
+
     private IMauSacRepository mauSacRepository = new MauSacRepositoryimpl();
-    
-         @Override
+
+    @Override
     public List<MauSac> getAll() {
         return mauSacRepository.getAll();
     }
@@ -36,7 +37,7 @@ public class MauSacServices implements IMauSacServices{
     @Override
     public String Update(Objecttt x, int id) {
         MauSac mauSac = new MauSac(x.getId(), x.getTen());
-        int xxx = mauSacRepository.update(mauSac,id);
+        int xxx = mauSacRepository.update(mauSac, id);
         if (xxx == 1) {
             return "Thành công";
         }
@@ -45,7 +46,7 @@ public class MauSacServices implements IMauSacServices{
 
     @Override
     public String Delete(int id) {
-        if (mauSacRepository .delete(id) == 1) {
+        if (mauSacRepository.delete(id) == 1) {
             return "Thành công";
         }
         return "Thất bại";

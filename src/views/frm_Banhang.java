@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
@@ -147,41 +150,6 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         }
     }
 
-    private void getListGioHang() {
-        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
-        modelGioHang.setRowCount(0);
-        for (GioHangViewModel x : listGioHang) {
-            modelGioHang.addRow(new Object[]{
-                x.getMaSP(),
-                x.getTenSP(),
-                x.getSoLuong(),
-                String.format("%.0f", x.getDonGia()),
-                String.format("%.0f", x.getThanhTien())
-            });
-        }
-    }
-
-    private void getListGioHangHDCT(String MaHD) {
-        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
-        modelGioHang.setRowCount(0);
-        List<HoaDonCHiTietViewModel> list = hoaDonServiec.getListHoaDonChiTiet(MaHD);
-        if (list.isEmpty()) {
-            return;
-        }
-        for (HoaDonCHiTietViewModel x : list) {
-            GioHangViewModel gioHang = new GioHangViewModel();
-            gioHang.setMaSP(x.getSanPham().getMa());
-            gioHang.setTenSP(x.getSanPham().getTen());
-            gioHang.setSoLuong(x.getSoluong());
-            gioHang.setDonGia(x.getDonGia());
-            gioHang.setGiamGia(x.getSanPham().getKhuenMai().getGiaTriGiam());
-            gioHang.setHinhThucGiamGia(x.getSanPham().getKhuenMai().getHinhThucKM());
-            listGioHang.add(gioHang);
-            getListGioHang();
-
-        }
-    }
-
     private String getTrangThaiHD(int TrangThai) {
         if (TrangThai == 0) {
             return "chờ thanh Toán";
@@ -210,7 +178,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
     private void clear() {
         lbl_sdt.setText("");
-  
+
         lbl_tongTien1.setText(String.valueOf(0));
         lbl_giamGia1.setText(String.valueOf(0.0));
         lbl_thanhTien.setText(String.valueOf(0));
@@ -219,7 +187,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         lbl_tienThua.setText("");
         txt_ghiChu.setText("");
         lbl_sdt.setText("");
-     
+
         lbl_tenKhachHang.setText("");
     }
 
@@ -237,8 +205,8 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         hd.setMa(Ma + random.nextInt());
 
         long millis = System.currentTimeMillis();
-        Date date = new Date(millis);
-        hd.setNgayTao(date);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        hd.setNgayTao(timestamp);
 
         return hd;
     }
@@ -250,6 +218,47 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         return hdct;
     }
+
+    private void getListGioHang() {
+        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
+        modelGioHang.setRowCount(0);
+        for (GioHangViewModel x : listGioHang) {
+            modelGioHang.addRow(new Object[]{
+                x.getMaSP(),
+                x.getTenSP(),
+                x.getMauSac(),
+                x.getKichCo(),
+                x.getSoLuong(),
+                String.format("%.0f", x.getDonGia()),
+                String.format("%.0f", x.getGiamGia()) + " " + x.getHinhThucGiamGia(),
+                String.format("%.0f", x.getThanhTien())
+            });
+        }
+    }
+
+    private void getListGioHangHDCT(String MaHD) {
+        modelGioHang = (DefaultTableModel) tb_gioHang.getModel();
+        modelGioHang.setRowCount(0);
+        List<HoaDonCHiTietViewModel> list = hoaDonServiec.getListHoaDonChiTiet(MaHD);
+        if (list.isEmpty()) {
+            return;
+        }
+        for (HoaDonCHiTietViewModel x : list) {
+            GioHangViewModel gioHang = new GioHangViewModel();
+            gioHang.setMaSP(x.getSanPham().getMa());
+            gioHang.setTenSP(x.getSanPham().getTen());
+            gioHang.setMauSac(x.getMauSac().getTen());
+            gioHang.setKichCo(x.getKichCo().getTen());
+            gioHang.setSoLuong(x.getSoluong());
+            gioHang.setDonGia(x.getDonGia());
+            gioHang.setGiamGia(x.getSanPham().getKhuenMai().getGiaTriGiam());
+            gioHang.setHinhThucGiamGia(x.getSanPham().getKhuenMai().getHinhThucKM());
+            listGioHang.add(gioHang);
+            getListGioHang();
+
+        }
+    }
+
     private void mouse() {
         int rowHD = tb_hoaDon.getSelectedRow();
         int row = tb_hoaDon.getSelectedRow();
@@ -277,7 +286,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 lbl_giamGia1.setText(String.valueOf(giam += tongPT));
                 lbl_giamGia1.setText(String.format("%.0f", giam));
             } else {
-                tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam();
+                tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam() * x.getSoluong();
                 lbl_giamGia1.setText(String.valueOf(giam += tongVN));
             }
             count++;
@@ -290,9 +299,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 //        } else {
 //            lbl_diemThuong.setText(String.valueOf(0));
 //        }
-
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -466,7 +473,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
             },
             new String [] {
-                "Mã SP", "Tên SP", "Số Lượng", "Đơn Giá", "Thành Tiền"
+                "Mã SP", "Tên SP", "Màu Sắc", "Size", "Số Lượng", "Đơn Giá", "Được giảm", "Thành Tiền"
             }
         ));
         tb_gioHang.setComponentPopupMenu(jPopupMenu1);
@@ -709,14 +716,25 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             return;
         }
         try {
+
             int NhapSoLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập Số Lượng!"));
             String MaSP = tb_sanPham.getValueAt(row, 0).toString();
             String TenSP = tb_sanPham.getValueAt(row, 1).toString();
+            String mausac = tb_sanPham.getValueAt(row, 2).toString();
+            String kichco = tb_sanPham.getValueAt(row, 6).toString();
             int SoLuong = Integer.parseInt(tb_sanPham.getValueAt(row, 8).toString());
             Double DonGia = Double.parseDouble(tb_sanPham.getValueAt(row, 7).toString());
             Double GiamGia = Double.parseDouble(tb_sanPham.getValueAt(row, 3).toString());
             String hinhThucGiamGia = tb_sanPham.getValueAt(row, 4).toString();
             List<HoaDonCHiTietViewModel> listh = hoaDonServiec.getListHoaDonChiTiet(tb_hoaDon.getValueAt(rowHD, 0).toString());
+            //validate nam
+
+            if (NhapSoLuong <= 0) {
+                JOptionPane.showMessageDialog(null, "Số lượng phải lớn hơn 0 !", "Chú ý", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            //ket thuc validate nam
             if (SoLuong >= NhapSoLuong) {
                 for (HoaDonCHiTietViewModel x : listh) {
                     if (x.getSanPham().getMa().equals(MaSP)) {
@@ -724,8 +742,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                         return;
                     }
                 }
-
-                listGioHang.add(new GioHangViewModel(MaSP, TenSP, NhapSoLuong, DonGia, GiamGia, hinhThucGiamGia));
+                listGioHang.add(new GioHangViewModel(MaSP, TenSP, mausac, kichco, NhapSoLuong, DonGia, GiamGia, hinhThucGiamGia));
                 getListGioHang();
 
                 int kq = SoLuong - NhapSoLuong;
@@ -746,7 +763,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                         lbl_giamGia1.setText(String.valueOf(giam += tongPT));
                         lbl_giamGia1.setText(String.format("%.0f", giam));
                     } else {
-                        tongVN = x.getGiamGia();
+                        tongVN = x.getGiamGia() * x.getSoLuong();
                         lbl_giamGia1.setText(String.valueOf(giam + tongVN));
                     }
                     count++;
@@ -756,9 +773,10 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 lbl_thanhTien.setText(String.valueOf(String.format("%.0f", ThanhTien)));
 
             } else if (SoLuong < NhapSoLuong) {
-                JOptionPane.showMessageDialog(this, "Sản phẩm không đủ ");
-                return;
 
+                JOptionPane.showMessageDialog(null, "Sản phẩm không đủ", "Cảnh báo", JOptionPane.ERROR_MESSAGE);
+
+                return;
             }
 //            if (Integer.parseInt(lbl_thanhTien.getText()) >= 500000) {
 //                int diemThuong = Integer.parseInt(lbl_thanhTien.getText()) / 100000;
@@ -778,10 +796,15 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Vui lòng không nhập kí tự", "Chú ý", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_tb_sanPhamMouseClicked
 
     private void btn_thanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thanhToanActionPerformed
+        if (tb_gioHang.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn sản phẩm lên giỏ hàng !");
+            return;
+        }
         int rowHD = tb_hoaDon.getSelectedRow();
         if (rowHD < 0) {
             JOptionPane.showMessageDialog(this, "chọn hoá đơn bạn muốn thanh toán");
@@ -799,7 +822,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         }
         try {
             if (Double.parseDouble(txt_tienKhachDua.getText()) < Double.parseDouble(lbl_thanhTien.getText())) {
-                JOptionPane.showMessageDialog(this, "tiền khách Đưa chưa đủ");
+                JOptionPane.showMessageDialog(this, "Tiền khách Đưa chưa đủ");
                 return;
             }
         } catch (Exception e) {
@@ -815,13 +838,11 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         hoaDon.setTongTien(Double.parseDouble(lbl_thanhTien.getText()));
         hoaDonServiec.updateTrangThaiHoaDon(hoaDon);
 
-    
 //        List<KhachHang> getListKhachHang = khachHangService.TenDiemKhachHang(lbl_sdt.getText());
 //        for (KhachHang khachHang : getListKhachHang) {
 //            khachHangService.updateDiemKhachHang(lbl_sdt.getText(), khachHang.getDiemthuong() + Integer.parseInt(lbl_diemThuong.getText()));
 //            break;
 //        }
-
         JOptionPane.showMessageDialog(this, "thanh toán thành công");
         if (chk_inHoaDon.isSelected()) {
             XWPFDocument document = new XWPFDocument();
@@ -885,7 +906,9 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 table.setWidth(10000);
                 XWPFTableRow tableRowOne = table.getRow(0);
 
-                tableRowOne.getCell(0).setText("tên Sản Phẩm");
+                tableRowOne.getCell(0).setText("Tên Sản Phẩm");
+                tableRowOne.addNewTableCell().setText("Màu Sắc");
+                tableRowOne.addNewTableCell().setText("Size");
                 tableRowOne.addNewTableCell().setText("Số Lượng");
                 tableRowOne.addNewTableCell().setText(
                         "Đơn Giá)");
@@ -902,7 +925,11 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
                     tableRowTwo.getCell(2).setText(tb_gioHang.getValueAt(row, 3).toString());
 
-                    tableRowTwo.getCell(3).setText(String.valueOf(Double.parseDouble(tb_gioHang.getValueAt(row, 2).toString()) * Double.parseDouble(tb_gioHang.getValueAt(row, 3).toString())));
+                    tableRowTwo.getCell(3).setText(tb_gioHang.getValueAt(row, 4).toString());
+
+                    tableRowTwo.getCell(4).setText(tb_gioHang.getValueAt(row, 5).toString());
+
+                    tableRowTwo.getCell(5).setText(String.valueOf(Double.parseDouble(tb_gioHang.getValueAt(row, 4).toString()) * Double.parseDouble(tb_gioHang.getValueAt(row, 5).toString())));
 
                     row++;
                 }
@@ -919,7 +946,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 run.setText("Tổng Tiền Thanh Toán :" + lbl_thanhTien.getText());
                 XWPFParagraph xWPFParagraph10 = document.createParagraph();
                 run = xWPFParagraph10.createRun();
-                run.setText("tiền trả lại :" + lbl_tienThua.getText());
+                run.setText("Tiền trả lại :" + lbl_tienThua.getText());
                 XWPFParagraph xWPFParagraph11 = document.createParagraph();
                 xWPFParagraph11.setAlignment(ParagraphAlignment.RIGHT);
 
@@ -933,7 +960,8 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 document.write(fos);
                 fos.close();
                 document.close();
-                System.out.println("xuất hoá đơn thành công");
+                System.out.println("Xuất hoá đơn thành công");
+                JOptionPane.showMessageDialog(this, "Đã in hóa đơn");
 
             } catch (FileNotFoundException ex) {
                 ex.printStackTrace();
@@ -987,7 +1015,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             getListGioHangHDCT(MaHD);
             lbl_tenKhachHang.setText("");
             lbl_sdt.setText("");
-        
+
             Double tongPT = 0.0;
             Double tongVN = 0.0;
             Double tongTien = 0.0;
@@ -1006,7 +1034,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                     lbl_giamGia1.setText(String.valueOf(giam += tongPT));
                     lbl_giamGia1.setText(String.format("%.0f", giam));
                 } else {
-                    tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam();
+                    tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam() * x.getSoluong();
                     lbl_giamGia1.setText(String.valueOf(giam += tongVN));
                 }
 
@@ -1042,7 +1070,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         }
         String MaSP = tb_gioHang.getValueAt(rowSP, 0).toString();
         String MaHD = tb_hoaDon.getValueAt(rowHD, 0).toString();
-        Integer soLuong = Integer.parseInt(tb_gioHang.getValueAt(rowSP, 2).toString());
+        Integer soLuong = Integer.parseInt(tb_gioHang.getValueAt(rowSP, 4).toString());
         Integer idSP = sanISamPhamServiecs.getIdSanPham(MaSP);
         Integer idHd = hoaDonServiec.getIdHD(MaHD);
         Integer isDelete = hoaDonServiec.deleteSanPham(idHd, idSP);
@@ -1076,9 +1104,9 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             for (HoaDonCHiTietViewModel gioHang : listHD) {
                 GioHangViewModel hg = new GioHangViewModel();
                 hg.setMaSP(tb_gioHang.getValueAt(count, 0).toString());
-                hg.setSoLuong(Integer.parseInt(tb_gioHang.getValueAt(count, 2).toString()));
+                hg.setSoLuong(Integer.parseInt(tb_gioHang.getValueAt(count, 4).toString()));
                 hg.setTenSP(tb_gioHang.getValueAt(count, 1).toString());
-                hg.setDonGia(Double.parseDouble(tb_gioHang.getValueAt(count, 3).toString()));
+                hg.setDonGia(Double.parseDouble(tb_gioHang.getValueAt(count, 5).toString()));
 
                 count++;
                 listGioHang.add(hg);
@@ -1101,7 +1129,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             lbl_tongTien1.setText(String.valueOf(0));
             lbl_giamGia1.setText(String.valueOf(0));
             lbl_thanhTien.setText(String.valueOf(0));
-          
+
 //            lbl_diemThuong.setText("");
         } else {
             return;
@@ -1122,13 +1150,18 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         List<SanPhamViewModel> list = sanISamPhamServiecs.getListSanPham();
         try {
-            int NhapSoLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập số lượng"));
+            int NhapSoLuong = Integer.parseInt(JOptionPane.showInputDialog(null, "Mời nhập số lượng cần thay đổi", "Hello", JOptionPane.INFORMATION_MESSAGE));
+
+            if (NhapSoLuong <= 0) {
+                JOptionPane.showMessageDialog(null, "Số lượng phải lớn hơn 0 !", "Chú ý", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             for (SanPhamViewModel x : list) {
                 if (MaSP.equals(x.getMa())) {
-                    if (x.getSoLuongTon() + Integer.parseInt(tb_gioHang.getValueAt(rowSP, 2).toString()) >= NhapSoLuong) {
+                    if (x.getSoLuongTon() + Integer.parseInt(tb_gioHang.getValueAt(rowSP, 4).toString()) >= NhapSoLuong) {
 
                         Integer isupdate = hoaDonServiec.updateSoLuongGioHang(NhapSoLuong, MaSP, MaHD);
-                        int updateSoLuong = x.getSoLuongTon() + Integer.parseInt(tb_gioHang.getValueAt(rowSP, 2).toString());
+                        int updateSoLuong = x.getSoLuongTon() + Integer.parseInt(tb_gioHang.getValueAt(rowSP, 4).toString());
                         getListGioHangHDCT(MaHD);
                         sanISamPhamServiecs.updateSoLuongSP(x.getMa(), updateSoLuong - NhapSoLuong);
                         list.clear();
@@ -1144,7 +1177,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(this, "vui lòng nhập nó không nhập kí tự");
+            JOptionPane.showMessageDialog(null, "Vui lòng không nhập kí tự", "Chú ý", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -1179,7 +1212,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }//GEN-LAST:event_myButton9ActionPerformed
 
     private void btn_xacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xacNhanActionPerformed
- int rowHD = tb_hoaDon.getSelectedRow();
+        int rowHD = tb_hoaDon.getSelectedRow();
         if (rowHD < 0) {
             JOptionPane.showMessageDialog(this, "chọn 1 hoá đơn hiện thị khách hàng");
             return;
@@ -1189,7 +1222,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         for (HoaDon hoaDon : getList) {
             lbl_tenKhachHang.setText(hoaDon.getKhachHang().getTen());
             lbl_sdt.setText(hoaDon.getKhachHang().getSdt());
-           
+
             return;
         }
     }//GEN-LAST:event_btn_xacNhanActionPerformed
@@ -1213,7 +1246,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }//GEN-LAST:event_jLabel3AncestorAdded
 
     private void btn_thayDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thayDoiActionPerformed
- int rowHD = tb_hoaDon.getSelectedRow();
+        int rowHD = tb_hoaDon.getSelectedRow();
         if (rowHD < 0) {
             JOptionPane.showMessageDialog(this, "chọn hoá đơn bạn muốn thêm khách hàng vào");
             return;
@@ -1307,7 +1340,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     private swing.MyTextField txt_tienKhachDua;
     // End of variables declaration//GEN-END:variables
 
-@Override
+    @Override
     public void run() {
         do {
             try {
@@ -1369,5 +1402,5 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         t.setDaemon(true);
         return t;
     }
-  
+
 }

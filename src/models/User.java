@@ -11,6 +11,7 @@ import java.sql.Date;
  * @author Admin
  */
 public class User {
+
     private int id;
     private String Ten;
     private String TenDem;
@@ -27,7 +28,7 @@ public class User {
     public User() {
     }
 
-    public User(int id ,String Ten, String TenDem, String Ho, Date NgaySinh, Boolean GioTinh, String Sdt, String TaiKhoan, String MatKhau, String Email, int TrangThai, Chucvu chucVu) {
+    public User(int id, String Ten, String TenDem, String Ho, Date NgaySinh, Boolean GioTinh, String Sdt, String TaiKhoan, String MatKhau, String Email, int TrangThai, Chucvu chucVu) {
         this.Ten = Ten;
         this.TenDem = TenDem;
         this.Ho = Ho;
@@ -41,8 +42,6 @@ public class User {
         this.id = id;
         this.chucVu = chucVu;
     }
-
-
 
     public String getTen() {
         return Ten;
@@ -139,6 +138,5 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
+
 }

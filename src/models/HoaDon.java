@@ -1,28 +1,28 @@
-
 package models;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
  * @author PC
  */
 public class HoaDon {
+
     private User user;
     private Integer id;
     private KhachHang khachHang;
     private String Ma;
     private String Ghichu;
-    private Date NgayTao;
+    private Timestamp NgayTao;
     private Date NgayThanhToan;
     private int TinhTrang;
     private Double tongTien;
-    
 
     public HoaDon() {
     }
 
-    public HoaDon(User user, Integer id, KhachHang khachHang, String Ma, String Ghichu, Date NgayTao, Date NgayThanhToan, int TinhTrang,Double tongTien) {
+    public HoaDon(User user, Integer id, KhachHang khachHang, String Ma, String Ghichu, Timestamp NgayTao, Date NgayThanhToan, int TinhTrang, Double tongTien) {
         this.user = user;
         this.id = id;
         this.khachHang = khachHang;
@@ -82,11 +82,11 @@ public class HoaDon {
         this.Ma = Ma;
     }
 
-    public Date getNgayTao() {
+    public Timestamp getNgayTao() {
         return NgayTao;
     }
 
-    public void setNgayTao(Date NgayTao) {
+    public void setNgayTao(Timestamp NgayTao) {
         this.NgayTao = NgayTao;
     }
 
@@ -106,10 +106,4 @@ public class HoaDon {
         this.TinhTrang = TinhTrang;
     }
 
-
-   
-    
-     
-
 }
- 

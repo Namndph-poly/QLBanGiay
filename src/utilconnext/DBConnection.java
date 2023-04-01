@@ -92,6 +92,7 @@ public class DBConnection {//Lớp này giải quyết kết nối xử lý truy
             return null;
         }
     }
+
     public static void main(String[] args) {
         Connection con = openDbConnection();
     }

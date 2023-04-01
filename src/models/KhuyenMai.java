@@ -12,14 +12,15 @@ import java.math.BigDecimal;
  * @author ADMIN
  */
 public class KhuyenMai {
-    private String ID,TenKM,HinhThucKM,NgayBatDau,NgayKetThuc;
+
+    private String ID, TenKM, HinhThucKM, NgayBatDau, NgayKetThuc;
     private Double GiaTriGiam;
     private int Trangthai;
 
     public KhuyenMai() {
     }
 
-    public KhuyenMai(String ID, String TenKM, String HinhThucKM, String NgayBatDau, String NgayKetThuc, Double GiaTriGiam,int Trangthai) {
+    public KhuyenMai(String ID, String TenKM, String HinhThucKM, String NgayBatDau, String NgayKetThuc, Double GiaTriGiam, int Trangthai) {
         this.ID = ID;
         this.TenKM = TenKM;
         this.HinhThucKM = HinhThucKM;
@@ -29,7 +30,7 @@ public class KhuyenMai {
         this.Trangthai = Trangthai;
     }
 
-    public KhuyenMai(String TenKM, String HinhThucKM, String NgayBatDau, String NgayKetThuc, Double GiaTriGiam,int Trangthai) {
+    public KhuyenMai(String TenKM, String HinhThucKM, String NgayBatDau, String NgayKetThuc, Double GiaTriGiam, int Trangthai) {
         this.TenKM = TenKM;
         this.HinhThucKM = HinhThucKM;
         this.NgayBatDau = NgayBatDau;
@@ -93,9 +94,10 @@ public class KhuyenMai {
     public void setGiaTriGiam(Double GiaTriGiam) {
         this.GiaTriGiam = GiaTriGiam;
     }
+
     @Override
     public String toString() {
         return TenKM;
     }
-    
+
 }

@@ -9,21 +9,26 @@ package models;
  * @author Admin
  */
 public class HoaDonChiTiet {
+
     private int Soluong;
     private Double DonGia;
     private Double DonKhiGiam;
     private HoaDon hoaDon;
     private SanPham sanPham;
+    private MauSac mauSac;
+    private KichCo kichCo;
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(Integer idHoaDon, Integer idCTSP, int Soluong, Double DonGia, Double DonKhiGiam, HoaDon haoDon, SanPham sanPham) {
+    public HoaDonChiTiet(int Soluong, Double DonGia, Double DonKhiGiam, HoaDon hoaDon, SanPham sanPham, MauSac mauSac, KichCo kichCo) {
         this.Soluong = Soluong;
         this.DonGia = DonGia;
         this.DonKhiGiam = DonKhiGiam;
-        this.hoaDon = haoDon;
+        this.hoaDon = hoaDon;
         this.sanPham = sanPham;
+        this.mauSac = mauSac;
+        this.kichCo = kichCo;
     }
 
     public int getSoluong() {
@@ -64,6 +69,30 @@ public class HoaDonChiTiet {
 
     public void setSanPham(SanPham sanPham) {
         this.sanPham = sanPham;
+    }
+
+    public HoaDon getHoaDon() {
+        return hoaDon;
+    }
+
+    public void setHoaDon(HoaDon hoaDon) {
+        this.hoaDon = hoaDon;
+    }
+
+    public MauSac getMauSac() {
+        return mauSac;
+    }
+
+    public void setMauSac(MauSac mauSac) {
+        this.mauSac = mauSac;
+    }
+
+    public KichCo getKichCo() {
+        return kichCo;
+    }
+
+    public void setKichCo(KichCo kichCo) {
+        this.kichCo = kichCo;
     }
 
 }

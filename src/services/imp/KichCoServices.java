@@ -15,10 +15,11 @@ import viewmodels.Objecttt;
  *
  * @author vieta
  */
-public class KichCoServices implements IKichCoServices{
+public class KichCoServices implements IKichCoServices {
+
     private IKichCoRepository kichCoRepository = new KichCoRepositoryimpl();
-    
-     @Override
+
+    @Override
     public List<KichCo> getAll() {
         return kichCoRepository.getAll();
     }
@@ -36,7 +37,7 @@ public class KichCoServices implements IKichCoServices{
     @Override
     public String Update(Objecttt x, int id) {
         KichCo kichCo = new KichCo(x.getId(), x.getTen());
-        int xxx = kichCoRepository.update(kichCo,id);
+        int xxx = kichCoRepository.update(kichCo, id);
         if (xxx == 1) {
             return "Thành công";
         }

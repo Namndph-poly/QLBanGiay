@@ -24,10 +24,13 @@ public interface IChiTietSPServices {
     boolean Update(String ma, ChiTietSPViewModel x);
 
     public List<ChiTietSPViewModel> getSPhet();
-    
+
     public Date checkngay(String id);
+
     public Date checkngay2(String id);
+
     public List<ChiTietSPViewModel> GetAll();
-    public boolean Update(String ma,String id);
-    
+
+    public boolean Update(String ma, String id);
+
 }

@@ -9,6 +9,7 @@ package models;
  * @author Admin
  */
 public class MauSac {
+
     private int id;
     private String ten;
 
@@ -38,9 +39,7 @@ public class MauSac {
 
     @Override
     public String toString() {
-        return ten ;
+        return ten;
     }
-    
-    
-    
+
 }
