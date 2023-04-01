@@ -809,7 +809,7 @@ public class frm_Sanpham extends javax.swing.JPanel {
         defaultTableModel.addColumn("Giá bán");
         defaultTableModel.addColumn("Được giảm");
         defaultTableModel.addColumn("Mô tả");
-        defaultTableModel.addColumn("Barcode");
+        defaultTableModel.addColumn("Mã Qr");
 
     }
 
