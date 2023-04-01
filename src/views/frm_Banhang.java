@@ -746,46 +746,37 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 listGioHang.add(new GioHangViewModel(MaSP, TenSP, mausac, kichco, NhapSoLuong, DonGia, GiamGia, hinhThucGiamGia));
                 getListGioHang();
 
-                int kq = SoLuong - NhapSoLuong;
+                int kq = (int) (SoLuong - NhapSoLuong);
                 sanISamPhamServiecs.updateSoLuongSP(MaSP, kq);
                 List<SanPhamViewModel> list = sanISamPhamServiecs.getListSanPham();
                 list.clear();
                 getListSP();
-                Double tongPT = 0.0;
-                Double tongVN = 0.0;
-                Double tongTien = 0.0;
-                Double giam = Double.parseDouble(lbl_giamGia1.getText());
+                double tongPT = 0.0;
+                double tongVN = 0.0;
+                double tongTien = 0.0;
+                double giam = 0.0; // Thay đổi giá trị ban đầu của giam từ 0.0 sang  Double.parseDouble(lbl_giamGia1.getText());
                 int count = 0;
                 for (GioHangViewModel x : listGioHang) {
-                    tongTien = tongTien + x.getThanhTien();
+                    tongTien += x.getThanhTien();
                     lbl_tongTien1.setText(String.format("%.0f", tongTien));
-                    if (tb_gioHang.getValueAt(count, 0).equals(MaSP) && x.getHinhThucGiamGia().equals("%")) {
-                        tongPT = x.getThanhTien() * x.getGiamGia() / 100;
-                        lbl_giamGia1.setText(String.valueOf(giam += tongPT));
-                        lbl_giamGia1.setText(String.format("%.0f", giam));
+                    if (x.getHinhThucGiamGia().equals("%")) {
+                        tongPT += x.getThanhTien() * x.getGiamGia() / 100;
                     } else {
-                        tongVN = x.getGiamGia() * x.getSoLuong();
-                        lbl_giamGia1.setText(String.valueOf(giam + tongVN));
-                        lbl_giamGia1.setText(String.format("%.0f", tongVN));
+                        tongVN += x.getGiamGia() * x.getSoLuong();
                     }
                     count++;
-
                 }
+                giam = tongPT + tongVN; // Tổng giá trị giảm giá bao gồm giảm theo % và giảm theo tiền
+                lbl_giamGia1.setText(String.format("%.0f", giam)); // Hiển thị tổng giá trị giảm giá lên label
                 Double ThanhTien = Double.parseDouble(lbl_tongTien1.getText()) - Double.parseDouble(lbl_giamGia1.getText());
                 lbl_thanhTien.setText(String.valueOf(String.format("%.0f", ThanhTien)));
-
+                
             } else if (SoLuong < NhapSoLuong) {
 
                 JOptionPane.showMessageDialog(null, "Sản phẩm không đủ", "Cảnh báo", JOptionPane.ERROR_MESSAGE);
 
                 return;
             }
-//            if (Integer.parseInt(lbl_thanhTien.getText()) >= 500000) {
-//                int diemThuong = Integer.parseInt(lbl_thanhTien.getText()) / 100000;
-//                lbl_diemThuong.setText(String.valueOf(diemThuong));
-//            } else {
-//                lbl_diemThuong.setText(String.valueOf(0));
-//            }
             List<HoaDonViewModel> listHoaDon = hoaDonServiec.getListHD(1);
             for (HoaDonViewModel x : listHoaDon) {
                 if (tb_hoaDon.getValueAt(rowHD, 0).toString().equals(x.getMa())) {
