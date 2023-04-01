@@ -770,7 +770,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 lbl_giamGia1.setText(String.format("%.0f", giam)); // Hiển thị tổng giá trị giảm giá lên label
                 Double ThanhTien = Double.parseDouble(lbl_tongTien1.getText()) - Double.parseDouble(lbl_giamGia1.getText());
                 lbl_thanhTien.setText(String.valueOf(String.format("%.0f", ThanhTien)));
-                
+
             } else if (SoLuong < NhapSoLuong) {
 
                 JOptionPane.showMessageDialog(null, "Sản phẩm không đủ", "Cảnh báo", JOptionPane.ERROR_MESSAGE);
@@ -1052,12 +1052,14 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }//GEN-LAST:event_tb_hoaDonMouseClicked
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
+
         int rowSP = tb_gioHang.getSelectedRow();
         int rowHD = tb_hoaDon.getSelectedRow();
         if (rowSP < 0) {
             JOptionPane.showMessageDialog(this, "chọn 1 sản phẩm trong giỏ hàng để xoá");
             return;
         }
+
         if (rowHD < 0) {
             JOptionPane.showMessageDialog(this, "chọn Hoá đơn bạn muốn xoá sản phẩm đấy");
             return;
@@ -1080,6 +1082,9 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
         }
         listGioHang.clear();
+
+        JOptionPane.showMessageDialog(null, "Xóa thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
+
 
     }//GEN-LAST:event_btn_xoaActionPerformed
 
@@ -1123,9 +1128,11 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             lbl_tongTien1.setText(String.valueOf(0));
             lbl_giamGia1.setText(String.valueOf(0));
             lbl_thanhTien.setText(String.valueOf(0));
-
+            JOptionPane.showMessageDialog(null, "Xóa tất cả thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
 //            lbl_diemThuong.setText("");
         } else {
+            JOptionPane.showMessageDialog(null, "Đã hủy", "Success", JOptionPane.INFORMATION_MESSAGE);
+
             return;
         }
     }//GEN-LAST:event_btn_clearActionPerformed
