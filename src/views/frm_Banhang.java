@@ -288,6 +288,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             } else {
                 tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam() * x.getSoluong();
                 lbl_giamGia1.setText(String.valueOf(giam += tongVN));
+                lbl_giamGia1.setText(String.format("%.0f", giam));
             }
             count++;
         }
@@ -765,6 +766,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                     } else {
                         tongVN = x.getGiamGia() * x.getSoLuong();
                         lbl_giamGia1.setText(String.valueOf(giam + tongVN));
+                        lbl_giamGia1.setText(String.format("%.0f", tongVN));
                     }
                     count++;
 
@@ -1036,6 +1038,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 } else {
                     tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam() * x.getSoluong();
                     lbl_giamGia1.setText(String.valueOf(giam += tongVN));
+                    lbl_giamGia1.setText(String.format("%.0f", giam));
                 }
 
                 count++;
