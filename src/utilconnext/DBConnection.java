@@ -95,5 +95,6 @@ public class DBConnection {//Lớp này giải quyết kết nối xử lý truy
 
     public static void main(String[] args) {
         Connection con = openDbConnection();
+//        System.out.println("utilconnext.DBConnection.main()");
     }
 }
