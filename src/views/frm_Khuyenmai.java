@@ -392,6 +392,10 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Tên khuyến mãi đã tồn tại");
             return;
         }
+        if(Integer.parseInt(txt_giatrgiam.getText())>=100){
+            JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi phải nhỏ hơn 100% !!!");
+            return;
+        }
         IKhuyenmaiRepository repository = new KhuyenmaiReponsitory();
         List<KhuyenMai> lst = repository.GetAll();
         long time = System.currentTimeMillis();
@@ -438,6 +442,10 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng nào");
             return;
         }
+                  if(Integer.parseInt(txt_giatrgiam.getText())>=100){
+            JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi phải nhỏ hơn 100% !!!");
+            return;
+        }
         if (JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không?", "Update", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             KhuyenmaiViewmodel km = new KhuyenmaiViewmodel();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -456,6 +464,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Ngày kết thúc phải lớn hơn ngày bắt đầu");
                 return;
             }
+            
             long time = System.currentTimeMillis();
             java.sql.Date date = new java.sql.Date(time);
             if (date.before(chiTietSPServices.checkngay(lst.get(r).getID()))) {
