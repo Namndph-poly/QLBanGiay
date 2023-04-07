@@ -392,10 +392,23 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Tên khuyến mãi đã tồn tại");
             return;
         }
-        if(Integer.parseInt(txt_giatrgiam.getText())>=100){
-            JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi phải nhỏ hơn 100% !!!");
-            return;
+        
+             if (rd_phantram.isSelected()) {
+            if (Integer.parseInt(txt_giatrgiam.getText().trim()) >= 100) {
+                JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi phải nhỏ hơn 100% !!!");
+                return;
+            }
         }
+             
+                 if (Integer.parseInt(txt_giatrgiam.getText().trim()) < 0) {
+                JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi không được phép âm");
+                return;
+            }
+                 if (Integer.parseInt(txt_giatrgiam.getText().trim()) == 0) {
+                JOptionPane.showMessageDialog(this, "Bạn phải nhập giá trị khuyến mãi lớn hơn 0");
+                return;
+            }
+        
         IKhuyenmaiRepository repository = new KhuyenmaiReponsitory();
         List<KhuyenMai> lst = repository.GetAll();
         long time = System.currentTimeMillis();
@@ -442,10 +455,20 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng nào");
             return;
         }
-                  if(Integer.parseInt(txt_giatrgiam.getText())>=100){
-            JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi phải nhỏ hơn 100% !!!");
-            return;
+              if (rd_phantram.isSelected()) {
+            if (Integer.parseInt(txt_giatrgiam.getText().trim()) >= 100) {
+                JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi phải nhỏ hơn 100% !!!");
+                return;
+            }
         }
+                          if (Integer.parseInt(txt_giatrgiam.getText().trim()) < 0) {
+                JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi không được phép âm");
+                return;
+            }
+                 if (Integer.parseInt(txt_giatrgiam.getText().trim()) == 0) {
+                JOptionPane.showMessageDialog(this, "Bạn phải nhập giá trị khuyến mãi lớn hơn 0");
+                return;
+            }
         if (JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không?", "Update", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             KhuyenmaiViewmodel km = new KhuyenmaiViewmodel();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -525,10 +548,10 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             }
             if (giatri.contains("%")) {
                 int index = giatri.indexOf("%");
-                txt_giatrgiam.setText(giatri.substring(0, index));
+                txt_giatrgiam.setText(giatri.substring(0, index).trim());
             } else if (giatri.contains("VND")) {
                 int index = giatri.indexOf("VND");
-                txt_giatrgiam.setText(giatri.substring(0, index));
+                txt_giatrgiam.setText(giatri.substring(0, index).trim());
             }
         } catch (ParseException ex) {
 //            Logger.getLogger(FrmKhuyenmai.class.getName()).log(Level.SEVERE, null, ex);
