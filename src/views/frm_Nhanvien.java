@@ -534,6 +534,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
             if (nhanVienService.add(nv) != false) {
                 JOptionPane.showMessageDialog(this, "Thêm Thành Công");
                 Loaddata();
+                ClearForm();
             } else {
                 JOptionPane.showMessageDialog(this, "Thêm Thất Bại");
             }

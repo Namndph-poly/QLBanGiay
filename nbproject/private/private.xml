@@ -3,20 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/repositorys/imp/ChatLieuRepositoryimpl.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/utilconnext/DBConnection.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/repositorys/IMauSacRepository.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/services/imp/HoaDonServiec.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/views/frm_Dangnhap.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/views/frm_Nhanvien.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/utilconnext/SendMail.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/views/frm_Khachhang.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/swing/MyPassword.java</file>
             <file>file:/C:/Users/admin/Documents/QLBanGiay/src/application/main.java</file>
-=======
-            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_themthuoctinh.java</file>
-            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Thongke.java</file>
-            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Nhanvien.java</file>
-            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Login.java</file>
-            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Khuyenmai.java</file>
-            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Banhang.java</file>
-            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Sanpham.java</file>
-            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Quenmatkhau.java</file>
-            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/frm_Khachhang.java</file>
-            <file>file:/C:/Users/ACER/Documents/QLBanGiay/src/views/KhachHangForm.java</file>
->>>>>>> 9c73ce58776ff4711dedc057327e23f85420ef3f
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/views/frm_Hoadon.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/viewmodels/GioHangViewModel.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/repositorys/IChatLieuRepository.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/views/KhachHangForm.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/repositorys/imp/ChiTietSPRepository.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/repositorys/imp/KhachHangRPImpl.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/views/frm_Login.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/repositorys/IChiTietSPRepository.java</file>
+            <file>file:/C:/Users/admin/Documents/QLBanGiay/src/views/frm_Banhang.java</file>
         </group>
     </open-files>
 </project-private>
