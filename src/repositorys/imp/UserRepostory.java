@@ -22,7 +22,7 @@ import utilconnext.DBConnection;
 public class UserRepostory implements IUserRepostory {
 
     @Override
-    public List<User> getUser(String TaiKhoan , String MatKhau) {
+    public List<User> getUser(String TaiKhoan, String MatKhau) {
         List<User> list = new ArrayList<>();
         try {
             String sql = "select nv.ho,nv.TenDem,nv.Ten ,nv.IdCV, cv.Ten , nv.id from Users nv join ChucVu  cv on nv.idCV = cv.id where nv.TaiKhoan =? and nv.matKhau =?";
@@ -31,7 +31,7 @@ public class UserRepostory implements IUserRepostory {
             pr.setString(1, TaiKhoan);
             pr.setString(2, MatKhau);
             ResultSet rs = pr.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 User user = new User();
                 user.setHo(rs.getString(1));
                 user.setTenDem(rs.getString(2));
@@ -43,7 +43,7 @@ public class UserRepostory implements IUserRepostory {
                 user.setId(rs.getInt(6));
                 list.add(user);
             }
-             
+
         } catch (Exception e) {
             e.printStackTrace();
         }

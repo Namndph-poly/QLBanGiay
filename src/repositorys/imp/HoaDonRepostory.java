@@ -23,20 +23,18 @@ import utilconnext.DBConnection;
  */
 public class HoaDonRepostory implements IHoaDonRepostory {
 
-
-   @Override
+    @Override
     public List<HoaDon> GetAllHD() {
         String query = "SELECT a.MA,b.TEN,c.TEN,NGAYTAO,NGAYTHANHTOAN,TinhTrang,GHICHU,a.tongTien FROM HOADON a JOIN USERS b ON a.IDNV = b.ID "
                 + "JOIN KHACHHANG c ON a.IDKH = c.ID";
-        try (Connection con = DBConnection.openDbConnection();
-                PreparedStatement ps = con.prepareStatement(query);) {
+        try ( Connection con = DBConnection.openDbConnection();  PreparedStatement ps = con.prepareStatement(query);) {
             ResultSet rs = ps.executeQuery();
             List<HoaDon> listSP = new ArrayList<>();
             while (rs.next()) {
                 HoaDon hoadon = new HoaDon();
                 hoadon.setMa(rs.getString(1));
                 hoadon.setGhichu(rs.getString(7));
-                hoadon.setNgayTao(rs.getDate(4));
+                hoadon.setNgayTao(rs.getTimestamp(4));
                 hoadon.setNgayThanhToan(rs.getDate(5));
                 hoadon.setTinhTrang(rs.getInt(6));
                 hoadon.setTongTien(rs.getDouble(8));
@@ -61,8 +59,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
     public List<HoaDonChiTiet> GetAllHDCT() {
         String query = "SELECT c.Ma, b.MA,b.TEN,a.soluong,DonGia FROM HOADONCHITIET a JOIN ChitietSP b ON a.IdCTSP = b.Id"
                 + " JOIN HOADON c ON a.IDHD = c.ID";
-        try (Connection con = DBConnection.openDbConnection();
-                PreparedStatement ps = con.prepareStatement(query);) {
+        try ( Connection con = DBConnection.openDbConnection();  PreparedStatement ps = con.prepareStatement(query);) {
             ResultSet rs = ps.executeQuery();
 
             List<HoaDonChiTiet> listHDCT = new ArrayList<>();
@@ -137,7 +134,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
                 HoaDon hoadon = new HoaDon();
                 hoadon.setMa(rs.getString(1));
                 hoadon.setGhichu(rs.getString(7));
-                hoadon.setNgayTao(rs.getDate(4));
+                hoadon.setNgayTao(rs.getTimestamp(4));
                 hoadon.setNgayThanhToan(rs.getDate(5));
                 hoadon.setTinhTrang(rs.getInt(6));
 
@@ -173,7 +170,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
                 HoaDon hoadon = new HoaDon();
                 hoadon.setMa(rs.getString(1));
                 hoadon.setGhichu(rs.getString(7));
-                hoadon.setNgayTao(rs.getDate(4));
+                hoadon.setNgayTao(rs.getTimestamp(4));
                 hoadon.setNgayThanhToan(rs.getDate(5));
                 hoadon.setTinhTrang(rs.getInt(6));
                 hoadon.setTongTien(rs.getDouble(8));
@@ -192,11 +189,10 @@ public class HoaDonRepostory implements IHoaDonRepostory {
         }
         return getList;
     }
-    
 
     @Override
     public List<HoaDon> GetTimNTT(String NgayTT) {
-       List<HoaDon> getList = new ArrayList<>();
+        List<HoaDon> getList = new ArrayList<>();
         try {
             String sql = "SELECT a.MA,b.TEN,c.TEN,NGAYTAO,NGAYTHANHTOAN,TinhTrang,GHICHU ,a.tongTien FROM HOADON a JOIN USERS b ON a.IDNV = b.ID \n"
                     + "JOIN KHACHHANG c ON a.IDKH = c.ID\n"
@@ -209,7 +205,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
                 HoaDon hoadon = new HoaDon();
                 hoadon.setMa(rs.getString(1));
                 hoadon.setGhichu(rs.getString(7));
-                hoadon.setNgayTao(rs.getDate(4));
+                hoadon.setNgayTao(rs.getTimestamp(4));
                 hoadon.setNgayThanhToan(rs.getDate(5));
                 hoadon.setTinhTrang(rs.getInt(6));
                 hoadon.setTongTien(rs.getDouble(8));
@@ -228,10 +224,10 @@ public class HoaDonRepostory implements IHoaDonRepostory {
         }
         return getList;
     }
-    
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
-     @Override
+    @Override
     public Integer insertHoaDon(HoaDon hd, Integer idNV) {
         int result = 0;
         try {
@@ -240,7 +236,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
             PreparedStatement pr = conn.prepareStatement(sql);
             pr.setString(1, hd.getMa());
             pr.setInt(2, idNV);
-            pr.setDate(3, hd.getNgayTao());
+            pr.setTimestamp(3, hd.getNgayTao());
             pr.setDate(4, hd.getNgayThanhToan());
             pr.setInt(5, hd.getTinhTrang());
             result = pr.executeUpdate();
@@ -287,9 +283,9 @@ public class HoaDonRepostory implements IHoaDonRepostory {
                 HoaDon hd = new HoaDon();
 
                 hd.setMa(rs.getString(1));
-                hd.setNgayTao(rs.getDate(2));
+                hd.setNgayTao(rs.getTimestamp(2));
                 User uesr = new User();
-                uesr.setTen(rs.getString(6)+" "+rs.getString(5)+" " + rs.getString(3));
+                uesr.setTen(rs.getString(6) + " " + rs.getString(5) + " " + rs.getString(3));
                 hd.setUser(uesr);
                 hd.setTinhTrang(rs.getInt(4));
                 getListGD.add(hd);
@@ -323,7 +319,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
 
     @Override
     public List<HoaDonChiTiet> getListHoaDonChiTiet(String MaHD) {
-               List<HoaDonChiTiet> getList = new ArrayList<>();
+        List<HoaDonChiTiet> getList = new ArrayList<>();
         try {
             String sql = "SELECT SP.Ma , SP.Ten ,MauSac.Ten,KichCo.Ten, HDCT.Dongia , HDCT.Soluong , KM.Giatrigiam , KM.HinhthucKM ,HDCT.IdCTSP  \n"
                     + "FROM HoaDon HD JOIN HoaDonChiTiet HDCT ON HD.Id = HDCT.IdHD \n"
@@ -337,26 +333,24 @@ public class HoaDonRepostory implements IHoaDonRepostory {
             ResultSet rs = pr.executeQuery();
             while (rs.next()) {
                 HoaDonChiTiet hdct = new HoaDonChiTiet();
-                
+
                 MauSac ms = new MauSac();
                 ms.setTen(rs.getString(3));
-                
+
                 KichCo kc = new KichCo();
                 kc.setTen(rs.getString(4));
-                
+
                 KhuyenMai km = new KhuyenMai();
                 km.setGiaTriGiam(rs.getDouble(7));
                 km.setHinhThucKM(rs.getString(8));
 
-               
-                
                 SanPham sp = new SanPham();
                 sp.setTen(rs.getString(2));
                 sp.setMa(rs.getString(1));
                 sp.setMauSac(ms);
                 sp.setKichCo(kc);
                 sp.setId(rs.getInt(9));
-               
+
                 sp.setKhuenMai(km);
                 hdct.setSanPham(sp);
                 hdct.setMauSac(ms);
@@ -473,7 +467,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
 
     @Override
     public Integer updateTrangThaiHoaDon(HoaDon hd) {
-   int rs = 0;
+        int rs = 0;
         try {
             String sql = "update HoaDon set TinhTrang = ? , Ghichu = ? ,NgayThanhToan = ? ,tongTien = ?  where Ma = ?";
             Connection conn = DBConnection.openDbConnection();
@@ -494,15 +488,15 @@ public class HoaDonRepostory implements IHoaDonRepostory {
     }
 
     @Override
-    public Integer updateHoaDonKhachHang(int Ma  ,String MaHD) {
-          int rs = 0;
+    public Integer updateHoaDonKhachHang(int Ma, String MaHD) {
+        int rs = 0;
         try {
             String sql = "UPDATE HoaDon SET idKH = ? WHERE Ma = ?";
             Connection conn = DBConnection.openDbConnection();
             PreparedStatement pr = conn.prepareStatement(sql);
             pr.setInt(1, Ma);
             pr.setString(2, MaHD);
-          
+
             rs = pr.executeUpdate();
 
         } catch (Exception ex) {
@@ -514,7 +508,7 @@ public class HoaDonRepostory implements IHoaDonRepostory {
 
     @Override
     public List<HoaDon> getKhachHang(String MaHD) {
-         List<HoaDon> getList = new ArrayList<>();
+        List<HoaDon> getList = new ArrayList<>();
         try {
             String sql = "SELECT kh.Ho , kh.TenDem , kh.Ten , kh.sdt , kh.DiemThuong FROM HoaDon hd join KhachHang kh on hd.idKH = kh.id where hd.Ma =?";
 
@@ -539,14 +533,5 @@ public class HoaDonRepostory implements IHoaDonRepostory {
         }
         return getList;
     }
-
-    
-
-    
-
-   
-  
-
-    
 
 }

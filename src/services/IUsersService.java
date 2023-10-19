@@ -19,7 +19,7 @@ public interface IUsersService {
 
     boolean add(UsersViewmodel nv);
 
-    boolean update(UsersViewmodel us,String id);
+    boolean update(UsersViewmodel us, String id);
 
     boolean delete(String id);
 
@@ -28,7 +28,7 @@ public interface IUsersService {
     boolean updateMK(UsersViewmodel us, String mail);
 
     String kiemtra(String mail);
-    
+
     Users getUserbytk(String tk);
 
     String kiemtrasdt(String sdt);

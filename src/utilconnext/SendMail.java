@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package utilconnext;
+
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
-
 
 /**
  *
  * @author ADMIN
  */
 public class SendMail {
-    public static void send(String emailto,String sub,String msb) {
+
+    public static void send(String emailto, String sub, String msb) {
         final String username = "namndph22694@fpt.edu.vn";
         final String password = "namheo123";
 
@@ -34,7 +35,7 @@ public class SendMail {
             message.setFrom(new InternetAddress(username));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailto));
             message.setSubject(sub);
-            message.setContent(msb,"text/html");
+            message.setContent(msb, "text/html");
             Transport.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();

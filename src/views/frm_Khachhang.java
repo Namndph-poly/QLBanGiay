@@ -461,6 +461,11 @@ public class frm_Khachhang extends javax.swing.JPanel {
         panelBorder3.add(Btn_timKiem1);
         Btn_timKiem1.setBounds(480, 0, 40, 40);
 
+        txt_timKiem01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_timKiem01ActionPerformed(evt);
+            }
+        });
         txt_timKiem01.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_timKiem01KeyReleased(evt);
@@ -659,7 +664,7 @@ public class frm_Khachhang extends javax.swing.JPanel {
         listKhachHang01 = KH.getall01();
         showTable2(listKhachHang01);
         LBL_SOLUONG.setText("Tổng số hoá đơn là : " + listKhachHang01.size());
-    
+
     }//GEN-LAST:event_btn_LamMoi1ActionPerformed
 
     private void TB_bang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_bang1MouseClicked
@@ -684,6 +689,10 @@ public class frm_Khachhang extends javax.swing.JPanel {
         txt_sdt.setText(kh.getSdt());
         txt_email.setText(kh.getEmail());
     }//GEN-LAST:event_TB_bang1MouseClicked
+
+    private void txt_timKiem01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_timKiem01ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_timKiem01ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

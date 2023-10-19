@@ -10,10 +10,12 @@ package models;
  * @author ADMIN
  */
 public class Thongke {
-    private double doanhthu,von,loinhuan;
+
+    private double doanhthu, von, loinhuan;
     private Users users;
     private int soSP;
     private ChiTietSP chiTietSP;
+
     public Thongke() {
     }
 

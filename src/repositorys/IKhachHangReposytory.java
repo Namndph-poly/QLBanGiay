@@ -13,7 +13,8 @@ import viewmodels.KhachHang02ViewMD;
  * @author Admin
  */
 public interface IKhachHangReposytory {
-         List<KhachHang> getall();
+
+    List<KhachHang> getall();
 
     List<KhachHang02ViewMD> getall02();
 

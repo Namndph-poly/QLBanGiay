@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/admin/Documents/QLBanGiay/src/repositorys/imp/ChatLieuRepositoryimpl.java</file>
             <file>file:/C:/Users/admin/Documents/QLBanGiay/src/utilconnext/DBConnection.java</file>
             <file>file:/C:/Users/admin/Documents/QLBanGiay/src/repositorys/IMauSacRepository.java</file>
@@ -22,6 +23,29 @@
             <file>file:/C:/Users/admin/Documents/QLBanGiay/src/views/frm_Login.java</file>
             <file>file:/C:/Users/admin/Documents/QLBanGiay/src/repositorys/IChiTietSPRepository.java</file>
             <file>file:/C:/Users/admin/Documents/QLBanGiay/src/views/frm_Banhang.java</file>
+=======
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Dashboard.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/viewmodels/KhachHang02ViewMD.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IKhachHangService.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/KhachHangForm.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/IChatLieuRepository.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/imp/KhachHangRPImpl.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/IKhachHangReposytory.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IKhuyenmaiService.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/utilconnext/DBConnection.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/repositorys/imp/KichCoRepositoryimpl.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Dangnhap.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Login.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Banhang.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/viewmodels/KhachHangViewMD.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/application/main.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Hoadon.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/models/KhachHang.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/IChatLieuServices.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/services/imp/khahangsvImpl.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Khuyenmai.java</file>
+            <file>file:/C:/Users/Admin/Documents/QLBanGiay/src/views/frm_Khachhang.java</file>
+>>>>>>> f2c7338965308c7d02179f5c3c95e118886bb3ff
         </group>
     </open-files>
 </project-private>

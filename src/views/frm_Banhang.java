@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -204,8 +205,8 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
         hd.setMa(Ma + random.nextInt());
 
         long millis = System.currentTimeMillis();
-        Date date = new Date(millis);
-        hd.setNgayTao(date);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        hd.setNgayTao(timestamp);
 
         return hd;
     }
@@ -287,6 +288,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             } else {
                 tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam() * x.getSoluong();
                 lbl_giamGia1.setText(String.valueOf(giam += tongVN));
+                lbl_giamGia1.setText(String.format("%.0f", giam));
             }
             count++;
         }
@@ -728,12 +730,10 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             List<HoaDonCHiTietViewModel> listh = hoaDonServiec.getListHoaDonChiTiet(tb_hoaDon.getValueAt(rowHD, 0).toString());
             //validate nam
 
-            
-                if (NhapSoLuong <= 0) {                    
-                    JOptionPane.showMessageDialog(null, "Số lượng phải lớn hơn 0 !", "Chú ý", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-            
+            if (NhapSoLuong <= 0) {
+                JOptionPane.showMessageDialog(null, "Số lượng phải lớn hơn 0 !", "Chú ý", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
             //ket thuc validate nam
             if (SoLuong >= NhapSoLuong) {
@@ -746,30 +746,28 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 listGioHang.add(new GioHangViewModel(MaSP, TenSP, mausac, kichco, NhapSoLuong, DonGia, GiamGia, hinhThucGiamGia));
                 getListGioHang();
 
-                int kq = SoLuong - NhapSoLuong;
+                int kq = (int) (SoLuong - NhapSoLuong);
                 sanISamPhamServiecs.updateSoLuongSP(MaSP, kq);
                 List<SanPhamViewModel> list = sanISamPhamServiecs.getListSanPham();
                 list.clear();
                 getListSP();
-                Double tongPT = 0.0;
-                Double tongVN = 0.0;
-                Double tongTien = 0.0;
-                Double giam = Double.parseDouble(lbl_giamGia1.getText());
+                double tongPT = 0.0;
+                double tongVN = 0.0;
+                double tongTien = 0.0;
+                double giam = 0.0; // Thay đổi giá trị ban đầu của giam từ 0.0 sang  Double.parseDouble(lbl_giamGia1.getText());
                 int count = 0;
                 for (GioHangViewModel x : listGioHang) {
-                    tongTien = tongTien + x.getThanhTien();
+                    tongTien += x.getThanhTien();
                     lbl_tongTien1.setText(String.format("%.0f", tongTien));
-                    if (tb_gioHang.getValueAt(count, 0).equals(MaSP) && x.getHinhThucGiamGia().equals("%")) {
-                        tongPT = x.getThanhTien() * x.getGiamGia() / 100;
-                        lbl_giamGia1.setText(String.valueOf(giam += tongPT));
-                        lbl_giamGia1.setText(String.format("%.0f", giam));
+                    if (x.getHinhThucGiamGia().equals("%")) {
+                        tongPT += x.getThanhTien() * x.getGiamGia() / 100;
                     } else {
-                        tongVN = x.getGiamGia() * x.getSoLuong();
-                        lbl_giamGia1.setText(String.valueOf(giam + tongVN));
+                        tongVN += x.getGiamGia() * x.getSoLuong();
                     }
                     count++;
-
                 }
+                giam = tongPT + tongVN; // Tổng giá trị giảm giá bao gồm giảm theo % và giảm theo tiền
+                lbl_giamGia1.setText(String.format("%.0f", giam)); // Hiển thị tổng giá trị giảm giá lên label
                 Double ThanhTien = Double.parseDouble(lbl_tongTien1.getText()) - Double.parseDouble(lbl_giamGia1.getText());
                 lbl_thanhTien.setText(String.valueOf(String.format("%.0f", ThanhTien)));
 
@@ -779,12 +777,6 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
                 return;
             }
-//            if (Integer.parseInt(lbl_thanhTien.getText()) >= 500000) {
-//                int diemThuong = Integer.parseInt(lbl_thanhTien.getText()) / 100000;
-//                lbl_diemThuong.setText(String.valueOf(diemThuong));
-//            } else {
-//                lbl_diemThuong.setText(String.valueOf(0));
-//            }
             List<HoaDonViewModel> listHoaDon = hoaDonServiec.getListHD(1);
             for (HoaDonViewModel x : listHoaDon) {
                 if (tb_hoaDon.getValueAt(rowHD, 0).toString().equals(x.getMa())) {
@@ -797,7 +789,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
 
         } catch (Exception e) {
-  JOptionPane.showMessageDialog(null, "Vui lòng không nhập kí tự","Chú ý",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Vui lòng không nhập kí tự", "Chú ý", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_tb_sanPhamMouseClicked
 
@@ -921,9 +913,9 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                     XWPFTableRow tableRowTwo = table.createRow();
 
                     tableRowTwo.getCell(0).setText(tb_gioHang.getValueAt(row, 1).toString());
-                    
+
                     tableRowTwo.getCell(1).setText(tb_gioHang.getValueAt(row, 2).toString());
-                    
+
                     tableRowTwo.getCell(2).setText(tb_gioHang.getValueAt(row, 3).toString());
 
                     tableRowTwo.getCell(3).setText(tb_gioHang.getValueAt(row, 4).toString());
@@ -1037,6 +1029,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
                 } else {
                     tongVN = x.getSanPham().getKhuenMai().getGiaTriGiam() * x.getSoluong();
                     lbl_giamGia1.setText(String.valueOf(giam += tongVN));
+                    lbl_giamGia1.setText(String.format("%.0f", giam));
                 }
 
                 count++;
@@ -1059,12 +1052,14 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
     }//GEN-LAST:event_tb_hoaDonMouseClicked
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
+
         int rowSP = tb_gioHang.getSelectedRow();
         int rowHD = tb_hoaDon.getSelectedRow();
         if (rowSP < 0) {
             JOptionPane.showMessageDialog(this, "chọn 1 sản phẩm trong giỏ hàng để xoá");
             return;
         }
+
         if (rowHD < 0) {
             JOptionPane.showMessageDialog(this, "chọn Hoá đơn bạn muốn xoá sản phẩm đấy");
             return;
@@ -1087,6 +1082,9 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
         }
         listGioHang.clear();
+
+        JOptionPane.showMessageDialog(null, "Xóa thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
+
 
     }//GEN-LAST:event_btn_xoaActionPerformed
 
@@ -1130,9 +1128,11 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             lbl_tongTien1.setText(String.valueOf(0));
             lbl_giamGia1.setText(String.valueOf(0));
             lbl_thanhTien.setText(String.valueOf(0));
-
+            JOptionPane.showMessageDialog(null, "Xóa tất cả thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
 //            lbl_diemThuong.setText("");
         } else {
+            JOptionPane.showMessageDialog(null, "Đã hủy", "Success", JOptionPane.INFORMATION_MESSAGE);
+
             return;
         }
     }//GEN-LAST:event_btn_clearActionPerformed
@@ -1151,12 +1151,12 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
 
         List<SanPhamViewModel> list = sanISamPhamServiecs.getListSanPham();
         try {
-            int NhapSoLuong = Integer.parseInt(JOptionPane.showInputDialog( null, "Mời nhập số lượng cần thay đổi","Hello",JOptionPane.INFORMATION_MESSAGE));
-            
-              if (NhapSoLuong <= 0) {                    
-                    JOptionPane.showMessageDialog(null, "Số lượng phải lớn hơn 0 !", "Chú ý", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
+            int NhapSoLuong = Integer.parseInt(JOptionPane.showInputDialog(null, "Mời nhập số lượng cần thay đổi", "Hello", JOptionPane.INFORMATION_MESSAGE));
+
+            if (NhapSoLuong <= 0) {
+                JOptionPane.showMessageDialog(null, "Số lượng phải lớn hơn 0 !", "Chú ý", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
             for (SanPhamViewModel x : list) {
                 if (MaSP.equals(x.getMa())) {
                     if (x.getSoLuongTon() + Integer.parseInt(tb_gioHang.getValueAt(rowSP, 4).toString()) >= NhapSoLuong) {
@@ -1178,7 +1178,7 @@ public class frm_Banhang extends javax.swing.JPanel implements Runnable, ThreadF
             }
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Vui lòng không nhập kí tự","Chú ý",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Vui lòng không nhập kí tự", "Chú ý", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed

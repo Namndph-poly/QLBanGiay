@@ -177,7 +177,7 @@ public class frm_Nhanvien extends javax.swing.JPanel {
 // Họ
         try {
             if (txtho.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this,"Vui lòng nhập họ");
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập họ");
                 return null;
             }
         } catch (Exception e) {

@@ -13,13 +13,14 @@ import viewmodels.Objecttt;
  * @author vieta
  */
 public interface IThuongHieuServices {
+
     List<ThuongHieu> getAll();
-    
+
     String Add(Objecttt x);
-    
-    String Update(Objecttt x,int id);
-    
+
+    String Update(Objecttt x, int id);
+
     String Delete(int id);
-    
+
     ThuongHieu getbyid(int id);
 }

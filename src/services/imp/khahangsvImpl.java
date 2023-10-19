@@ -17,8 +17,9 @@ import viewmodels.KhachHangViewMD;
  *
  * @author Admin
  */
-public class khahangsvImpl implements IKhachHangService{
-     private IKhachHangReposytory khachHang01 = new KhachHangRPImpl();
+public class khahangsvImpl implements IKhachHangService {
+
+    private IKhachHangReposytory khachHang01 = new KhachHangRPImpl();
 
     @Override
     public List<KhachHangViewMD> getall() {

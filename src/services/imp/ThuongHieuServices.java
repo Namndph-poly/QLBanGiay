@@ -18,6 +18,7 @@ import viewmodels.Objecttt;
 public class ThuongHieuServices implements IThuongHieuServices {
 
     private IThuongHieuRepository thuongHieuRepository = new ThuongHieuRepository();
+
     @Override
     public List<ThuongHieu> getAll() {
         return thuongHieuRepository.getAll();
@@ -36,7 +37,7 @@ public class ThuongHieuServices implements IThuongHieuServices {
     @Override
     public String Update(Objecttt x, int id) {
         ThuongHieu thuonghieu = new ThuongHieu(x.getId(), x.getTen());
-        int xxx = thuongHieuRepository.update(thuonghieu,id);
+        int xxx = thuongHieuRepository.update(thuonghieu, id);
         if (xxx == 1) {
             return "Thành công";
         }

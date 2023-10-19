@@ -14,12 +14,12 @@ import models.NSX;
 public interface INSXRepository {
 
     public List<NSX> getAll();
-    
+
     public int insert(NSX x);
-    
-    public int update(NSX x,int id);
-    
+
+    public int update(NSX x, int id);
+
     public int delete(int id);
-    
+
     public NSX getbyid(int id);
 }

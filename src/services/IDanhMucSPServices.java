@@ -13,13 +13,14 @@ import viewmodels.Objecttt;
  * @author vieta
  */
 public interface IDanhMucSPServices {
+
     List<DanhMucSP> getAll();
-    
+
     String Add(Objecttt x);
-    
-    String Update(Objecttt x,int id);
-    
+
+    String Update(Objecttt x, int id);
+
     String Delete(int id);
-    
+
     DanhMucSP getbyid(int id);
 }

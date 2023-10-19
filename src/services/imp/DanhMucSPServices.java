@@ -15,10 +15,11 @@ import viewmodels.Objecttt;
  *
  * @author vieta
  */
-public class DanhMucSPServices implements IDanhMucSPServices{
-     private IDanhMucSPRepository danhMucSPRepository = new DanhMucSPRepository();
-    
-     @Override
+public class DanhMucSPServices implements IDanhMucSPServices {
+
+    private IDanhMucSPRepository danhMucSPRepository = new DanhMucSPRepository();
+
+    @Override
     public List<DanhMucSP> getAll() {
         return danhMucSPRepository.getAll();
     }
@@ -36,7 +37,7 @@ public class DanhMucSPServices implements IDanhMucSPServices{
     @Override
     public String Update(Objecttt x, int id) {
         DanhMucSP danhmuc = new DanhMucSP(x.getId(), x.getTen());
-        int sua = danhMucSPRepository.update(danhmuc,id);
+        int sua = danhMucSPRepository.update(danhmuc, id);
         if (sua == 1) {
             return "Thành công";
         }

@@ -55,14 +55,13 @@ import viewmodels.ChiTietSPViewModel;
 import viewmodels.KhuyenmaiViewmodel;
 import viewmodels.SanPhamViewModel;
 
-
-
 /**
  *
  * @author hungh
  */
 public class frm_Sanpham extends javax.swing.JPanel {
-   private IChiTietSPServices iChiTietSPServices;
+
+    private IChiTietSPServices iChiTietSPServices;
     private INSXServices iNSXServices;
     private IMauSacServices iMauSacServices;
     private IDanhMucSPServices iDanhMucSPServices;
@@ -73,11 +72,10 @@ public class frm_Sanpham extends javax.swing.JPanel {
     DefaultTableModel defaultTableModel;
     private boolean hish = false;
     String sp = null;
-   
 
     public frm_Sanpham() {
         initComponents();
-innitTable();
+        innitTable();
 //        listctsp = iChiTietSPServices.getAll();
         iChiTietSPServices = new ChiTietSPServices();
         iNSXServices = new NSXServices();
@@ -89,9 +87,10 @@ innitTable();
         iKhuyenmaiService = new KhuyenmaiService();
         initcbo();
         loadData(iChiTietSPServices.getAll());
-       
+
     }
-     public void initcbo() {
+
+    public void initcbo() {
         List<NSX> listnsx = iNSXServices.getAll();
         cbo_nsx.setModel(new DefaultComboBoxModel(listnsx.toArray()));
 
@@ -226,12 +225,12 @@ innitTable();
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập tên sản phẩm!");
             return null;
         }
-        
+
         if (p.matcher(txt_ten.getText()).find() == true) {
             JOptionPane.showMessageDialog(this, "Tên sản phẩm phải là chữ!");
             return null;
         }
-        
+
         if (txt_ten.getText().length() > 30) {
             JOptionPane.showMessageDialog(this, "Tên sản phẩm không quá 30 kí tự!");
             return null;
@@ -249,9 +248,7 @@ innitTable();
             return null;
         }
 
-  
 // giá nhập
-
         if (txt_gianhap.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập giá nhập!");
             return null;
@@ -330,9 +327,6 @@ innitTable();
         String barcode = tbl_sp.getValueAt(row, 14).toString();
         return new ChiTietSPViewModel(ma, ten, nsx, ms, dmsp, kc, cl, th, km, soluong, gianhap, giaban, mota, barcode);
     }
-
-   
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -631,21 +625,21 @@ innitTable();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_lammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lammoiActionPerformed
-           loadData(iChiTietSPServices.getAll());
+        loadData(iChiTietSPServices.getAll());
         clearForm();
     }//GEN-LAST:event_btn_lammoiActionPerformed
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-         ChiTietSPViewModel x = getdadtafrom();
+        ChiTietSPViewModel x = getdadtafrom();
         if (x == null) {
             return;
         }
         int chon = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn thêm sản phẩm ?", "Thêm sản phẩm mới", JOptionPane.YES_NO_OPTION);
         if (chon == JOptionPane.YES_OPTION) {
             if (Integer.valueOf(txt_soluongton.getText()) <= 0) {
-            JOptionPane.showMessageDialog(this, "Số lượng tồn phải lớn hơn 0!");
-            return ;
-        }
+                JOptionPane.showMessageDialog(this, "Số lượng tồn phải lớn hơn 0!");
+                return;
+            }
             boolean kq = iChiTietSPServices.Add(x);
             if (kq == true) {
                 loadData(iChiTietSPServices.getAll());
@@ -661,7 +655,7 @@ innitTable();
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void btn_capnhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capnhatActionPerformed
-       int row = tbl_sp.getSelectedRow();
+        int row = tbl_sp.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(this, " Bạn cần chọn 1 dòng để cập nhật");
             return;
@@ -703,8 +697,8 @@ innitTable();
     }//GEN-LAST:event_btn_xoaActionPerformed
 
     private void tbl_spMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_spMouseClicked
-        
-int row = tbl_sp.getSelectedRow();
+
+        int row = tbl_sp.getSelectedRow();
         if (row == -1) {
             return;
         }
@@ -724,7 +718,7 @@ int row = tbl_sp.getSelectedRow();
     }//GEN-LAST:event_tbl_spMouseClicked
 
     private void hideshowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideshowMouseClicked
- if (hish == false) {
+        if (hish == false) {
             hish = true;
             hideshow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/show.png")));
             loadData(iChiTietSPServices.getSPhet());
@@ -735,22 +729,22 @@ int row = tbl_sp.getSelectedRow();
             hideshow.setText("Hiện sản phẩm hết");
             loadData(iChiTietSPServices.getAll());
         }
-       
+
 
     }//GEN-LAST:event_hideshowMouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-               new frm_themthuoctinh(new javax.swing.JFrame(), true).setVisible(true);
+        new frm_themthuoctinh(new javax.swing.JFrame(), true).setVisible(true);
 
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void searchTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextKeyReleased
-               loadData(iChiTietSPServices.getlistbyTen("%" + searchText.getText() + "%"));
+        loadData(iChiTietSPServices.getlistbyTen("%" + searchText.getText() + "%"));
 
     }//GEN-LAST:event_searchTextKeyReleased
 
     private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
-               initcbo();
+        initcbo();
 
     }//GEN-LAST:event_myButton1ActionPerformed
 
@@ -798,8 +792,7 @@ int row = tbl_sp.getSelectedRow();
     private swing.MyTextField txt_ten;
     // End of variables declaration//GEN-END:variables
 
-    
-     private void innitTable() {
+    private void innitTable() {
         defaultTableModel = (DefaultTableModel) tbl_sp.getModel();
         defaultTableModel.setColumnCount(0);
         defaultTableModel.addColumn("Mã");
@@ -816,7 +809,7 @@ int row = tbl_sp.getSelectedRow();
         defaultTableModel.addColumn("Giá bán");
         defaultTableModel.addColumn("Được giảm");
         defaultTableModel.addColumn("Mô tả");
-        defaultTableModel.addColumn("Barcode");
+        defaultTableModel.addColumn("Mã Qr");
 
     }
 
@@ -837,7 +830,7 @@ int row = tbl_sp.getSelectedRow();
                 x.getSoluongton(),
                 x.getGianhap(),
                 x.getGiaban(),
-               String.format("%.0f", x.getKhuyenmai().getGiaTriGiam()) + " " + x.getKhuyenmai().getHinhThucKM(),
+                String.format("%.0f", x.getKhuyenmai().getGiaTriGiam()) + " " + x.getKhuyenmai().getHinhThucKM(),
                 x.getMota(),
                 x.getQrcode()
             });

@@ -7,9 +7,6 @@ package models;
 import java.util.Date;
 import models.Chucvu;
 
-
-
-
 /**
  *
  * @author hungh
@@ -62,7 +59,7 @@ public class Users {
     public Users(String mk) {
         this.mk = mk;
     }
-    
+
     public String getId() {
         return id;
     }

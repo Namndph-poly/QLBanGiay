@@ -38,7 +38,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
         setColor(btnbanhang);
         crep1.setOpaque(true);
         resetColor(new JPanel[]{btnsanpham, btnkhuyenmai, btnkhachhang, btnnhanvien, btnthongke, btnhoadon, btndangxuat}, new JPanel[]{crep2, crep3, crep4, crep5, crepp1, crepp2, crepp3});
-        setpanal(new frm_Banhang(id,TenNV));
+        setpanal(new frm_Banhang(id, TenNV));
     }
 
     private void setColor(JPanel pane) {
@@ -592,7 +592,7 @@ public class frm_Dashboard extends javax.swing.JFrame {
         setColor(btnbanhang);
         crep1.setOpaque(true);
         resetColor(new JPanel[]{btnsanpham, btnkhuyenmai, btnkhachhang, btnnhanvien, btnthongke, btnhoadon, btndangxuat}, new JPanel[]{crep2, crep3, crep4, crep5, crepp1, crepp2, crepp3});
-        setpanal(new frm_Banhang(id ,TenNV));
+        setpanal(new frm_Banhang(id, TenNV));
         lbltieude.setText("Bán hàng");
     }//GEN-LAST:event_btnbanhangMousePressed
 
@@ -605,17 +605,13 @@ public class frm_Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnsanphamMousePressed
 
     private void btnkhuyenmaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnkhuyenmaiMousePressed
-        if (TenCV.equalsIgnoreCase("quản lý")) {
+     
             setColor(btnkhuyenmai);
             crep3.setOpaque(true);
             resetColor(new JPanel[]{btnbanhang, btnsanpham, btnkhachhang, btnnhanvien, btnthongke, btnhoadon, btndangxuat}, new JPanel[]{crep1, crep2, crep4, crep5, crepp1, crepp2, crepp3});
             setpanal(new frm_Khuyenmai());
             lbltieude.setText("Khuyến mãi");
-        } else {
-            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập !");
-            setdashboad();
-            return;
-        }
+        
     }//GEN-LAST:event_btnkhuyenmaiMousePressed
 
     private void btnkhachhangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnkhachhangMousePressed
@@ -649,17 +645,13 @@ public class frm_Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnhoadonMousePressed
 
     private void btnthongkeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnthongkeMousePressed
-        if (TenCV.equalsIgnoreCase("quản lý")) {
+      
             setColor(btnthongke);
             crepp1.setOpaque(true);
             resetColor(new JPanel[]{btnbanhang, btnsanpham, btnkhuyenmai, btnkhachhang, btnnhanvien, btnhoadon, btndangxuat}, new JPanel[]{crep1, crep2, crep3, crep4, crep5, crepp2, crepp3});
             setpanal(new frm_Thongke());
             lbltieude.setText("Thống kê");
-        } else {
-            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập !");
-            setdashboad();
-            return;
-        }
+        
     }//GEN-LAST:event_btnthongkeMousePressed
 
     private void btndangxuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndangxuatMousePressed

@@ -4,20 +4,18 @@
  */
 package viewmodels;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import models.KhachHang;
 import models.User;
 
-
-/**
- *
- * @author Admin
- */
 public class HoaDonViewModel {
     private KhachHang kh;
     private User us;
     private String Ma;
-    private Date NgayTao;
+    private Timestamp NgayTao;
     private Date NgayThanhToan;
     private int TinhTrang;
     private String GhiChu;
@@ -26,7 +24,7 @@ public class HoaDonViewModel {
     public HoaDonViewModel() {
     }
 
-    public HoaDonViewModel(KhachHang kh, User us, String Ma, Date NgayTao, Date NgayThanhToan, int TinhTrang, String GhiChu,Double tongTien) {
+    public HoaDonViewModel(KhachHang kh, User us, String Ma, Timestamp NgayTao, Date NgayThanhToan, int TinhTrang, String GhiChu, Double tongTien) {
         this.kh = kh;
         this.us = us;
         this.Ma = Ma;
@@ -44,8 +42,6 @@ public class HoaDonViewModel {
     public void setTongTien(Double tongTien) {
         this.tongTien = tongTien;
     }
-
-  
 
     public KhachHang getKh() {
         return kh;
@@ -71,11 +67,11 @@ public class HoaDonViewModel {
         this.Ma = Ma;
     }
 
-    public Date getNgayTao() {
+    public Timestamp getNgayTao() {
         return NgayTao;
     }
 
-    public void setNgayTao(Date NgayTao) {
+    public void setNgayTao(Timestamp NgayTao) {
         this.NgayTao = NgayTao;
     }
 
@@ -103,7 +99,14 @@ public class HoaDonViewModel {
         this.GhiChu = GhiChu;
     }
 
+    public String getNgayTaoAsString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dateFormat.format(NgayTao);
+    }
 
-    
-     
+    public void setNgayTaoAsString(String ngayTaoAsString) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date parsedDate = dateFormat.parse(ngayTaoAsString);
+        this.NgayTao = new Timestamp(parsedDate.getTime());
+    }
 }

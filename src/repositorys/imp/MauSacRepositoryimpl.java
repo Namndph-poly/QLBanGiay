@@ -17,7 +17,8 @@ import utilconnext.DBConnection;
  *
  * @author vieta
  */
-public class MauSacRepositoryimpl implements IMauSacRepository{
+public class MauSacRepositoryimpl implements IMauSacRepository {
+
     final String SQL_SELECT_ALL = "SELECT Id,Ten FROM dbo.MauSac";
     final String SQL_SELECT_BY_ID = "SELECT Id,Ten FROM dbo.MauSac WHERE Id = ?";
     final String SQL_INSERT = "INSERT INTO dbo.MauSac(Ten) VALUES(?)";
@@ -52,7 +53,7 @@ public class MauSacRepositoryimpl implements IMauSacRepository{
     public MauSac getbyid(int id) {
         if (id == 0) {
             return new MauSac();
-        }  
+        }
         return getdataquery(SQL_SELECT_BY_ID, id).get(0);
     }
 

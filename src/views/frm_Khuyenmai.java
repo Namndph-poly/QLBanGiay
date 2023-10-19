@@ -23,14 +23,13 @@ import services.imp.KhuyenmaiService;
 import viewmodels.ChiTietSPViewModel;
 import viewmodels.KhuyenmaiViewmodel;
 
-
 /**
  *
  * @author hungh
  */
 public class frm_Khuyenmai extends javax.swing.JPanel {
 
-  DefaultTableModel defaultTableModel;
+    DefaultTableModel defaultTableModel;
     DefaultTableModel defaultTableModel1;
     private IKhuyenmaiService khuyenmaiService;
     IChiTietSPServices chiTietSPServices;
@@ -49,6 +48,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
         LoadData();
         LoadDataSP();
     }
+
     void LoadData() {
         defaultTableModel.setRowCount(0);
         int stt = 1;
@@ -75,8 +75,6 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             });
         }
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -328,7 +326,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
         Pattern p = Pattern.compile("^[0-9]+$");
         try {
             if (txt_tenkm.getText().equals("")) {
@@ -374,7 +372,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Giá trị giảm phải là số!");
             return;
         }
-        
+
         try {
             if (date_KT.getDate().before(date_BD.getDate())) {
                 JOptionPane.showMessageDialog(this, "Ngày kết thúc phải lớn hơn ngày bắt đầu");
@@ -394,6 +392,23 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Tên khuyến mãi đã tồn tại");
             return;
         }
+        
+             if (rd_phantram.isSelected()) {
+            if (Integer.parseInt(txt_giatrgiam.getText().trim()) >= 100) {
+                JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi phải nhỏ hơn 100% !!!");
+                return;
+            }
+        }
+             
+                 if (Integer.parseInt(txt_giatrgiam.getText().trim()) < 0) {
+                JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi không được phép âm");
+                return;
+            }
+                 if (Integer.parseInt(txt_giatrgiam.getText().trim()) == 0) {
+                JOptionPane.showMessageDialog(this, "Bạn phải nhập giá trị khuyến mãi lớn hơn 0");
+                return;
+            }
+        
         IKhuyenmaiRepository repository = new KhuyenmaiReponsitory();
         List<KhuyenMai> lst = repository.GetAll();
         long time = System.currentTimeMillis();
@@ -431,7 +446,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
-         // TODO add your handling code here:
+        // TODO add your handling code here:
         int r = tb_khuyenmai.getSelectedRow();
         IKhuyenmaiRepository repository = new KhuyenmaiReponsitory();
         List<KhuyenMai> lst = repository.GetAll();
@@ -440,6 +455,20 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn dòng nào");
             return;
         }
+              if (rd_phantram.isSelected()) {
+            if (Integer.parseInt(txt_giatrgiam.getText().trim()) >= 100) {
+                JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi phải nhỏ hơn 100% !!!");
+                return;
+            }
+        }
+                          if (Integer.parseInt(txt_giatrgiam.getText().trim()) < 0) {
+                JOptionPane.showMessageDialog(this, "Giá trị khuyến mãi không được phép âm");
+                return;
+            }
+                 if (Integer.parseInt(txt_giatrgiam.getText().trim()) == 0) {
+                JOptionPane.showMessageDialog(this, "Bạn phải nhập giá trị khuyến mãi lớn hơn 0");
+                return;
+            }
         if (JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không?", "Update", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             KhuyenmaiViewmodel km = new KhuyenmaiViewmodel();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -458,6 +487,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Ngày kết thúc phải lớn hơn ngày bắt đầu");
                 return;
             }
+            
             long time = System.currentTimeMillis();
             java.sql.Date date = new java.sql.Date(time);
             if (date.before(chiTietSPServices.checkngay(lst.get(r).getID()))) {
@@ -481,7 +511,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_suaActionPerformed
 
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
         txt_tenkm.setText("");
         txt_giatrgiam.setText("");
         date_BD.setCalendar(null);
@@ -518,10 +548,10 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
             }
             if (giatri.contains("%")) {
                 int index = giatri.indexOf("%");
-                txt_giatrgiam.setText(giatri.substring(0, index));
+                txt_giatrgiam.setText(giatri.substring(0, index).trim());
             } else if (giatri.contains("VND")) {
                 int index = giatri.indexOf("VND");
-                txt_giatrgiam.setText(giatri.substring(0, index));
+                txt_giatrgiam.setText(giatri.substring(0, index).trim());
             }
         } catch (ParseException ex) {
 //            Logger.getLogger(FrmKhuyenmai.class.getName()).log(Level.SEVERE, null, ex);
@@ -529,7 +559,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }//GEN-LAST:event_tb_khuyenmaiMouseClicked
 
     private void lbl_timkiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_timkiemMouseClicked
-      // TODO add your handling code here:
+        // TODO add your handling code here:
         if (dateTK_BD.getDate() == null && dateTK_KT.getDate() == null && src_timkiem.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Bạn chưa chọn ngày bắt đầu hoặc ngày kết thúc hoặc tên khuyến mãi để tìm kiếm");
             return;
@@ -604,7 +634,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }//GEN-LAST:event_lbl_timkiemMouseClicked
 
     private void src_timkiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_src_timkiemCaretUpdate
-         // TODO add your handling code here:
+        // TODO add your handling code here:
         defaultTableModel.setRowCount(0);
         int stt = 1;
         for (KhuyenmaiViewmodel x : khuyenmaiService.GetOnebyten("%" + src_timkiem.getText() + "%")) {
@@ -621,7 +651,7 @@ public class frm_Khuyenmai extends javax.swing.JPanel {
     }//GEN-LAST:event_src_timkiemCaretUpdate
 
     private void cb_selectAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_selectAllActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
         for (int i = 0; i < tb_sp.getRowCount(); i++) {
             if (cb_selectAll.isSelected() == true) {
                 tb_sp.setValueAt(true, i, 0);

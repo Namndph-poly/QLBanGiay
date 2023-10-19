@@ -245,7 +245,7 @@ public class HoaDonServiec implements IHoaDonServiec {
     public Integer updateTrangThaiHoaDon(HoaDonViewModel hd) {
         HoaDon hoaDon = new HoaDon();
         hoaDon.setGhichu(hd.getGhiChu());
-        hoaDon.setNgayThanhToan(hd.getNgayThanhToan());
+        hoaDon.setNgayThanhToan(new java.sql.Date(hd.getNgayThanhToan().getTime()));
         hoaDon.setMa(hd.getMa());
         hoaDon.setTongTien(hd.getTongTien());
         hoaDon.setTinhTrang(1);

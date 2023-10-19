@@ -50,7 +50,7 @@ public class frm_Login extends javax.swing.JFrame {
                 if (dangnhap.isdangnhap() == true) {
                     dispose();
                 }
-            }       
+            }
         });
     }
 

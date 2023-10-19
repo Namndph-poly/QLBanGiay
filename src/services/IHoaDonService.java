@@ -9,7 +9,6 @@ import java.util.List;
 import models.HoaDon;
 import viewmodels.HoaDonCHiTietViewModel;
 
-
 import viewmodels.HoaDonViewModel;
 
 /**
@@ -17,10 +16,14 @@ import viewmodels.HoaDonViewModel;
  * @author Win10
  */
 public interface IHoaDonService {
-public List<HoaDonViewModel> getAllHD();
-public List<HoaDonCHiTietViewModel> getAllHDCT();
- List<HoaDonViewModel> TimID(String ID);
-  Integer saveHD(HoaDonViewModel hoaDon, int idNV);
+
+    public List<HoaDonViewModel> getAllHD();
+
+    public List<HoaDonCHiTietViewModel> getAllHDCT();
+
+    List<HoaDonViewModel> TimID(String ID);
+
+    Integer saveHD(HoaDonViewModel hoaDon, int idNV);
 
     Integer saveHDCT(HoaDonCHiTietViewModel hoaDonChiTiet, String MaSP, String MaHD);
 
@@ -35,11 +38,9 @@ public List<HoaDonCHiTietViewModel> getAllHDCT();
     Integer updateSanPhamTrenGioHang(int idHD, int idSP, int SoLuong);
 
     Integer clearSanPhamTrenGioHang(int idHD);
-    
-    Integer getIDCTSP(int MaHD);
-    
-     Integer updateSoLuongGioHang(int SoLuong,String MaSP , String MaHD);
-     
-   
-}
 
+    Integer getIDCTSP(int MaHD);
+
+    Integer updateSoLuongGioHang(int SoLuong, String MaSP, String MaHD);
+
+}

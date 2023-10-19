@@ -93,6 +93,7 @@ public class ChiTietSPRepository implements IChiTietSPRepository {
     public List<ChiTietSP> check(String maSP) {
         return getdataquery(SQL_SELECT_BY_MA, maSP);
     }
+
     @Override
     public Date checkngay(String id) {
         Date time = null;
@@ -111,6 +112,7 @@ public class ChiTietSPRepository implements IChiTietSPRepository {
         }
         return time;
     }
+
     @Override
     public Date checkngay2(String id) {
         Date time = null;
@@ -129,8 +131,9 @@ public class ChiTietSPRepository implements IChiTietSPRepository {
         }
         return time;
     }
+
     ////
-       @Override
+    @Override
     public List<ChiTietSP> GetAll() {
         try {
             List<ChiTietSP> lst = new ArrayList<>();
@@ -144,14 +147,15 @@ public class ChiTietSPRepository implements IChiTietSPRepository {
                 sP.setTen(rs.getString(2));
                 lst.add(sP);
             }
-                    return lst;
+            return lst;
         } catch (SQLException ex) {
             Logger.getLogger(KhuyenmaiReponsitory.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
-       @Override
-    public boolean Update(String ma,String id) {
+
+    @Override
+    public boolean Update(String ma, String id) {
         try {
             String sql = "Update Chitietsp set idkm = ? Where Ma = ?";
             Connection conn = DBConnection.openDbConnection();

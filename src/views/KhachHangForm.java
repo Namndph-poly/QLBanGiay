@@ -482,7 +482,7 @@ public class KhachHangForm extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_capNhatActionPerformed
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-         if (check() && check2()) {
+        if (check() && check2()) {
             JOptionPane.showMessageDialog(this, KH.add(getData()));
             listKhachHang = KH.getall();
             showTable(listKhachHang);
@@ -527,7 +527,7 @@ public class KhachHangForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_timKiemActionPerformed
 
     private void txt_timKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_timKiemKeyReleased
-       defaultTableModel = (DefaultTableModel) tb_khachHang.getModel();
+        defaultTableModel = (DefaultTableModel) tb_khachHang.getModel();
         defaultTableModel.setRowCount(0);
         for (KhachHangViewMD khachHang01 : KH.GetTK(txt_timKiem.getText())) {
             defaultTableModel.addRow(khachHang01.toDataRow());

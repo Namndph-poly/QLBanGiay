@@ -27,7 +27,9 @@ public interface IUsersReposytory {
     boolean updateMK(Users us, String mail);
 
     String kiemtra(String mail);
+
     String kiemtrasdt(String sdt);
+
     String kiemtratk(String tk);
 
     Users getUserbytk(String tk);

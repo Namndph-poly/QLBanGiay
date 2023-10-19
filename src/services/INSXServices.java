@@ -13,13 +13,14 @@ import viewmodels.Objecttt;
  * @author vieta
  */
 public interface INSXServices {
+
     List<NSX> getAll();
-    
+
     String Add(Objecttt x);
-    
-    String Update(Objecttt x,int id);
-    
+
+    String Update(Objecttt x, int id);
+
     String Delete(int id);
-    
+
     NSX getbyid(int id);
 }

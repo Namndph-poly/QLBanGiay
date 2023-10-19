@@ -192,10 +192,10 @@ public class UsersReposytory implements IUsersReposytory {
 
     @Override
     public Users getUserbytk(String tk) {
-        Users x= new Users();
+        Users x = new Users();
         try {
             x = getdataQuery(SQL_SELECT_BY_TK, tk).get(0);
-        } catch (Exception e) { 
+        } catch (Exception e) {
             x = new Users();
         }
         return x;
@@ -249,7 +249,7 @@ public class UsersReposytory implements IUsersReposytory {
 
     @Override
     public String kiemtratk(String tk) {
-    String sql = "SELECT TAIKHOAN FROM Users WHERE TAIKHOAN = ?";
+        String sql = "SELECT TAIKHOAN FROM Users WHERE TAIKHOAN = ?";
         String box = null;
         try {
             Connection conn = DBConnection.openDbConnection();

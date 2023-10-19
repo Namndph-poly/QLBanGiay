@@ -21,16 +21,17 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import repositorys.IThongkeRepository;
 import repositorys.imp.ThongkeRepository;
 
-
 /**
  *
  * @author hungh
  */
 public class frm_Thongke extends javax.swing.JPanel {
-    IThongkeRepository repository ;
+
+    IThongkeRepository repository;
     DefaultTableModel defaultTableModel1;
     DefaultTableModel defaultTableModel2;
     DecimalFormat df = new DecimalFormat("#,###");
+
     public frm_Thongke() {
         initComponents();
         initComponents();
@@ -48,16 +49,20 @@ public class frm_Thongke extends javax.swing.JPanel {
         doanhthu();
         loadkh();
     }
-    void loadhd(){
+
+    void loadhd() {
         lbl_hd.setText(String.valueOf(repository.gethdday()));
     }
-    void loadkh(){
+
+    void loadkh() {
         lbl_kh.setText(String.valueOf(repository.getkhday()));
     }
-    void doanhthu(){
+
+    void doanhthu() {
         lbl_doanhthu.setText(df.format(repository.getdtday()));
         lbl_sanpham.setText(String.valueOf(repository.getbyday()));
-    }    
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -330,7 +335,7 @@ public class frm_Thongke extends javax.swing.JPanel {
         lbl_hd.setText(String.valueOf(repository.gethdday(String.valueOf(date_day.getDay()))));
         lbl_kh.setText(String.valueOf(repository.getkhday(String.valueOf(date_day.getDay()))));
         lbl_sanpham.setText(String.valueOf(repository.getbyday(String.valueOf(date_day.getDay()))));
-           defaultTableModel1.setRowCount(0);
+        defaultTableModel1.setRowCount(0);
         int stt = 1;
         for (Thongke x : repository.getspday(String.valueOf(date_day.getDay()))) {
             defaultTableModel1.addRow(new Object[]{
@@ -343,20 +348,20 @@ public class frm_Thongke extends javax.swing.JPanel {
     }//GEN-LAST:event_rd_ngayActionPerformed
 
     private void rd_thangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rd_thangActionPerformed
-      date_day.setVisible(false);
+        date_day.setVisible(false);
         date_month.setVisible(true);
         date_year.setVisible(false);
         date_tu.setVisible(false);
         Date_den.setVisible(false);
         lbl_tu.setVisible(false);
         lbl_den.setVisible(false);
-        lbl_doanhthu.setText(df.format(repository.getdtmonth(String.valueOf(date_month.getMonth()+1))));
-        lbl_hd.setText(String.valueOf(repository.gethdmonth(String.valueOf(date_month.getMonth()+1))));
-        lbl_kh.setText(String.valueOf(repository.getkhmonth(String.valueOf(date_month.getMonth()+1))));
-        lbl_sanpham.setText(String.valueOf(repository.getbymonth(String.valueOf(date_month.getMonth()+1))));
-           defaultTableModel1.setRowCount(0);
+        lbl_doanhthu.setText(df.format(repository.getdtmonth(String.valueOf(date_month.getMonth() + 1))));
+        lbl_hd.setText(String.valueOf(repository.gethdmonth(String.valueOf(date_month.getMonth() + 1))));
+        lbl_kh.setText(String.valueOf(repository.getkhmonth(String.valueOf(date_month.getMonth() + 1))));
+        lbl_sanpham.setText(String.valueOf(repository.getbymonth(String.valueOf(date_month.getMonth() + 1))));
+        defaultTableModel1.setRowCount(0);
         int stt = 1;
-        for (Thongke x : repository.getspmonth(String.valueOf(date_month.getMonth()+1))) {
+        for (Thongke x : repository.getspmonth(String.valueOf(date_month.getMonth() + 1))) {
             defaultTableModel1.addRow(new Object[]{
                 stt,
                 x.getChiTietSP(),
@@ -391,7 +396,7 @@ public class frm_Thongke extends javax.swing.JPanel {
     }//GEN-LAST:event_rd_namActionPerformed
 
     private void btn_bieudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bieudoActionPerformed
-       final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.addValue(repository.getmonth1(), "VND", "1");
         dataset.addValue(repository.getmonth2(), "VND", "2");
         dataset.addValue(repository.getmonth3(), "VND", "3");
@@ -410,9 +415,9 @@ public class frm_Thongke extends javax.swing.JPanel {
                 dataset, PlotOrientation.VERTICAL, false, true, false);
         CategoryPlot categoryPlot = new CategoryPlot();
         categoryPlot.setRangeGridlinePaint(Color.BLACK);
-        ChartFrame chartFrame = new ChartFrame("Biều đồ", barChart); 
+        ChartFrame chartFrame = new ChartFrame("Biều đồ", barChart);
         chartFrame.setVisible(true);
-        chartFrame.setSize(1000,500);
+        chartFrame.setSize(1000, 500);
         chartFrame.setLocationRelativeTo(null);
     }//GEN-LAST:event_btn_bieudoActionPerformed
 
@@ -424,17 +429,17 @@ public class frm_Thongke extends javax.swing.JPanel {
         Date_den.setVisible(true);
         lbl_tu.setVisible(true);
         lbl_den.setVisible(true);
-        if (date_tu.getMonth()+1>Date_den.getMonth()+1) {
+        if (date_tu.getMonth() + 1 > Date_den.getMonth() + 1) {
             JOptionPane.showMessageDialog(this, "Tháng bắt đầu phải nhỏ hơn tháng kết thúc");
             return;
         }
-        lbl_doanhthu.setText(df.format(repository.getdtkhoang1(String.valueOf(date_tu.getMonth()+1),String.valueOf(Date_den.getMonth()+1))));
-        lbl_hd.setText(String.valueOf(repository.gethdkhoang1(String.valueOf(date_tu.getMonth()+1),String.valueOf(Date_den.getMonth()+1))));
-        lbl_kh.setText(String.valueOf(repository.getkhkhoang1(String.valueOf(date_tu.getMonth()+1),String.valueOf(Date_den.getMonth()+1))));
-        lbl_sanpham.setText(String.valueOf(repository.getbykhoang1(String.valueOf(date_tu.getMonth()+1),String.valueOf(Date_den.getMonth()+1))));
+        lbl_doanhthu.setText(df.format(repository.getdtkhoang1(String.valueOf(date_tu.getMonth() + 1), String.valueOf(Date_den.getMonth() + 1))));
+        lbl_hd.setText(String.valueOf(repository.gethdkhoang1(String.valueOf(date_tu.getMonth() + 1), String.valueOf(Date_den.getMonth() + 1))));
+        lbl_kh.setText(String.valueOf(repository.getkhkhoang1(String.valueOf(date_tu.getMonth() + 1), String.valueOf(Date_den.getMonth() + 1))));
+        lbl_sanpham.setText(String.valueOf(repository.getbykhoang1(String.valueOf(date_tu.getMonth() + 1), String.valueOf(Date_den.getMonth() + 1))));
         defaultTableModel1.setRowCount(0);
         int stt = 1;
-        for (Thongke x : repository.getspkhoang(String.valueOf(date_tu.getMonth()+1),String.valueOf(Date_den.getMonth()+1))) {
+        for (Thongke x : repository.getspkhoang(String.valueOf(date_tu.getMonth() + 1), String.valueOf(Date_den.getMonth() + 1))) {
             defaultTableModel1.addRow(new Object[]{
                 stt,
                 x.getChiTietSP(),
