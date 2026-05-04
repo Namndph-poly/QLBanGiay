@@ -1,0 +1,28 @@
+<component name="libraryTable">
+  <library name="thuvienjava">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/thuvienjava/commons-collections4-4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/xmlbeans-3.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/poi-ooxml-schemas-4.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/core-3.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/javase-3.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/javax.mail-1.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/commons-compress-1.18.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/slf4j-api-1.7.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/barcode.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/jfreechart-1.0.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/poi-4.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/commons-codec-1.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/webcam-capture-0.3.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/bridj-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/jcommon-1.0.23.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/poi-ooxml-4.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/javax.mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/mssql-jdbc-10.2.1.jre17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/thuvienjava/jakarta.activation-1.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

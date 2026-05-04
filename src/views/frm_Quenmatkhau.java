@@ -1,26 +1,42 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package views;
 
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import models.Users;
 import services.IUsersService;
 import services.imp.UsersService;
+import swing.MyButton;
+import swing.MyPassword;
+import swing.MyTextField;
 import viewmodels.UsersViewmodel;
 
 /**
- *
+ * Forget Password Form - Pure Java Swing Implementation
  * @author hungh
  */
-public class frm_Quenmatkhau extends javax.swing.JPanel {
+public class frm_Quenmatkhau extends JPanel {
 
+    // UI Components
+    private MyTextField txt_email;
+    private MyTextField txt_code;
+    private MyPassword txtPass;
+    private MyPassword txtPass1;
+    private MyButton btn_doimk;
+    private JButton btn_send;
+    private JButton cmdBackLogin;
+    private MyButton myButton1;
+    private JLabel hideshow;
+    private JLabel hideshow1;
+
+    // Business logic
     boolean hish = false;
     boolean hish1 = false;
     IUsersService ius;
@@ -28,9 +44,179 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
     int ran;
 
     public frm_Quenmatkhau() {
-        initComponents();
         ius = new UsersService();
         lstma = new ArrayList();
+        initComponents();
+    }
+
+    private void initComponents() {
+        // Set panel properties
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(410, 450));
+        setMinimumSize(new java.awt.Dimension(410, 450));
+        setPreferredSize(new java.awt.Dimension(410, 450));
+        setLayout(null);
+
+        // Background Image
+        JLabel jLabel6 = new JLabel();
+        java.net.URL bgImageUrl = getClass().getResource("/images/HD-wallpaper-city-shoes-nike-heights-wristwatch-parkour.jpg");
+        if (bgImageUrl != null) {
+            jLabel6.setIcon(new javax.swing.ImageIcon(bgImageUrl));
+        }
+        add(jLabel6);
+        jLabel6.setBounds(-360, -110, 940, 610);
+
+        // Forget Password Title
+        JLabel jLabel2 = new JLabel();
+        jLabel2.setFont(new Font("Times New Roman", Font.BOLD, 24));
+        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Quên mật khẩu");
+        add(jLabel2);
+        jLabel2.setBounds(70, 20, 257, 30);
+
+        // Email Label
+        JLabel jLabel1 = new JLabel();
+        jLabel1.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setText("Tài khoản");
+        add(jLabel1);
+        jLabel1.setBounds(50, 70, 80, 24);
+
+        // Email TextField
+        txt_email = new MyTextField();
+        txt_email.setBackground(new java.awt.Color(227, 255, 255));
+        txt_email.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        add(txt_email);
+        txt_email.setBounds(50, 90, 280, 40);
+
+        // Code Label
+        JLabel jLabel5 = new JLabel();
+        jLabel5.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setText("Mã bảo mật");
+        add(jLabel5);
+        jLabel5.setBounds(50, 130, 100, 24);
+
+        // Code TextField
+        txt_code = new MyTextField();
+        txt_code.setBackground(new java.awt.Color(227, 255, 255));
+        txt_code.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        add(txt_code);
+        txt_code.setBounds(50, 150, 280, 40);
+
+        // Send Button (Email)
+        btn_send = new JButton();
+        java.net.URL emailIconUrl = getClass().getResource("/images/email.png");
+        if (emailIconUrl != null) {
+            btn_send.setIcon(new javax.swing.ImageIcon(emailIconUrl));
+        }
+        btn_send.setBackground(new java.awt.Color(125, 229, 251));
+        btn_send.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_sendMouseClicked(evt);
+            }
+        });
+        add(btn_send);
+        btn_send.setBounds(340, 150, 40, 40);
+
+        // Password Label
+        JLabel jLabel3 = new JLabel();
+        jLabel3.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Password");
+        add(jLabel3);
+        jLabel3.setBounds(50, 190, 100, 24);
+
+        // Password Field
+        txtPass = new MyPassword();
+        txtPass.setBackground(new java.awt.Color(227, 255, 255));
+        txtPass.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        add(txtPass);
+        txtPass.setBounds(50, 210, 280, 40);
+
+        // Show/Hide Password Icon
+        hideshow = new JLabel();
+        java.net.URL showIconUrl = getClass().getResource("/images/show.png");
+        if (showIconUrl != null) {
+            hideshow.setIcon(new javax.swing.ImageIcon(showIconUrl));
+        }
+        hideshow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hideshowMouseClicked(evt);
+            }
+        });
+        add(hideshow);
+        hideshow.setBounds(350, 220, 30, 30);
+
+        // Confirm Password Label
+        JLabel jLabel4 = new JLabel();
+        jLabel4.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Confirm Password");
+        add(jLabel4);
+        jLabel4.setBounds(50, 250, 150, 24);
+
+        // Confirm Password Field
+        txtPass1 = new MyPassword();
+        txtPass1.setBackground(new java.awt.Color(227, 255, 255));
+        txtPass1.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        add(txtPass1);
+        txtPass1.setBounds(50, 270, 280, 40);
+
+        // Show/Hide Confirm Password Icon
+        hideshow1 = new JLabel();
+        java.net.URL show1IconUrl = getClass().getResource("/images/show.png");
+        if (show1IconUrl != null) {
+            hideshow1.setIcon(new javax.swing.ImageIcon(show1IconUrl));
+        }
+        hideshow1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hideshow1MouseClicked(evt);
+            }
+        });
+        add(hideshow1);
+        hideshow1.setBounds(350, 280, 30, 30);
+
+        // Change Password Button
+        btn_doimk = new MyButton();
+        btn_doimk.setBackground(new java.awt.Color(125, 229, 251));
+        btn_doimk.setForeground(new java.awt.Color(0, 51, 102));
+        btn_doimk.setText("Đổi mật khẩu");
+        btn_doimk.setColor(new java.awt.Color(125, 229, 251));
+        btn_doimk.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        btn_doimk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_doimkMouseClicked(evt);
+            }
+        });
+        add(btn_doimk);
+        btn_doimk.setBounds(50, 340, 120, 40);
+
+        // Exit Button
+        myButton1 = new MyButton();
+        myButton1.setBackground(new java.awt.Color(125, 229, 251));
+        myButton1.setForeground(new java.awt.Color(0, 51, 102));
+        myButton1.setText("Thoát");
+        myButton1.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        myButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                myButton1ActionPerformed(evt);
+            }
+        });
+        add(myButton1);
+        myButton1.setBounds(220, 340, 120, 40);
+
+        // Back to Login Button
+        cmdBackLogin = new JButton();
+        cmdBackLogin.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        cmdBackLogin.setForeground(new java.awt.Color(30, 122, 236));
+        cmdBackLogin.setText("Đăng nhập ?");
+        cmdBackLogin.setBorder(null);
+        cmdBackLogin.setContentAreaFilled(false);
+        cmdBackLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(cmdBackLogin);
+        cmdBackLogin.setBounds(160, 400, 100, 25);
     }
 
     public void quenmatkhau() {
@@ -41,177 +227,50 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         cmdBackLogin.addActionListener(event);
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        txt_email = new swing.MyTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtPass = new swing.MyPassword();
-        jLabel3 = new javax.swing.JLabel();
-        myButton1 = new swing.MyButton();
-        cmdBackLogin = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        txtPass1 = new swing.MyPassword();
-        txt_code = new swing.MyTextField();
-        jLabel5 = new javax.swing.JLabel();
-        btn_doimk = new swing.MyButton();
-        hideshow1 = new javax.swing.JLabel();
-        hideshow = new javax.swing.JLabel();
-        btn_send = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(410, 450));
-        setMinimumSize(new java.awt.Dimension(410, 450));
-        setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(410, 450));
-        setVerifyInputWhenFocusTarget(false);
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txt_email.setBackground(new java.awt.Color(227, 255, 255));
-        txt_email.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 280, 40));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Tài khoản");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, 24));
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Quên mật khẩu");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 257, -1));
-
-        txtPass.setBackground(new java.awt.Color(227, 255, 255));
-        txtPass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 280, 40));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Password");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, 24));
-
-        myButton1.setBackground(new java.awt.Color(125, 229, 251));
-        myButton1.setForeground(new java.awt.Color(0, 51, 102));
-        myButton1.setText("Thoát");
-        myButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        myButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton1ActionPerformed(evt);
-            }
-        });
-        add(myButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 120, 40));
-
-        cmdBackLogin.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        cmdBackLogin.setForeground(new java.awt.Color(30, 122, 236));
-        cmdBackLogin.setText("Đăng nhập ?");
-        cmdBackLogin.setBorder(null);
-        cmdBackLogin.setContentAreaFilled(false);
-        cmdBackLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(cmdBackLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Confirm Password");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, 24));
-
-        txtPass1.setBackground(new java.awt.Color(227, 255, 255));
-        txtPass1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        add(txtPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 280, 40));
-
-        txt_code.setBackground(new java.awt.Color(227, 255, 255));
-        txt_code.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        add(txt_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 280, 40));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setText("Mã bảo mật");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 24));
-
-        btn_doimk.setBackground(new java.awt.Color(125, 229, 251));
-        btn_doimk.setForeground(new java.awt.Color(0, 51, 102));
-        btn_doimk.setText("Đổi mật khẩu");
-        btn_doimk.setColor(new java.awt.Color(125, 229, 251));
-        btn_doimk.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_doimk.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_doimkMouseClicked(evt);
-            }
-        });
-        add(btn_doimk, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 120, 40));
-
-        hideshow1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/show.png"))); // NOI18N
-        hideshow1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hideshow1MouseClicked(evt);
-            }
-        });
-        add(hideshow1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 30, -1));
-
-        hideshow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/show.png"))); // NOI18N
-        hideshow.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hideshowMouseClicked(evt);
-            }
-        });
-        add(hideshow, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 30, 30));
-
-        btn_send.setBackground(new java.awt.Color(125, 229, 251));
-        btn_send.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/email.png"))); // NOI18N
-        btn_send.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_sendMouseClicked(evt);
-            }
-        });
-        add(btn_send, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 40, 40));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/HD-wallpaper-city-shoes-nike-heights-wristwatch-parkour.jpg"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-360, -110, 940, 610));
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
-
+    private void myButton1ActionPerformed(java.awt.event.MouseEvent evt) {
         if (JOptionPane.showConfirmDialog(this, "Bạn có muốn thoát không !") != JOptionPane.YES_OPTION) {
             return;
         }
         System.exit(0);
-    }//GEN-LAST:event_myButton1ActionPerformed
+    }
 
-    private void hideshowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideshowMouseClicked
-        if (hish == false) {
+    private void hideshowMouseClicked(java.awt.event.MouseEvent evt) {
+        if (!hish) {
             hish = true;
-            hideshow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hide.png")));
+            java.net.URL hideIconUrl = getClass().getResource("/images/hide.png");
+            if (hideIconUrl != null) {
+                hideshow.setIcon(new javax.swing.ImageIcon(hideIconUrl));
+            }
             txtPass.setEchoChar((char) 0);
         } else {
             hish = false;
-            hideshow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/show.png")));
-            txtPass.setEchoChar('\u25cf');
+            java.net.URL showIconUrl = getClass().getResource("/images/show.png");
+            if (showIconUrl != null) {
+                hideshow.setIcon(new javax.swing.ImageIcon(showIconUrl));
+            }
+            txtPass.setEchoChar('●');
         }
-    }//GEN-LAST:event_hideshowMouseClicked
+    }
 
-    private void hideshow1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideshow1MouseClicked
-        if (hish1 == false) {
+    private void hideshow1MouseClicked(java.awt.event.MouseEvent evt) {
+        if (!hish1) {
             hish1 = true;
-            hideshow1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hide.png")));
+            java.net.URL hideIconUrl = getClass().getResource("/images/hide.png");
+            if (hideIconUrl != null) {
+                hideshow1.setIcon(new javax.swing.ImageIcon(hideIconUrl));
+            }
             txtPass1.setEchoChar((char) 0);
         } else {
             hish1 = false;
-            hideshow1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/show.png")));
-            txtPass1.setEchoChar('\u25cf');
+            java.net.URL showIconUrl = getClass().getResource("/images/show.png");
+            if (showIconUrl != null) {
+                hideshow1.setIcon(new javax.swing.ImageIcon(showIconUrl));
+            }
+            txtPass1.setEchoChar('●');
         }
+    }
 
-    }//GEN-LAST:event_hideshow1MouseClicked
-
-    private void btn_doimkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_doimkMouseClicked
-        // TODO add your handling code here:
+    private void btn_doimkMouseClicked(java.awt.event.MouseEvent evt) {
         int code = 0;
         if (txt_email.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập tài khoản!");
@@ -225,13 +284,12 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
 
         try {
             code = Integer.parseInt(txt_code.getText());
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Mã bảo mật phải là số!");
             return;
         }
 
-        if (txtPass.getText().equalsIgnoreCase("")) {
+        if (txtPass.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Mời bạn nhập mật khẩu mới!");
             return;
         }
@@ -241,7 +299,7 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
             return;
         }
 
-        if (txtPass1.getText().equalsIgnoreCase("")) {
+        if (txtPass1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Mời bạn xác nhận mật khẩu mới!");
             return;
         }
@@ -261,31 +319,11 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
             return;
         }
         JOptionPane.showMessageDialog(this, "Sai mã bảo mật");
-//        for (int i = 0; i <= lstma.size() - 1; i++) {
-//            if (!txt_code.getText().equals(lstma.get(i))) {
-//                JOptionPane.showMessageDialog(this, "Sai mã bảo mật");
-//                break;
-//            }
-//        }
+    }
 
-    }//GEN-LAST:event_btn_doimkMouseClicked
-
-    private void btn_sendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_sendMouseClicked
-
+    private void btn_sendMouseClicked(java.awt.event.MouseEvent evt) {
         String taikhoan = txt_email.getText().trim();
 
-        //regex email
-//        String email = txt_email.getText().trim();
-//        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
-//        Pattern pattern = Pattern.compile(regex);
-//        Matcher matcher = pattern.matcher(email);
-//        if (email.equals("")) {
-//            JOptionPane.showMessageDialog(this, "Bạn phải nhập e-mail");
-//            return;
-//        } else if (matcher.matches() == false) {
-//            JOptionPane.showMessageDialog(this, "Bạn phải nhập e-mail");
-//            return;
-//        }
         Users user = ius.getUserbytk(taikhoan);
         if (user.getTk() == null) {
             JOptionPane.showMessageDialog(this, "không có tài khoản này ( " + taikhoan + " ) vui lòng nhập tài khoản khác!");
@@ -311,30 +349,5 @@ public class frm_Quenmatkhau extends javax.swing.JPanel {
         utilconnext.SendMail.send(user.getEmail(), sub, messsage);
         JOptionPane.showMessageDialog(this, " Mã đã gửi vào gmail : " + user.getEmail());
         txt_email.setEnabled(false);
-
-    }//GEN-LAST:event_btn_sendMouseClicked
-
-    private void btn_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sendActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_sendActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private swing.MyButton btn_doimk;
-    private javax.swing.JButton btn_send;
-    private javax.swing.JButton cmdBackLogin;
-    private javax.swing.JLabel hideshow;
-    private javax.swing.JLabel hideshow1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private swing.MyButton myButton1;
-    private swing.MyPassword txtPass;
-    private swing.MyPassword txtPass1;
-    private swing.MyTextField txt_code;
-    private swing.MyTextField txt_email;
-    // End of variables declaration//GEN-END:variables
+    }
 }

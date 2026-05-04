@@ -9,6 +9,12 @@ import views.frm_Login;
 public class main {
 
     public static void main(String[] args) {
+        // Suppress SLF4J warnings
+        System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "error");
+        System.setProperty("org.slf4j.simpleLogger.log.org.apache.commons", "error");
+
         new frm_Login().setVisible(true);
     }
 }
+
+
